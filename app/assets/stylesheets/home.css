@@ -1,0 +1,9 @@
+/* Home page styles */
+.mainContent{
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  float: none;
+  display: flex;
+}
