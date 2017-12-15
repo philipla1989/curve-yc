@@ -1,4 +1,4 @@
-# Curve Your Carrer
+# Curate Your Career
 
 ## Find fulfillment and happiness in your job
 
