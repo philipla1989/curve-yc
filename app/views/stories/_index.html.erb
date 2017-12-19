@@ -20,9 +20,9 @@
         <td><%= story.linkedin_url %></td>
         <td><%= story.ini_title %></td>
         <td><%= story.sub_title %></td>
-        <td><%= link_to 'Show', story %></td>
-        <td><%= link_to 'Edit', edit_story_path(story) %></td>
-        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', story, class: "btn btn-info btn-sm" %></td>
+        <td><%= link_to 'Edit', edit_story_path(story), class: "btn btn-warning btn-sm" %></td>
+        <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
