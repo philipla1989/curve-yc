@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <br>
+  <h4>Management</h4>
+  <br>
+  <ul class="nav nav-tabs" id="contentTab">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#stories" role="tab">Stories</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#categories" role="tab">Categories</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" data-toggle="tab" href="#settings" role="tab">Settings</a>
+    </li>
+  </ul>
+
+  <%= render "nav_content"%>
+
+</div>
+
+<script>
+$('#contentTab a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+  $('#stories').addClass("fade");
+})
+</script>

@@ -25,3 +25,21 @@
   font-size: 2.5em;
   text-align: center;
 }
+
+a:hover {
+  background: none !important;
+  font-weight: 600 !important;
+}
+
+.btn-primary:hover{
+  color: #222222 !important;
+}
+.btn-primary:visited{
+  color: #ffffff;
+}
+.hrDivider{
+  border-bottom: 1px solid #ccc;
+}
+.textArea{
+  height: 150px;
+}
