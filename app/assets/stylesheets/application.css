@@ -34,7 +34,25 @@ a:hover {
 .btn-primary:hover{
   color: #222222 !important;
 }
+.btn-info:hover{
+  color: #222222 !important;
+}
+.btn-warning:hover{
+  color: #222222 !important;
+}
+.btn-danger:hover{
+  color: #222222 !important;
+}
 .btn-primary:visited{
+  color: #ffffff;
+}
+.btn-info:visited{
+  color: #ffffff;
+}
+.btn-warning:visited{
+  color: #ffffff;
+}
+.btn-danger:visited{
   color: #ffffff;
 }
 .hrDivider{
