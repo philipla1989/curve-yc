@@ -1,84 +1,60 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @story.name %>
-</p>
+<div class="container">
+  <p class="h5">
+    <strong>Name:</strong>
+    <%= @story.name %>
+  </p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @story.location %>
-</p>
+  <p class="h5">
+    <strong>Location:</strong>
+    <%= @story.location %>
+  </p>
 
-<p>
-  <strong>Linkedin url:</strong>
-  <%= @story.linkedin_url %>
-</p>
-
-<p>
-  <strong>Ini age:</strong>
-  <%= @story.ini_age %>
-</p>
-
-<p>
-  <strong>Sub age:</strong>
-  <%= @story.sub_age %>
-</p>
-
-<p>
-  <strong>Ini title:</strong>
-  <%= @story.ini_title %>
-</p>
-
-<p>
-  <strong>Sub title:</strong>
-  <%= @story.sub_title %>
-</p>
-
-<p>
-  <strong>Ini career path:</strong>
-  <%= @story.ini_career_path %>
-</p>
-
-<p>
-  <strong>Sub career path:</strong>
-  <%= @story.sub_career_path %>
-</p>
-
-<p>
-  <strong>Ini industry:</strong>
-  <%= @story.ini_industry %>
-</p>
-
-<p>
-  <strong>Sub industry:</strong>
-  <%= @story.sub_industry %>
-</p>
-
-<p>
-  <strong>Ini company:</strong>
-  <%= @story.ini_company %>
-</p>
-
-<p>
-  <strong>Sub company:</strong>
-  <%= @story.sub_company %>
-</p>
-
-<p>
-  <strong>Ini company type:</strong>
-  <%= @story.ini_company_type %>
-</p>
-
-<p>
-  <strong>Sub company type:</strong>
-  <%= @story.sub_company_type %>
-</p>
-
-<p>
-  <strong>Sumary:</strong>
-  <%= @story.sumary %>
-</p>
-
-<%= link_to 'Edit', edit_story_path(@story) %> |
-<%= link_to 'Back', stories_path %>
+  <p class="h5">
+    <strong>Linkedin url:</strong>
+    <a href="<%= @story.linkedin_url %>" target="_blank"><%= @story.linkedin_url %></a>
+  </p>
+  <br>
+  <div class="row">
+    <div class="col-lg-10 col-sm-12 col-xl-6">
+      <table class="table table-striped table-bordered">
+        <thead class="grayTable">
+          <th></th>
+          <th><strong>Initial</strong></th>
+          <th><strong>Subsequent</strong></th>
+        </thead>
+        <tbody class="h5">
+          <tr><td class="grayTable"><strong>Age</strong></td><td><%= @story.ini_age %></td><td><%= @story.sub_age %></td></tr>
+          <tr><td class="grayTable"><strong>Job Title</strong></td><td><%= @story.ini_title %></td><td><%= @story.sub_title %></td></tr>
+          <tr><td class="grayTable"><strong>Career Path</strong></td><td><%= @story.ini_career_path %></td><td><%= @story.sub_career_path %></td></tr>
+          <tr><td class="grayTable"><strong>Idustry</strong></td><td><%= @story.ini_industry %></td><td><%= @story.sub_industry %></td></tr>
+          <tr><td class="grayTable"><strong>Company</strong></td><td><%= @story.ini_company %></td><td><%= @story.sub_company %></td></tr>
+          <tr><td class="grayTable"><strong>Company Type</strong></td><td><%= @story.ini_company_type %></td><td><%= @story.sub_company_type %></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+  <p class="h5">
+    <strong>Sumary</strong>
+    <br>
+    <%= @story.sumary %>
+  </p>
+  <br>
+  <p class="h5">
+    <strong>Table of Contents</strong>
+    <br>
+    <%= "Content should be here!" %>
+  </p>
+  <br>
+  <p class="h5">
+    <strong>The Story</strong>
+    <br>
+    <%= "Content should be here!" %>
+  </p>
+  <%= link_to 'Back', root_path, class: "btn btn-info" %>
+  <br>
+  <br>
+  <span></span>
+</div>
