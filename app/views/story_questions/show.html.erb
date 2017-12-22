@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Story:</strong>
+  <%= @story_question.story_id %>
+</p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @story_question.question %>
+</p>
+
+<p>
+  <strong>Response:</strong>
+  <%= @story_question.response %>
+</p>
+
+<%= link_to 'Edit', edit_story_question_path(@story_question) %> |
+<%= link_to 'Back', story_questions_path %>

@@ -1,0 +1,37 @@
+<%= form_with(model: story_question) do |form| %>
+  <% if story_question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(story_question.errors.count, "error") %> prohibited this story_question from being saved:</h2>
+
+      <ul>
+      <% story_question.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xl-12">
+        <div class="form-group row">
+          <%= form.label :question, class: "col-form-label col-12" %>
+          <%= form.text_field :question, id: :story_question_question, class: "form-control col-12" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xl-12">
+        <div class="form-group row">
+          <%= form.label :response, class: "col-form-label col-12" %>
+          <%= form.text_area :response, id: :story_question_response, class: "form-control textArea" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= hidden_field_tag(:story_id, story.id) %>
+  <div class="actions">
+    <%= form.submit :Save, class: "btn btn-success" %>
+  </div>
+<% end %>
