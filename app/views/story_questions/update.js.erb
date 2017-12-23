@@ -1,7 +1,6 @@
 <% if @story_question.errors.any? %>
-  alert("Can't Save! <%= @story_question.errors %>")
+  alert("Can't Update! <%= @story_question.errors %>")
 <%else%>
   form = "<%= escape_javascript(render partial: "story_questions/index", story_questions: @story_questions, story: @story )  %>";
   $("#storyQuestionsIndex").html(form);
 <%end%>
-

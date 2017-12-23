@@ -4,8 +4,8 @@ class StoryQuestionsController < ApplicationController
   # GET /story_questions
   # GET /story_questions.json
   def index
-    @story_questions = StoryQuestion.all
-    @story = Story.find params[:story_id]
+    @story_questions = @story_questions = StoryQuestion.where(story_id: params[:story_id]).order(:created_at)
+    @story ||= Story.find params[:story_id]
     @story_question = StoryQuestion.new
   end
 
@@ -22,21 +22,22 @@ class StoryQuestionsController < ApplicationController
   # GET /story_questions/1/edit
   def edit
     @story_question = StoryQuestion.find params[:id]
-    @story = StoryQuestion.find @story_question.story_id
+    @story = @story_question.story
   end
 
   # POST /story_questions
   # POST /story_questions.json
   def create
     @story_question = StoryQuestion.new(story_question_params)
-
+    @story = @story_question.story
+    @story_questions = StoryQuestion.where(story_id: params[:story_id]).order(:created_at)
     respond_to do |format|
       if @story_question.save
-        format.html { redirect_to @story_question, notice: 'Story question was successfully created.' }
+        @story_question = StoryQuestion.new
+        format.html { redirect_to story_questions_path(story_id: @story), notice: 'Story question was successfully created.' }
         format.json { render :show, status: :created, location: @story_question }
-        format.js
       else
-        format.html { render :new }
+        format.html { redirect_to story_questions_path(story_id: @story), notice: "#{@story_question.errors.messages}" }
         format.json { render json: @story_question.errors, status: :unprocessable_entity }
       end
     end
@@ -45,9 +46,12 @@ class StoryQuestionsController < ApplicationController
   # PATCH/PUT /story_questions/1
   # PATCH/PUT /story_questions/1.json
   def update
+    @story = @story_question.story
+    @story_questions = StoryQuestion.where(story_id: params[:story_id]).order(:created_at)
     respond_to do |format|
       if @story_question.update(story_question_params)
-        format.html { redirect_to @story_question, notice: 'Story question was successfully updated.' }
+        @story_question = StoryQuestion.new
+        format.html { redirect_to story_questions_path(story_id: @story), notice: 'Story question was successfully updated.' }
         format.json { render :show, status: :ok, location: @story_question }
       else
         format.html { render :edit }
@@ -59,9 +63,12 @@ class StoryQuestionsController < ApplicationController
   # DELETE /story_questions/1
   # DELETE /story_questions/1.json
   def destroy
+    @story = @story_question.story
     @story_question.destroy
     respond_to do |format|
-      format.html { redirect_to story_questions_url, notice: 'Story question was successfully destroyed.' }
+      @story_questions = StoryQuestion.where(story_id: params[:story_id]).order(:created_at)
+      @story_question = StoryQuestion.new
+      format.html { redirect_to story_questions_url(story_id: @story), notice: 'Story question was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

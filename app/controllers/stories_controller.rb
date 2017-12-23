@@ -33,7 +33,7 @@ class StoriesController < ApplicationController
         format.html { redirect_to admin_path, notice: 'Story was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
-        format.html { render :new }
+        format.html { redirect_to admin_path, notice: "Can't Create #{@story.errors.messages}"  }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
@@ -47,7 +47,7 @@ class StoriesController < ApplicationController
         format.html { redirect_to admin_path, notice: 'Story was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
-        format.html { render :edit }
+        format.html { redirect_to admin_path, notice: "Can't update #{@story.errors.messages}"  }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end

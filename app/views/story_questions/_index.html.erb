@@ -11,7 +11,7 @@
     <% @story.story_questions.each do |story_question| %>
       <tr>
         <td><%= story_question.question %></td>
-        <td><%= story_question.response[0..100] %></td>
+        <td><%= story_question.response[0..100] + "..." %></td>
         <td><%= link_to 'Edit', edit_story_question_path(story_question),
                         class: "btn btn-warning btn-sm", remote: true %></td>
         <td><%= link_to 'Destroy', story_question, method: :delete,
