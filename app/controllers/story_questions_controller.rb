@@ -21,6 +21,8 @@ class StoryQuestionsController < ApplicationController
 
   # GET /story_questions/1/edit
   def edit
+    @story_question = StoryQuestion.find params[:id]
+    @story = StoryQuestion.find @story_question.story_id
   end
 
   # POST /story_questions

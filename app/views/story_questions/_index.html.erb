@@ -3,23 +3,26 @@
     <tr>
       <th>Question</th>
       <th>Response</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% story.story_questions.each do |story_question| %>
+    <% @story.story_questions.each do |story_question| %>
       <tr>
         <td><%= story_question.question %></td>
-        <td><%= story_question.response %></td>
-        <td><%= link_to 'Show', story_question, class: "btn btn-info btn-sm" %></td>
-        <td><%= link_to 'Edit', edit_story_question_path(story_question), class: "btn btn-warning btn-sm" %></td>
-        <td><%= link_to 'Destroy', story_question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+        <td><%= story_question.response[0..100] %></td>
+        <td><%= link_to 'Edit', edit_story_question_path(story_question),
+                        class: "btn btn-warning btn-sm", remote: true %></td>
+        <td><%= link_to 'Destroy', story_question, method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", remote: true %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-<%= puts story %>
-<%= render "story_questions/form", story: story, story_question: story_question %>
+<h5>Add Story Question</h5>
+<%= render "story_questions/form", story: @story, story_question: @story_question %>
+<%= link_to "Back to Stories", admin_path,class: "btn btn-primary" %>
+<div id="editQuestionFormContainer"></div>

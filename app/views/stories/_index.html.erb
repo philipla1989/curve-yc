@@ -19,7 +19,7 @@
         <td><%= story.ini_title %></td>
         <td><%= story.sub_title %></td>
         <td><%= link_to 'Manage Questions', story_questions_path(story_id: story),
-                        class: "btn btn-primary btn-sm", remote: true %></td>
+                        class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Show', story, class: "btn btn-info btn-sm", remote: true %></td>
         <td><%= link_to 'Edit', edit_story_path(story), class: "btn btn-warning btn-sm", remote: true %></td>
         <td><%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' },
