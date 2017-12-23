@@ -10,6 +10,8 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
+    @story = Story.find params[:id]
+    @story_questions = StoryQuestion.where(story_id: @story).order(:created_at)
   end
 
   # GET /stories/new
@@ -19,6 +21,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+    @story = Story.find params[:id]
   end
 
   # POST /stories
@@ -28,10 +31,10 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Story was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
-        format.html { render :new }
+        format.html { redirect_to admin_path, notice: "Can't Create #{@story.errors.messages}"  }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
@@ -42,10 +45,10 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to @story, notice: 'Story was successfully updated.' }
+        format.html { redirect_to admin_path, notice: 'Story was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
-        format.html { render :edit }
+        format.html { redirect_to admin_path, notice: "Can't update #{@story.errors.messages}"  }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
@@ -56,7 +59,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to admin_path, notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,4 @@
+
+form = "<%= escape_javascript(render partial: "shared/modals/edit_story_question_modal", story_question: @story_question, story: @story )  %>";
+$("#editQuestionFormContainer").html(form);
+$("#editStoryQuestionModal").modal("show");

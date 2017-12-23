@@ -1,4 +1,4 @@
-<%= form_with(model: story, local: true) do |form| %>
+<%= form_with(model: story) do |form| %>
   <% if story.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
@@ -98,8 +98,6 @@
       </div>
     </div>
   </div>
-  <br>
-  <h4>Add Questions Content +</h4>
   <br>
   <div class="col-lg-12 col-xl-12">
     <div class="form-group">

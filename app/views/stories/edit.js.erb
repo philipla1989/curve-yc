@@ -1,0 +1,3 @@
+form = "<%= escape_javascript(render partial: "shared/modals/edit_story_modal", story: @story )  %>";
+$("#editFormContainer").html(form);
+$("#editStoryModal").modal("show");
