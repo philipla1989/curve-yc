@@ -1,0 +1,8 @@
+<% if @category.errors.any? %>
+  alert("Can't Save! <%= @category_.errors.messages %>")
+<%else%>
+  form = "<%= escape_javascript(render partial: "categories/categories_index", category: @category )  %>";
+  $("#categoryIndex").html(form);
+  $("#editCategoryModal").modal("hide");
+  $(".modal-backdrop.show").hide();
+<%end%>

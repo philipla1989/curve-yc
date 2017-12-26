@@ -1,0 +1,3 @@
+form = "<%= escape_javascript(render partial: "shared/modals/edit_category_modal", category: @category )  %>";
+$("#editCategoryContainer").html(form);
+$("#editCategoryModal").modal("show");

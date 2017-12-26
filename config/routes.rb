@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :story_questions
   resources :stories
   get "admin",        to: "admin#index",          as: :admin
