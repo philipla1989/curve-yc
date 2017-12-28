@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   resources :categories
-  resources :story_questions
-  resources :stories
+  resources :stories do
+    resources :careers do
+      resources :story_questions
+    end
+  end
   get "admin",        to: "admin#index",          as: :admin
   get "blog",         to: "home#blog",            as: :blog
   get "about",        to: "home#about",           as: :about

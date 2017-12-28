@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @career.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @career.title %>
+</p>
+
+<p>
+  <strong>Industry:</strong>
+  <%= @career.industry %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @career.company %>
+</p>
+
+<p>
+  <strong>Company type:</strong>
+  <%= @career.company_type %>
+</p>
+
+<p>
+  <strong>Story:</strong>
+  <%= @career.story_id %>
+</p>
+
+<p>
+  <strong>Precedent career:</strong>
+  <%= @career.precedent_career %>
+</p>
+
+<%= link_to 'Edit', edit_story_career_path(@story, @career) %> |
+<%= link_to 'Back', story_careers_path(@story) %>

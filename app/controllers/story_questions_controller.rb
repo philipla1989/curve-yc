@@ -4,9 +4,7 @@ class StoryQuestionsController < ApplicationController
   # GET /story_questions
   # GET /story_questions.json
   def index
-    @story_questions = @story_questions = StoryQuestion.where(story_id: params[:story_id]).order(:created_at)
-    @story ||= Story.find params[:story_id]
-    @story_question = StoryQuestion.new
+    @story_questions = StoryQuestion.where(story_id: params[:story_id], career_id: params[:career_id]).order(:created_at)
   end
 
   # GET /story_questions/1
