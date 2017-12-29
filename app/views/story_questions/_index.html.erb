@@ -8,14 +8,14 @@
   </thead>
 
   <tbody>
-    <% @story.story_questions.each do |story_question| %>
+    <% @career.story_questions.order(:created_at).each do |story_question| %>
       <tr>
         <td><%= story_question.question %></td>
         <td><%= story_question.response[0..100] + "..." %></td>
-        <td><%= link_to 'Edit', edit_story_question_path(story_question),
-                        class: "btn btn-warning btn-sm", remote: true %></td>
-        <td><%= link_to 'Destroy', story_question, method: :delete,
-                        data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm", remote: true %></td>
+        <td><%= link_to 'Edit', edit_story_career_story_question_path(@story, @career, story_question),
+                        class: "btn btn-warning btn-sm" %></td>
+        <td><%= link_to 'Destroy', story_career_story_question_path(@story, @career, story_question), method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,6 +23,7 @@
 
 <br>
 <h5>Add Story Question</h5>
-<%= render "story_questions/form", story: @story, story_question: @story_question %>
-<%= link_to "Back to Stories", admin_path,class: "btn btn-primary" %>
+<%= render "story_questions/form", story: @story, career: @career, story_question: @story_question %>
+<%= link_to "Back to Careers", story_careers_path(@story), class: "btn btn-sm btn-info right" %>
+<br><br>
 <div id="editQuestionFormContainer"></div>

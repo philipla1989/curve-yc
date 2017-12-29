@@ -11,7 +11,7 @@ class StoriesController < ApplicationController
   # GET /stories/1.json
   def show
     @story = Story.find params[:id]
-    @story_questions = StoryQuestion.where(story_id: @story).order(:created_at)
+    @careers = @story.careers
   end
 
   # GET /stories/new

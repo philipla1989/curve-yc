@@ -18,7 +18,7 @@
         <td><%= career.title %></td>
         <td><%= career.story.name %></td>
         <td><%= career.precedent_career %></td>
-        <td><%= link_to 'Manage Question Content',
+        <td><%= link_to 'Manage Questions Content',
                         story_career_story_questions_path(@story, career), class: "btn btn-sm btn-primary" %></td>
         <td><%= link_to 'Edit', edit_story_career_path(@story, career), class: "btn btn-sm btn-warning" %></td>
         <td><%= link_to 'Destroy', story_career_path(@story, career),
