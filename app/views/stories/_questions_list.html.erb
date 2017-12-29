@@ -1,0 +1,19 @@
+<p class="h5">
+  <% career.story_questions.each do |sq| %>
+    <a href="/stories/<%= sq.story_id %>#question-<%= sq.id %>"><%= sq.question %></a>
+    <br>
+  <% end %>
+</p>
+<br>
+<p class="h5">
+  <strong>The Story</strong>
+  <br>
+  <% career.story_questions.each do |sq| %>
+    <section>
+      <div name="#question-<%= sq.id %>" class="h5"><b><%= sq.question %></b></div>
+      <br>
+      <div class="h5"><%= sq.response %></div>
+      <br>
+    </section>
+  <% end %>
+</p>

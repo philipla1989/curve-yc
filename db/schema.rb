@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171223082358) do
+ActiveRecord::Schema.define(version: 20171228223852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "careers", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.string "industry"
+    t.string "company"
+    t.string "company_type"
+    t.integer "story_id"
+    t.string "precedent_career"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -29,18 +41,15 @@ ActiveRecord::Schema.define(version: 20171223082358) do
     t.integer "ini_age"
     t.integer "sub_age"
     t.string "ini_title"
-    t.string "sub_title"
     t.string "ini_career_path"
-    t.string "sub_career_path"
     t.string "ini_industry"
-    t.string "sub_industry"
     t.string "ini_company"
-    t.string "sub_company"
     t.string "ini_company_type"
-    t.string "sub_company_type"
     t.text "sumary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "vanity_url"
+    t.text "quote"
   end
 
   create_table "story_questions", force: :cascade do |t|
@@ -49,6 +58,7 @@ ActiveRecord::Schema.define(version: 20171223082358) do
     t.text "response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "career_id"
   end
 
 end

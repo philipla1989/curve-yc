@@ -23,12 +23,30 @@
           <th><strong>Subsequent</strong></th>
         </thead>
         <tbody class="h5">
-          <tr><td class="grayTable"><strong>Age</strong></td><td><%= @story.ini_age %></td><td><%= @story.sub_age %></td></tr>
-          <tr><td class="grayTable"><strong>Job Title</strong></td><td><%= @story.ini_title %></td><td><%= @story.sub_title %></td></tr>
-          <tr><td class="grayTable"><strong>Career Path</strong></td><td><%= @story.ini_career_path %></td><td><%= @story.sub_career_path %></td></tr>
-          <tr><td class="grayTable"><strong>Idustry</strong></td><td><%= @story.ini_industry %></td><td><%= @story.sub_industry %></td></tr>
-          <tr><td class="grayTable"><strong>Company</strong></td><td><%= @story.ini_company %></td><td><%= @story.sub_company %></td></tr>
-          <tr><td class="grayTable"><strong>Company Type</strong></td><td><%= @story.ini_company_type %></td><td><%= @story.sub_company_type %></td></tr>
+          <tr>
+            <td class="grayTable"><strong>Age</strong></td>
+            <td><%= @story.ini_age %></td><td><%= @story.sub_age %></td>
+          </tr>
+          <tr>
+            <td class="grayTable"><strong>Job Title</strong></td>
+            <td><%= @story.ini_title %></td><td><%= get_sub_title(@careers) %></td>
+          </tr>
+          <tr>
+            <td class="grayTable"><strong>Career Path</strong></td>
+            <td><%= @story.ini_career_path %></td><td><%= get_sub_career_path(@careers) %></td>
+          </tr>
+          <tr>
+            <td class="grayTable"><strong>Idustry</strong></td>
+            <td><%= @story.ini_industry %></td><td><%= get_sub_industry(@careers) %></td>
+          </tr>
+          <tr>
+            <td class="grayTable"><strong>Company</strong></td>
+            <td><%= @story.ini_company %></td><td><%= get_sub_company(@careers) %></td>
+          </tr>
+          <tr>
+            <td class="grayTable"><strong>Company Type</strong></td>
+            <td><%= @story.ini_company_type %></td><td><%= get_sub_company_type(@careers) %></td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -43,22 +61,21 @@
   <p class="h5">
     <strong>Table of Contents</strong>
     <br>
-    <% @story_questions.each do |sq| %>
-      <a href="/stories/<%= sq.story_id %>#question-<%= sq.id %>"><%= sq.question %></a>
-      <br>
-    <% end %>
-  </p>
-  <br>
-  <p class="h5">
-    <strong>The Story</strong>
-    <br>
-    <% @story_questions.each do |sq| %>
-      <section>
-        <div name="#question-<%= sq.id %>" class="h5"><b><%= sq.question %></b></div>
-        <br>
-        <div class="h5"><%= sq.response %></div>
-        <br>
-      </section>
+    <% if check_single_career(@careers) %>
+      <%= render "questions_list", career: @careers.first %>
+    <% else %>
+      <% i = 0 %>
+      <% @careers.each do |career| %>
+        <% i+= 1%>
+        <div class="h5">
+          <b>
+            Career Change #<%= i %>:
+          </b>
+          <%= get_precedent_career(career) %> --> <%= career.name %> / <%= career.title %>, <%= career.company %>
+          <br><br>
+          <%= render "questions_list", career: career %>
+        </div>
+      <% end %>
     <% end %>
   </p>
   <%= link_to 'Back', root_path, class: "btn btn-info" %>

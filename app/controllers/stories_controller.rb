@@ -11,7 +11,7 @@ class StoriesController < ApplicationController
   # GET /stories/1.json
   def show
     @story = Story.find params[:id]
-    @story_questions = StoryQuestion.where(story_id: @story).order(:created_at)
+    @careers = @story.careers
   end
 
   # GET /stories/new
@@ -72,6 +72,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:name, :location, :linkedin_url, :ini_age, :sub_age, :ini_title, :sub_title, :ini_career_path, :sub_career_path, :ini_industry, :sub_industry, :ini_company, :sub_company, :ini_company_type, :sub_company_type, :sumary)
+      params.require(:story).permit(:name, :location, :linkedin_url, :vanity_url, :quote, :ini_age, :sub_age, :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type, :sumary)
     end
 end
