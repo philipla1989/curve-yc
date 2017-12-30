@@ -75,7 +75,6 @@
             <b>Career Change #<%= i %>:</b>
             <%= get_precedent_career(career) %> --> <%= career.name %> / <%= career.title %>, <%= career.company %>
           </p>
-          <br>
           <p class="h5">
             <% career.story_questions.each do |sq| %>
               <a href="/stories/<%= sq.story_id %>#question-<%= sq.id %>"><%= sq.question %></a>
@@ -84,10 +83,18 @@
           </p>
         </div>
       <% end %>
+      <br>
+      <p class="h5">
+        <strong>The Story</strong>
+      </p>
+      <% i = 0 %>
       <% @careers.each do |career| %>
         <% i+= 1%>
+        <p class="h5">
+            <b>Career Change #<%= i %>:</b>
+            <%= get_precedent_career(career) %> --> <%= career.name %> / <%= career.title %>, <%= career.company %>
+          </p>
         <div class="h5">
-          <br>
           <%= render "questions_list", career: career %>
         </div>
       <% end %>

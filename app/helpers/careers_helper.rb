@@ -10,7 +10,10 @@ module CareersHelper
   end
 
   def get_precedent_options(story)
-    binding.pry
-    []
-  end  
+    if story.careers.empty?
+      [story.ini_career_path]
+    else
+      story.careers.map(&:name)
+    end
+  end
 end
