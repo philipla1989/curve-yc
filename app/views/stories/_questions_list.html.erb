@@ -4,7 +4,7 @@
     <section>
       <div name="#question-<%= sq.id %>" class="h5"><b><%= sq.question %></b></div>
       <br>
-      <div class="h5"><%= sq.response %></div>
+      <div class="h5"><%= markdown(sq.response) %></div>
       <br>
     </section>
   <% end %>
