@@ -8,6 +8,18 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render "shared/utilities/bootstrap" %>
     <%= render "shared/utilities/react_select" %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111267241-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-111267241-1');
+    </script>
+
+    <script src="//load.sumome.com/" data-sumo-site-id="97ea7a43464d6f7917cf7ace472ad4f1fea1fb96391368f4afbc1cf30c904d1a" async="async"></script>
+
   </head>
 
   <body>
