@@ -26,6 +26,12 @@
       </div>
       <div class="col-lg-12 col-xl-12">
         <div class="form-group row">
+          <%= form.label :education, class: "col-form-label col-2" %>
+          <%= form.text_field :education, id: :story_education, class: "form-control col-9" %>
+        </div>
+      </div>
+      <div class="col-lg-12 col-xl-12">
+        <div class="form-group row">
           <%= form.label :linkedin_url, "LinkedIn", class: "col-form-label col-2" %>
           <%= form.text_field :linkedin_url, id: :story_linkedin_url, class: "form-control col-9" %>
         </div>
@@ -52,11 +58,11 @@
         </div>
         <div class="form-group">
           <%= form.label :ini_title, "Initial Title", class: "col-form-label"  %>
-          <%= form.text_field :ini_title, id: :story_ini_title, class: "form-control" %>
+          <%= form.select :ini_title, get_options("Title"), { include_blank: "Select..." }, { class: "form-control" } %>
         </div>
         <div class="form-group">
           <%= form.label :ini_industry, "Initial Industry", class: "col-form-label"  %>
-          <%= form.text_field :ini_industry, id: :story_ini_industry, class: "form-control" %>
+          <%= form.select :ini_industry, get_options("Industry"), { include_blank: "Select..." }, { class: "form-control" } %>
         </div>
         <div class="form-group">
           <%= form.label :ini_company_type, "Initial Company Type", class: "col-form-label"  %>
@@ -71,7 +77,7 @@
         </div>
         <div class="form-group">
           <%= form.label :ini_career_path, "Initial Career Path", class: "col-form-label"  %>
-          <%= form.text_field :ini_career_path, id: :story_ini_career_path, class: "form-control" %>
+          <%= form.select :ini_career_path, get_options("Career Path"), { include_blank: "Select..." }, { class: "form-control" } %>
         </div>
         <div class="form-group">
           <%= form.label :ini_company, "Initial Company", class: "col-form-label"  %>

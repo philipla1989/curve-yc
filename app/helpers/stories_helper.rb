@@ -9,15 +9,15 @@ module StoriesHelper
   end
 
   def get_sub_industry(careers)
-    careers.map(&:industry).join(", ")
+    careers.map(&:industry).uniq.join(", ")
   end
 
   def get_sub_company(careers)
-    careers.map(&:company).join(", ")
+    careers.map(&:company).uniq.join(", ")
   end
 
   def get_sub_company_type(careers)
-    careers.map(&:company_type).join(", ")
+    careers.map(&:company_type).uniq.join(", ")
   end
 
   def get_precedent_career(career)

@@ -29,10 +29,8 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       @categories = Category.all
       if @category.save
-        @category = Category.new
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to admin_path, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
-        format.js
       else
         format.html { render :new }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -46,10 +44,8 @@ class CategoriesController < ApplicationController
     @categories = Category.all
     respond_to do |format|
       if @category.update(category_params)
-        @category = Category.new
-        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
+        format.html { redirect_to admin_path, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
-        format.js
       else
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
@@ -63,10 +59,8 @@ class CategoriesController < ApplicationController
     @category.destroy
     respond_to do |format|
       @categories = Category.all
-      @category = Category.new
-      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
+      format.html { redirect_to admin_path, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
-      format.js
     end
   end
 

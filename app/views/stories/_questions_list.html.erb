@@ -1,12 +1,4 @@
-<p class="h5">
-  <% career.story_questions.each do |sq| %>
-    <a href="/stories/<%= sq.story_id %>#question-<%= sq.id %>"><%= sq.question %></a>
-    <br>
-  <% end %>
-</p>
-<br>
-<p class="h5">
-  <strong>The Story</strong>
+<div class="h5">
   <br>
   <% career.story_questions.each do |sq| %>
     <section>
@@ -16,4 +8,4 @@
       <br>
     </section>
   <% end %>
-</p>
+</div>
