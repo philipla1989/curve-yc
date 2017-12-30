@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Content</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.name %></td>
+        <td><%= page.content %></td>
+        <td><%= link_to 'Edit', edit_page_path(page), class: "btn btn-warning btn-sm" %></td>
+        <td><%= link_to 'Destroy', page, method: :delete,
+                        data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page', new_page_path, class: "btn btn-primary btn-sm" %>

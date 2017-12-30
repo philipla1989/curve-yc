@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :categories
+  resources :pages
   resources :stories do
     resources :careers do
       resources :story_questions

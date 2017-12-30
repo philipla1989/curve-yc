@@ -32,4 +32,8 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
+  def show_page(page)
+    page = Page.where(name: page).first
+    page.content
+  end
 end
