@@ -1,7 +1,0 @@
-<% if @category.errors.any? %>
-  alert("Can't Delete! <%= @category.errors %>")
-<%else%>
-  form = "<%= escape_javascript(render partial: "categories/categories_index", category: @category )  %>";
-  $("#categoryIndex").html(form);
-  $(".modal-backdrop.show").hide();
-<%end%>

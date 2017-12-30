@@ -6,5 +6,7 @@ class AdminController < ApplicationController
     @story_question = StoryQuestion.new
     @categories = Category.all
     @category = Category.new
+    @pages = Page.all
+    @page = Page.new
   end
 end
