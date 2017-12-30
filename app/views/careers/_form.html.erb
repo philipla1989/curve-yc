@@ -16,19 +16,19 @@
       <div class="col-lg-5 col-xl-5">
         <div class="form-group row">
           <%= form.label :name, "Career", class: "col-form-label col-4" %>
-          <%= form.text_field :name, id: :career_name, class: "form-control col-6" %>
+          <%= form.select :name, get_options("Career Path"), { include_blank: "Select..." }, { class: "form-control col-6" } %>
         </div>
       </div>
       <div class="col-lg-6 col-xl-6">
         <div class="form-group row">
           <%= form.label :title, class: "col-form-label col-4" %>
-          <%= form.text_field :title, id: :career_title, class: "form-control col-6" %>
+          <%= form.select :title, get_options("Title"), { include_blank: "Select..." }, { class: "form-control col-6" } %>
         </div>
       </div>
       <div class="col-lg-5 col-xl-5">
         <div class="form-group row">
           <%= form.label :industry, class: "col-form-label col-4" %>
-          <%= form.text_field :industry, id: :career_industry, class: "form-control col-6" %>
+          <%= form.select :industry, get_options("Industry"), { include_blank: "Select..." }, { class: "form-control col-6" } %>
         </div>
       </div>
       <div class="col-lg-6 col-xl-6">
@@ -49,9 +49,7 @@
       <div class="col-lg-5 col-xl-5">
         <div class="form-group row">
           <%= form.label :precedent_career, class: "col-form-label col-5"  %>
-          <%= form.text_field :precedent_career, id: :career_precedent_career, class: "form-control col-6" %>
-          <%# <%= form.select :precedent_career, [ ["Read Only", "read"], ["IP Voice Telephony", "ip_voice"], ["IP Video Telephony", "ip_video_telephony"], ["Enterprise Gateways", "enterprise_gateways"], ["Consumer ATAs", "consumer_atas"], ["IP PBX", "ip_pbx"], ["Master of All", "all"] ], {prompt: "Select Permission Level"},
-                        {:multiple => true, class: "form-control col-6", id: "multiselect"} %>
+          <%= form.select :precedent_career, get_precedent_options(@story), { include_blank: "Select..." }, { class: "form-control col-6" } %>
         </div>
       <div>
     </div>

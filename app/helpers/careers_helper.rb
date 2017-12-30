@@ -9,4 +9,8 @@ module CareersHelper
     end
   end
 
+  def get_precedent_options(story)
+    binding.pry
+    []
+  end  
 end

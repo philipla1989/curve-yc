@@ -2,5 +2,9 @@
 
 <%= render 'form', category: @category %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<div class="row">
+  <div class="col-12">
+    <%= link_to 'Back to Admin', admin_path, class: "btn btn-sm btn-info right" %>
+  </div>
+</div>
+
