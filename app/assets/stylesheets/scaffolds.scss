@@ -1,8 +1,17 @@
+@font-face {
+  font-family: 'Quicksand';
+  font-weight: normal;
+  font-style: normal;
+  src: font-url('Quicksand-Medium.ttf') format('truetype');
+  src: font-url('Quicksand-Bold.ttf') format('truetype');
+  src: font-url('Quicksand-Regular.ttf') format('truetype');
+}
+
 body {
   background-color: #fff;
   color: #333;
   margin: 33px;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Quicksand";
   font-size: 13px;
   line-height: 18px;
 }

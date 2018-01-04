@@ -3,7 +3,7 @@
   <head>
     <title>CurveYourCareer</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render "shared/utilities/bootstrap" %>
@@ -22,11 +22,11 @@
 
   </head>
 
-  <body style="background-image:url('/assets/curve-background.png');">
+  <body class="bodyFont" style="background-image:url('/assets/curve-background-web.png');">
 
     <%= render 'layouts/navigation' %>
 
-    <div class="container container-fluid" style="background-color: #b9cfe8;">
+    <div class="container container-fluid" style="background-color: #ffffff;">
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>
