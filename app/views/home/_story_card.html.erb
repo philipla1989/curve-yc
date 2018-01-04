@@ -1,10 +1,12 @@
 <% if @stories.present?%>
   <% @stories.each do |s| %>
 
-  <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12">
-      <div class="card" style="width: 20rem;min-height: 290px;max-height: 290px;">
-        <div class="card-block">
+  <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 card">
+      <div class="cardContainer">
+        <div class="card-header">
           <h4 class="card-title"><%= s.name %></h4>
+        </div>
+        <div class="card-block">
           <p class="card-text"><b><%= s.ini_title %> -->  <%= "Second Career" %></b></p>
           <p class="card-text"><b><%= s.ini_company %> -->  <%= "Second career" %></b></p>
           <p class="card-text"><em>
@@ -14,8 +16,16 @@
           <%= link_to "Go to the Story", story_path(s.id), class: "btn btn-primary" %>
         </div>
       </div>
+      <div class="card-footer">
+        <small class="text-muted">Submitted: <%= s.created_at.strftime("%d/%m/%Y") %></small>
+      </div>
     </div>
 
   <% end %>
+<% else %>
+  <div class="col-lg-12 col-md-12 col-sm-12 centerText">
+    <h4>Can't find Stories</h4>
+  </div>
+  <br><br>
 <% end %>
 

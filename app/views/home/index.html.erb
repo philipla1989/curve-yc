@@ -5,27 +5,68 @@
     </div><br><br>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
       <h4>Find fulfillment and happiness in your job</h4>
-    </div><br><br>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <ul class"list-style">
-        <li>
+    </div><br><br><br><br>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+      <div class="row">
+        <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
+        <div>
+          <%= image_tag("/assets/arrows-512b.png", class: "imgResponsive") %><br>
           Hear about people just like ou able to change careers
-        </li>
-        <li>
+        </div>
+      </div>
+      <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
+        <div>
+          <%= image_tag("/assets/bareers-200b.png", class: "imgResponsive") %><br>
           Learn how to overcome financial, mental, and social barriers holding you back
-        </li>
-        <li>
+        </div>
+      </div>
+      <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
+        <div>
+          <%= image_tag("/assets/messaging-200b.png", class: "imgResponsive") %><br>
           Gain tactical guidance on what steps you could take to get to your dream career
-        </li>
-      </ul>
+        </div>
+      </div>
+      </div>
     </div>
   </div>
 </div>
+<br><br><br><br>
+<%= form_with url: filter_by_path do |form| %>
 <div class="container-fluid">
   <div class="row">
-
-    <%= render "story_card.html.erb"%>
-
+    <div class="col-lg-12 col.md-12 col-sm-12 col-xs-12 centerText h5">
+      <b>
+        <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">My current career is in</div>
+        <%= form.select :ini_career_path, get_options("Career Path"),
+                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock" } %>
+        <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">and I am interested in</div>
+        <%= form.select :sub_career_path, get_options("Career Path"),
+                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock" } %>
+      </b>
+    </div>
+  </div>
+</div>
+<br>
+<div class="centerText">
+  <%= form.submit "Filter Stories", class: "btn btn-primary" %>
+</div>
+<% end %>
+<br>
+<%= form_with url: sort_by_path do |form| %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 h5">
+      <b>
+        <%= form.select :sort_by, ["Newest", "Oldest", "Longest", "Shortest"],
+                        { include_blank: "Sort By" }, { class: "form-control col-2 inlineBlock right" } %>
+      </b>
+    </div>
+  </div>
+</div>
+<% end %>
+<div class="container-fluid">
+  <div id="cardsContainer" class="row">
+      <%= render "story_card.html.erb", stories: @stories %>
   </div>
 </div>
 

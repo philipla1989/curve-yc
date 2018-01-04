@@ -3,4 +3,5 @@ class Story < ApplicationRecord
 
   validates :name, :location, :sumary, :ini_age, :sub_age, presence: true
 
+  scope :sub_career, -> { joins(:careers) }
 end

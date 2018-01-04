@@ -14,10 +14,13 @@
  *= require_self
  */
 
+.bodyFont {
+  font-family: 'Quicksand';
+}
 .navbar-nav > li > a {
  font-size:      1.5em;
 }
-.sStoryIcon{
+.sStoryIcon {
   font-size: 1em !important;
   text-align: center;
 }
@@ -30,35 +33,37 @@ a:hover {
   background: none !important;
   font-weight: 600 !important;
 }
-
-.btn-primary:hover{
+input[type=submit]:hover {
+  background: none !important;
+}
+.btn-primary:hover {
   color: #222222 !important;
 }
-.btn-info:hover{
+.btn-info:hover {
   color: #222222 !important;
 }
-.btn-warning:hover{
+.btn-warning:hover {
   color: #222222 !important;
 }
-.btn-danger:hover{
+.btn-danger:hover {
   color: #222222 !important;
 }
-.btn-primary:visited{
+.btn-primary:visited {
   color: #ffffff;
 }
-.btn-info:visited{
+.btn-info:visited {
   color: #ffffff;
 }
-.btn-warning:visited{
+.btn-warning:visited {
   color: #ffffff;
 }
-.btn-danger:visited{
+.btn-danger:visited {
   color: #ffffff;
 }
-.hrDivider{
+.hrDivider {
   border-bottom: 1px solid #ccc;
 }
-.textArea{
+.textArea {
   height: 150px;
 }
 .right {
@@ -66,4 +71,10 @@ a:hover {
 }
 .left {
   float: left;
+}
+.centerText {
+  text-align: center;
+}
+.inlineBlock {
+  display: inline-block !important;
 }
