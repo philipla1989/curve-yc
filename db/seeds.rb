@@ -152,5 +152,7 @@ Category.create( name: "Career Path", description: "Sales|Accountant|Product Man
 Category.create( name: "Title", description: "Sales Development Manager|Associate Product Manager|Software Developer|Salesman|Advertising Sales Manager|Senior Accountant")
 Category.create( name: "Industry", description: "Technology|Social Media|IT|Construction|Technology, Digital Advertising|Professional Services")
 
-
+## Pages
+Page.create( name: "About", content: "# Add Content Here! Title 1\r\n## Title 2\r\n#### Title 4\r\n_underline_\r\n<div><b>HTML</b></div>\r\nwww.curveyourcareer.com")
+Page.create( name: "Contact", content: "# Add Content Here! Title 1\r\n## Title 2\r\n#### Title 4\r\n_underline_\r\n<div><b>HTML</b></div>\r\nwww.curveyourcareer.com")
 
