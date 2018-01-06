@@ -37,8 +37,14 @@
     margin-bottom: 30px !important;
   }
   .cardContainer {
-    min-height: 320px;
-    max-height: 320px;
+    min-height: 380px;
+    max-height: 380px;
+  }
+  .imgArrow {
+    width: 10%;
+  }
+  .imgArrowStory {
+    width: 5%;
   }
 }
 
@@ -61,14 +67,23 @@
     margin-bottom: 30px !important;
   }
   .cardContainer {
-    min-height: 320px;
-    max-height: 320px;
+    min-height: 380px;
+    max-height: 380px;
+  }
+  .imgArrow {
+    width: 10%;
+  }
+  .imgArrowStory {
+    width: 5%;
   }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   html {
     font-size: 23px;
   }
+  .container {
+    width: 90% !important;
+  }
   .col-sm-12 {
     padding-right: 0px !important;
     padding-left: 0px !important;
@@ -77,14 +92,23 @@
     margin-bottom: 30px !important;
   }
   .cardContainer {
-    min-height: 320px;
-    max-height: 320px;
+    min-height: 400px;
+    max-height: 400px;
+  }
+  .imgArrow {
+    width: 10%;
+  }
+  .imgArrowStory {
+    width: 5%;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
   html {
     font-size: 22px;
   }
+  .container {
+    width: 90% !important;
+  }
   .col-sm-12 {
     padding-right: 0px !important;
     padding-left: 0px !important;
@@ -93,7 +117,13 @@
     margin-bottom: 30px !important;
   }
   .cardContainer {
-    min-height: 320px;
-    max-height: 320px;
+    min-height: 400px;
+    max-height: 400px;
+  }
+  .imgArrow {
+    width: 10%;
+  }
+  .imgArrowStory {
+    width: 5%;
   }
 }

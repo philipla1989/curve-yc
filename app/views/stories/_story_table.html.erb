@@ -1,0 +1,33 @@
+<table class="table table-striped table-bordered">
+  <thead class="grayTable">
+    <th></th>
+    <th><strong>Initial</strong></th>
+    <th><strong>Subsequent</strong></th>
+  </thead>
+  <tbody class="h5">
+    <tr>
+      <td class="grayTable"><strong>Age</strong></td>
+      <td><%= @story.ini_age %></td><td><%= @story.sub_age %></td>
+    </tr>
+    <tr>
+      <td class="grayTable"><strong>Job Title</strong></td>
+      <td><%= @story.ini_title %></td><td><%= get_sub_title(@careers) %></td>
+    </tr>
+    <tr>
+      <td class="grayTable"><strong>Career Path</strong></td>
+      <td><%= @story.ini_career_path %></td><td><%= get_sub_career_path(@careers) %></td>
+    </tr>
+    <tr>
+      <td class="grayTable"><strong>Idustry</strong></td>
+      <td><%= @story.ini_industry %></td><td><%= get_sub_industry(@careers) %></td>
+    </tr>
+    <tr>
+      <td class="grayTable"><strong>Company</strong></td>
+      <td><%= @story.ini_company %></td><td><%= get_sub_company(@careers) %></td>
+    </tr>
+    <tr>
+      <td class="grayTable"><strong>Company Type</strong></td>
+      <td><%= @story.ini_company_type %></td><td><%= get_sub_company_type(@careers) %></td>
+    </tr>
+  </tbody>
+</table>

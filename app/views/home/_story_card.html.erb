@@ -1,23 +1,33 @@
 <% if @stories.present?%>
-  <% @stories.each do |s| %>
+  <% @stories.each do |story| %>
 
   <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 card">
       <div class="cardContainer">
         <div class="card-header">
-          <h4 class="card-title"><%= s.name %></h4>
+          <h4 class="card-title"><%= story.name %></h4>
         </div>
         <div class="card-block">
-          <p class="card-text"><b><%= s.ini_title %> -->  <%= "Second Career" %></b></p>
-          <p class="card-text"><b><%= s.ini_company %> -->  <%= "Second career" %></b></p>
-          <p class="card-text"><em>
-              "I really enjoyed the companies and people I worked with, but never really had or
-              developed a passion for the industry [advertising sales] in itself.
-          </em></p>
-          <%= link_to "Go to the Story", story_path(s.id), class: "btn btn-primary" %>
+          <% if check_single_career(story.careers) %>
+            <p class="card-text"><b><%= story.ini_title %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= story.careers.first.name %></b></p>
+            <p class="card-text"><b><%= story.ini_company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= story.careers.first.company %></b></p>
+          <% else %>
+            <% story.careers.each do |career| %>
+              <p class="card-text">
+                <b>
+                  <%= story.ini_title %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= career.name %>
+                  <br>
+                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.company %>
+                </b>
+              </p>
+            <% end %>
+          <% end %>
+
+          <p class="card-text"><em><%= story.quote.truncate_words(20, omission: '...') %></em></p>
+          <%= link_to "Go to the Story", story_path(story.id), class: "btn btn-primary" %>
         </div>
       </div>
       <div class="card-footer">
-        <small class="text-muted">Submitted: <%= s.created_at.strftime("%d/%m/%Y") %></small>
+        <small class="text-muted">Submitted: <%= story.created_at.strftime("%d/%m/%Y") %></small>
       </div>
     </div>
 
