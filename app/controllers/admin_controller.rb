@@ -8,5 +8,8 @@ class AdminController < ApplicationController
     @category = Category.new
     @pages = Page.all
     @page = Page.new
+    @posts = Post.all
+    @post = Post.new
   end
+
 end

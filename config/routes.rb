@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   resources :categories
   resources :pages
   resources :stories do
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
   end
   get "admin",        to: "admin#index",          as: :admin
   get "blog",         to: "home#blog",            as: :blog
+  get "browse",       to: "home#browse",          as: :browse
   get "about",        to: "home#about",           as: :about
   get "contact",      to: "home#contact",         as: :contact
   get "submit-story", to: "home#submit_story",    as: :submit_story

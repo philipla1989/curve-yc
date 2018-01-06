@@ -5,10 +5,14 @@ class HomeController < ApplicationController
     @ids = @stories.pluck(:id)
   end
 
+  def browse
+    binding.pry
+  end
   def about
   end
 
   def blog
+    @posts = Post.all
   end
 
   def submit_story
@@ -21,7 +25,7 @@ class HomeController < ApplicationController
     search_ini = params[:ini_career_path] == "Anything" ? "" : params[:ini_career_path]
     search_sub = params[:sub_career_path] == "Anything" ? "" : params[:sub_career_path]
     @stories = Story.where("ini_career_path ilike :search", search: "%#{search_ini}%")
-    @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{search_sub}%")
+    @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{search_sub}%").uniq
     @ids = @stories.pluck(:id)
   end
 

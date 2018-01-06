@@ -34,7 +34,7 @@ module ApplicationHelper
 
   def show_page(page)
     page = Page.where(name: page).first
-    page.content
+    page.content if page.present?
   end
 
   def get_initial_company(career)
