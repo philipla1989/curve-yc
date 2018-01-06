@@ -2,7 +2,7 @@
   <br>
   <% career.story_questions.each do |sq| %>
     <section>
-      <div name="#question-<%= sq.id %>" class="h5"><b><%= sq.question %></b></div>
+      <div id="question-<%= sq.id %>" class="h5"><b><%= sq.question %></b></div>
       <br>
       <div class="h5"><%= markdown(sq.response) %></div>
       <br>

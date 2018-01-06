@@ -11,7 +11,7 @@
         <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
         <div>
           <%= image_tag("/assets/arrows-512b.png", class: "imgResponsive") %><br>
-          Hear about people just like ou able to change careers
+          Hear about people just like you able to change careers
         </div>
       </div>
       <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
@@ -58,7 +58,7 @@
     <div class="col-12 h5">
       <b>
         <%= form.select :sort_by, ["Newest", "Oldest", "Longest", "Shortest"],
-                        { include_blank: "Sort By" }, { class: "form-control col-2 inlineBlock right" } %>
+                        { include_blank: "Sort By" }, { class: "form-control col-3 inlineBlock right", id: "sortBy" } %>
       </b>
     </div>
   </div>
@@ -70,3 +70,14 @@
   </div>
 </div>
 
+<script>
+  $("#sortBy").on("change", function(){
+    var value = $("#sortBy").val();
+    var request = $.ajax({
+      type: 'GET',
+      url: '/sort_by',
+      data: { value: value, ids: <%= @ids %> },
+      dataType: 'script'
+    });
+  });
+</script>
