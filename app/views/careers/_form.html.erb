@@ -22,7 +22,7 @@
       <div class="col-lg-6 col-xl-6">
         <div class="form-group row">
           <%= form.label :title, class: "col-form-label col-4" %>
-          <%= form.select :title, get_options("Title"), { include_blank: "Select..." }, { class: "form-control col-6" } %>
+          <%= form.text_field :title, id: :career_title, class: "form-control col-6" %>
         </div>
       </div>
       <div class="col-lg-5 col-xl-5">

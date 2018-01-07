@@ -26,9 +26,25 @@
   <br>
   <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
     <p class="h5">
+      <strong>Path</strong>
+      <br>
+      <% if check_single_career(@careers) %>
+        <%= @story.ini_career_path %>, <%= @story.ini_company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %> <%= @story.careers.first.name %>, <%= @story.careers.first.company %>
+      <% else %>
+        <%= @story.ini_career_path %>, <%= @story.ini_company %>
+        <% @careers.each do |career| %>
+          &nbsp; <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %> <%= career.name %>, <%= career.company %>
+        <% end %>
+      <% end %>
+
+    </p>
+  </div>
+  <br>
+  <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
+    <p class="h5">
       <strong>Sumary</strong>
       <br>
-      <%= @story.sumary %>
+      <div class="h5"><%= markdown(@story.sumary) %></div>
     </p>
   </div>
   <br>
@@ -36,8 +52,14 @@
     <strong>Table of Contents</strong>
     <br>
     <% if check_single_career(@careers) %>
+      <p class="h5">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          <b>Career Change: </b>
+          <%= get_precedent_career(@careers.first) %>, <%= @story.ini_company %>  <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %>  <%= @careers.first.name %> / <%= @careers.first.title %>, <%= @careers.first.company %>
+        </div>
+      </p>
       <div class="container h5" style="background-color: rgba(18, 116, 217, 0.02);">
-        <% @careers.first.story_questions.each do |sq| %>
+        <% @careers.first.story_questions.order(:created_at).each do |sq| %>
           <a href="/stories/<%= @careers.first.story_id %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
           <br>
         <% end %>
@@ -51,12 +73,12 @@
           <p class="h5">
             <div class="col-lg-12 col-md-12 col-sm-12">
               <b>Career Change #<%= i %>:</b>
-              <%= get_precedent_career(career) %>  <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.company %>
+              <%= get_precedent_career(career) %>, <%= @story.ini_company %>  <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.company %>
             </div>
           </p>
           <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
             <p class="h5">
-              <% career.story_questions.each do |sq| %>
+              <% career.story_questions.order(:created_at).each do |sq| %>
                 <a href="/stories/<%= career.story_id %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
                 <br>
               <% end %>
@@ -73,7 +95,7 @@
         <% i+= 1%>
         <p class="h5">
             <b>Career Change #<%= i %>:</b>
-            <%= get_precedent_career(career) %> --> <%= career.name %> / <%= career.title %>, <%= career.company %>
+            <%= get_precedent_career(career) %>, <%= @story.ini_company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %> <%= career.name %> / <%= career.title %>, <%= career.company %>
           </p>
         <div class="h5">
           <%= render "questions_list", career: career %>

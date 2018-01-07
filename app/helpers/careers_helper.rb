@@ -10,10 +10,12 @@ module CareersHelper
   end
 
   def get_precedent_options(story)
-    if story.careers.empty?
-      [story.ini_career_path]
+    if story.careers.count < 1
+      ["Initial - #{story.ini_career_path}"]
     else
-      story.careers.map(&:name)
+      values = story.careers.map(&:name)
+      values.push("Initial - #{story.ini_career_path}") if params[:id].present?
+      values
     end
   end
 end

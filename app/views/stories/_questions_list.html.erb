@@ -1,6 +1,6 @@
 <div class="h5">
   <br>
-  <% career.story_questions.each do |sq| %>
+  <% career.story_questions.order(:created_at).each do |sq| %>
     <section>
       <div id="question-<%= sq.id %>" class="h5"><b><%= sq.question %></b></div>
       <br>
