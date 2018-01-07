@@ -22,9 +22,9 @@ module StoriesHelper
 
   def get_precedent_career(career)
     if career.precedent_career.include? "Initial"
-      career.story.ini_career_path
+      career.story.ini_title
     else
-      career.precedent_career
+      career.story.careers.where(name: career.precedent_career).first.title
     end
   end
 

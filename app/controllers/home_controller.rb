@@ -34,9 +34,9 @@ class HomeController < ApplicationController
     @careers = Career.where(story_id: ids)
     case params[:value]
       when "Newest"
-        @stories.order(created_at: :desc)
+        @stories = @stories.order(created_at: :desc)
       when "Oldest"
-        @stories.order(created_at: :asc)
+        @stories = @stories.order(created_at: :asc)
       when "Longest"
         order_longest(@stories)
       when "Shortest"
