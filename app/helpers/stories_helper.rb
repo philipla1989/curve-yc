@@ -21,7 +21,7 @@ module StoriesHelper
   end
 
   def get_precedent_career(career)
-    if career.precedent_career == "Initial"
+    if career.precedent_career.include? "Initial"
       career.story.ini_career_path
     else
       career.precedent_career

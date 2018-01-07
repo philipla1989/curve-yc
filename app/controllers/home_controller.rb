@@ -6,7 +6,6 @@ class HomeController < ApplicationController
   end
 
   def browse
-    binding.pry
   end
   def about
   end

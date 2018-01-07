@@ -73,10 +73,14 @@
 <script>
   $("#sortBy").on("change", function(){
     var value = $("#sortBy").val();
+    var ids = []
+    $(".cardContainer").each(function( index ) {
+      ids.push($( this ).data("id"));
+    });
     var request = $.ajax({
       type: 'GET',
       url: '/sort_by',
-      data: { value: value, ids: <%= @ids %> },
+      data: { value: value, ids: ids },
       dataType: 'script'
     });
   });
