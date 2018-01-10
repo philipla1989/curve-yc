@@ -12,7 +12,11 @@ class HomeController < ApplicationController
   end
 
   def blog
-    @posts = Post.all
+    @content = {}
+    @topics = Post.all.order(:topic).map(&:topic)
+    @topics.each do |topic|
+      @content[topic] = Post.where(topic: topic)
+    end
   end
 
   def submit_story
