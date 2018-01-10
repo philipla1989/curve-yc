@@ -46,6 +46,33 @@
   .imgArrowStory {
     width: 5%;
   }
+  .imgArrowBrowse {
+    width: 3%;
+  }
+  .browseBtn {
+    max-width: 25%;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+  .h5 {
+    font-size: 1.35rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+  .h5 ul {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+  .browseLink {
+    font-size: larger;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -76,6 +103,33 @@
   .imgArrowStory {
     width: 5%;
   }
+  .imgArrowBrowse {
+    width: 3%;
+  }
+  .browseBtn {
+    max-width: 25%;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+  .h5 {
+    font-size: 1.35rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+  .h5 ul {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+  .browseLink {
+    font-size: larger;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   html {
@@ -92,14 +146,36 @@
     margin-bottom: 30px !important;
   }
   .cardContainer {
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 680px;
+    max-height: 680px;
   }
   .imgArrow {
     width: 10%;
   }
   .imgArrowStory {
     width: 5%;
+  }
+  .imgArrowBrowse {
+    width: 3%;
+  }
+  .browseBtn {
+    max-width: 40% !important;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+  .text-center {
+    text-size-adjust: auto;
+  }
+  .h5 {
+    font-size: 2.1rem !important;
+  }
+  .card-text {
+    font-size: larger !important;
+    line-height: 45px;
+  }
+  .browseLink {
+    font-size: larger;
   }
 }
 @media (min-width: 576px) and (max-width: 767px) {
@@ -117,13 +193,35 @@
     margin-bottom: 30px !important;
   }
   .cardContainer {
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 680px;
+    max-height: 680px;
   }
   .imgArrow {
     width: 10%;
   }
   .imgArrowStory {
     width: 5%;
+  }
+  .imgArrowBrowse {
+    width: 3%;
+  }
+  .browseBtn {
+    max-width: 40% !important;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+  .text-center {
+    text-size-adjust: auto;
+  }
+  .h5 {
+    font-size: 2.1rem !important;
+  }
+  .card-text {
+    font-size: larger !important;
+    line-height: 45px;
+  }
+  .browseLink {
+    font-size: larger;
   }
 }
