@@ -37,6 +37,13 @@ module ApplicationHelper
     page.content if page.present?
   end
 
+  def get_precedent_career(career)
+    if career.precedent_career.include?("Initial")
+      @precedent_career = career.story.ini_title
+    else
+      @precedent_career = Career.where(name: career.precedent_career).first.title
+    end
+  end
   def get_initial_company(career)
     @precedent_career = Career.where(name: career.precedent_career, story_id: career.story_id).first
     @company = career.precedent_career == "Initial" ? career.story.ini_company : @precedent_career.company

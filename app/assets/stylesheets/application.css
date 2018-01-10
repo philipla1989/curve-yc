@@ -27,6 +27,7 @@
 .titleMobile {
   font-size: 2.5em;
   text-align: center;
+  color: #ffffff !important;
 }
 
 a:hover {
