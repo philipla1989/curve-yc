@@ -73,6 +73,9 @@
   .browseLink {
     font-size: larger;
   }
+  .blogLink {
+    font-size: x-large;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -130,6 +133,9 @@
   .browseLink {
     font-size: larger;
   }
+  .blogLink {
+    font-size: x-large;
+  }
 }
 @media (min-width: 768px) and (max-width: 991px) {
   html {
@@ -177,6 +183,9 @@
   .browseLink {
     font-size: larger;
   }
+  .blogLink {
+    font-size: x-large;
+  }
 }
 @media (min-width: 576px) and (max-width: 767px) {
   html {
@@ -223,5 +232,8 @@
   }
   .browseLink {
     font-size: larger;
+  }
+  .blogLink {
+    font-size: x-large;
   }
 }

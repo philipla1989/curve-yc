@@ -1,0 +1,3 @@
+post = "<%= escape_javascript(render partial: "/posts/show", post: @post )  %>";
+$("#showPostContainer").html(post);
+$("#showPostModal").modal("show");
