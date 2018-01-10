@@ -132,6 +132,7 @@ class HomeController < ApplicationController
     @stories = Story.where("ini_career_path ilike :search", search: "%#{search_ini}%")
     @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{search_sub}%").uniq
     @ids = @stories.pluck(:id)
+    @title = [params[:ini_career], params[:sub_career]]
     respond_to do |format|
       format.html { render :stories }
     end
