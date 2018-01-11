@@ -46,7 +46,7 @@ module ApplicationHelper
   end
   def get_initial_company(career)
     @precedent_career = Career.where(name: career.precedent_career, story_id: career.story_id).first
-    @company = career.precedent_career == "Initial" ? career.story.ini_company : @precedent_career.company
+    @company = career.precedent_career.include?("Initial") ? career.story.ini_company : @precedent_career.company
   end
 
 end
