@@ -12,13 +12,15 @@
             <p class="card-text"><b><%= story.ini_company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= story.careers.order(:created_at).first.company %></b></p>
           <% else %>
             <% story.careers.order(:created_at).each do |career| %>
+              <% if career.present? %>
               <p class="card-text">
                 <b>
                   <%= get_precedent_career(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= career.try(:name) %>
                   <br><br>
-                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.try(:company) if career.try(:company).present? %>
+                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.try(:company) %>
                 </b>
               </p>
+              <% end %>
             <% end %>
           <% end %>
 
