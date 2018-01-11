@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Story.create(name: 'Terrance Kwok', location: "Kitchener, ON, Canada",
             linkedin_url: "https://www.linkedin.com/in/terrancekwok/", ini_age: 25, sub_age: 28,
-            ini_title: "Senior Accountant", ini_career_path: "Accountant",
+            ini_title: "Senior Accountant", ini_career_path: "Accounting",
             ini_industry: "Professional Services", ini_company: "KPMG", ini_company_type: "Corporate",
-            sumary: "No sumary provided", vanity_url: "some_url",
-            quote: "This is some quote for the home page card, this should be less than 150 characters to avoid increase the size of the card",
+            sumary: ".", vanity_url: "",
+            quote: "",
             education: "University of Waterloo, Bachelor of Accounting and Financial Management",
             careers_attributes: [
               {
@@ -19,7 +19,7 @@ Story.create(name: 'Terrance Kwok', location: "Kitchener, ON, Canada",
                 industry: "Technology",
                 company: "Vidyard",
                 company_type: "Start-Up",
-                precedent_career: "Initial",
+                precedent_career: "Initial - Accounting",
                 story_questions_attributes: [
                   {
                     question: "How did you realize you wanted to change?",
@@ -60,7 +60,7 @@ Story.create(name: 'Terrance Kwok', location: "Kitchener, ON, Canada",
                 ]
               },
               {
-                name: "Product Manager",
+                name: "Product Management",
                 title: "Associate Product Manager",
                 industry: "Technology",
                 company: "Vidyard",
@@ -104,7 +104,7 @@ Story.create(name: "Nicolle Quintero", location: "New York, NY",
                 industry: "Technology, Freelance",
                 company: "CB Insights, freelance",
                 company_type: "Start-Up, Freelance",
-                precedent_career: "Initial",
+                precedent_career: "Initial - Sales",
                 story_questions_attributes: [
                   {
                     question: "What was your big break?",
@@ -148,8 +148,7 @@ Story.create(name: "Nicolle Quintero", location: "New York, NY",
             )
 
 ## Categories
-Category.create( name: "Career Path", description: "Sales|Accountant|Product Manager|Software Development|Business, Finances")
-Category.create( name: "Title", description: "Sales Development Manager|Associate Product Manager|Software Developer|Salesman|Advertising Sales Manager|Senior Accountant")
+Category.create( name: "Career Path", description: "Sales|Accounting|Product Management|Software Development|Business, Finances")
 Category.create( name: "Industry", description: "Technology|Social Media|IT|Construction|Technology, Digital Advertising|Professional Services")
 
 ## Pages
