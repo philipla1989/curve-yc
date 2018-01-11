@@ -16,7 +16,7 @@
                 <b>
                   <%= get_precedent_career(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= career.try(:name) %>
                   <br><br>
-                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.try(:company) %>
+                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.try(:company) if career.try(:company).present? %>
                 </b>
               </p>
             <% end %>
