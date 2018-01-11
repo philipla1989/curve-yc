@@ -14,9 +14,9 @@
             <% story.careers.order(:created_at).each do |career| %>
               <p class="card-text">
                 <b>
-                  <%= get_precedent_career(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= career.name %>
+                  <%= get_precedent_career(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= career.try(:name) %>
                   <br><br>
-                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.company %>
+                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.try(:company) %>
                 </b>
               </p>
             <% end %>
