@@ -20,12 +20,24 @@ module StoriesHelper
     careers.map(&:company_type).uniq.join(", ")
   end
 
-  def get_precedent_career(career)
-    if career.precedent_career.include? "Initial"
-      career.story.ini_career_path
+  def get_precedent_career_path(story)
+    @careers_array = []
+    @careers_array << story.ini_career_path
+    story.careers.order(:created_at).map(&:name).each{ |c| @careers_array << c}
+  end
+
+  def get_precedent_career_title(career)
+    if career.precedent_career.include?("Initial")
+      @precedent_career = career.story.ini_title
     else
-      career.story.careers.where(name: career.precedent_career).first.name
+      @precedent_career = Career.where(name: career.precedent_career).first.title
     end
+  end
+
+  def get_precedent_company_name(story)
+    @companies_array = []
+    @companies_array << story.ini_company
+    story.careers.order(:created_at).map(&:company).uniq.each{ |c| @companies_array << c}
   end
 
   def check_single_career(careers)

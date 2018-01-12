@@ -11,15 +11,27 @@
             <p class="card-text"><b><%= story.ini_career_path %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= story.careers.order(:created_at).first.name %></b></p>
             <p class="card-text"><b><%= story.ini_company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= story.careers.order(:created_at).first.company %></b></p>
           <% else %>
-            <% story.careers.order(:created_at).each do |career| %>
-              <p class="card-text">
-                <b>
-                  <%= get_precedent_career(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= career.try(:name) %>
-                  <br><br>
-                  <%= get_initial_company(career) %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= career.try(:company).blank? ? 'N/A' : career.try(:company) %>
-                </b>
-              </p>
-            <% end %>
+            <% get_precedent_career_path(story) %>
+            <% get_precedent_company_name(story) %>
+            <p class="card-text">
+              <b>
+              <% @careers_array.each do |career| %>
+                <% if career != @careers_array.last %>
+                  <%= career %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>
+                <% else %>
+                  <%= career %>
+                <% end %>
+              <% end %>
+              <br><br>
+              <% @companies_array.each do |company| %>
+                <% if company != @companies_array.last %>
+                  <%= company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>
+                <% else %>
+                  <%= company %>
+                <% end %>
+              <% end %>
+              </b>
+            </p>
           <% end %>
 
           <p class="card-text"><em><%= story.quote.truncate_words(20, omission: '...') %></em></p>

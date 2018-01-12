@@ -29,7 +29,7 @@ class StoriesController < ApplicationController
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-
+    binding.pry
     respond_to do |format|
       if @story.save
         format.html { redirect_to admin_index_path, notice: 'Story was successfully created.' }

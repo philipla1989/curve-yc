@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180111195646) do
   create_table "careers", force: :cascade do |t|
     t.string "name"
     t.string "title"
-    t.string "industry"
+    t.string "industry", array: true
     t.string "company"
     t.string "company_type"
     t.integer "story_id"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20180111195646) do
     t.integer "sub_age"
     t.string "ini_title"
     t.string "ini_career_path"
-    t.string "ini_industry"
+    t.string "ini_industry", array: true
     t.string "ini_company"
     t.string "ini_company_type"
     t.text "sumary"
