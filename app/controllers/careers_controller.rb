@@ -1,7 +1,7 @@
 class CareersController < ApplicationController
   before_action :set_career, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show]
-  
+
   # GET /careers
   # GET /careers.json
   def index
@@ -76,6 +76,8 @@ class CareersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def career_params
+      params[:career][:industry] = params[:career][:industry].reject { |c| c.empty? }
+      params[:career][:industry] = params[:career][:industry].join(", ")
       params.require(:career).permit(:name, :title, :industry, :company, :company_type, :story_id, :precedent_career).merge(story_id: params[:story_id])
     end
 end
