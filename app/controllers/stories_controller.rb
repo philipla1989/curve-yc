@@ -23,13 +23,13 @@ class StoriesController < ApplicationController
   # GET /stories/1/edit
   def edit
     @story = Story.find params[:id]
+    @story.ini_industry = @story.ini_industry.split(",")
   end
 
   # POST /stories
   # POST /stories.json
   def create
     @story = Story.new(story_params)
-
     respond_to do |format|
       if @story.save
         format.html { redirect_to admin_index_path, notice: 'Story was successfully created.' }
@@ -73,6 +73,8 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
+      params[:story][:ini_industry] = params[:story][:ini_industry].reject { |c| c.empty? }
+      params[:story][:ini_industry] = params[:story][:ini_industry].join(", ")
       params.require(:story).permit(:name, :location, :linkedin_url, :vanity_url, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
                                     :sumary, :education)

@@ -176,6 +176,11 @@
   .h5 {
     font-size: 2.1rem !important;
   }
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
   .card-text {
     font-size: larger !important;
     line-height: 45px;
@@ -225,6 +230,11 @@
   }
   .h5 {
     font-size: 2.1rem !important;
+  }
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
   }
   .card-text {
     font-size: larger !important;
