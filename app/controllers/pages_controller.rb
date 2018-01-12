@@ -29,10 +29,10 @@ class PagesController < ApplicationController
 
     respond_to do |format|
       if @page.save
-        format.html { redirect_to admin_path, notice: 'Page was successfully created.' }
+        format.html { redirect_to admin_index_path, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
-        format.html { redirect_to admin_path, notice: "Can't Create #{@page.errors.messages}"  }
+        format.html { redirect_to admin_index_path, notice: "Can't Create #{@page.errors.messages}"  }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
@@ -43,10 +43,10 @@ class PagesController < ApplicationController
   def update
     respond_to do |format|
       if @page.update(page_params)
-        format.html { redirect_to admin_path, notice: 'Page was successfully updated.' }
+        format.html { redirect_to admin_index_path, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
-        format.html { redirect_to admin_path, notice: "Can't update #{@page.errors.messages}"  }
+        format.html { redirect_to admin_index_path, notice: "Can't update #{@page.errors.messages}"  }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
@@ -57,7 +57,7 @@ class PagesController < ApplicationController
   def destroy
     @page.destroy
     respond_to do |format|
-      format.html { redirect_to admin_path, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to admin_index_path, notice: 'Page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
