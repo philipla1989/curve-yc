@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
 
   # GET /stories
   # GET /stories.json
@@ -31,10 +32,10 @@ class StoriesController < ApplicationController
 
     respond_to do |format|
       if @story.save
-        format.html { redirect_to admin_path, notice: 'Story was successfully created.' }
+        format.html { redirect_to admin_index_path, notice: 'Story was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
-        format.html { redirect_to admin_path, notice: "Can't Create #{@story.errors.messages}"  }
+        format.html { redirect_to admin_index_path, notice: "Can't Create #{@story.errors.messages}"  }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
@@ -45,10 +46,10 @@ class StoriesController < ApplicationController
   def update
     respond_to do |format|
       if @story.update(story_params)
-        format.html { redirect_to admin_path, notice: 'Story was successfully updated.' }
+        format.html { redirect_to admin_index_path, notice: 'Story was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
-        format.html { redirect_to admin_path, notice: "Can't update #{@story.errors.messages}"  }
+        format.html { redirect_to admin_index_path, notice: "Can't update #{@story.errors.messages}"  }
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
@@ -59,7 +60,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to admin_path, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to admin_index_path, notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -72,8 +73,8 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:name, :location, :linkedin_url, :vanity_url, :quote, :ini_age, :sub_age, 
-                                    :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type, 
+      params.require(:story).permit(:name, :location, :linkedin_url, :vanity_url, :quote, :ini_age, :sub_age,
+                                    :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
                                     :sumary, :education)
     end
 end
