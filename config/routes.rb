@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   post  "filter_by",               to: "home#filter_by",       as: :filter_by
   get   "sort_by",                  to: "home#sort_by",         as: :sort_by
 
+  # Vanity urls
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
 end
