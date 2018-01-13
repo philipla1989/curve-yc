@@ -87,4 +87,18 @@
       dataType: 'script'
     });
   });
+
+  $('select[name=ini_career_path]').on("click", function(){
+    ga('send', 'event', 'initialCareerClick', 'click', 'Clicked initial career dropdown');
+  });
+  $('select[name=sub_career_path]').on("click", function(){
+    ga('send', 'event', 'subsequentCareerClick', 'click', 'Clicked subsequent career dropdown');
+  });
+  $('input[name=commit]').on("click", function(){
+    ga('send', 'event', 'filterStoriesClick', 'click', 'Clicked Filter Stories');
+  });
+  $('select[name=sort_by]').on("click", function(){
+    ga('send', 'event', 'sortByClick', 'click', 'Clicked Sort By');
+  });
+
 </script>
