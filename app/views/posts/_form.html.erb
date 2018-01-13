@@ -38,6 +38,14 @@
     <div class="row">
       <div class="col-lg-12 col-xl-12">
         <div class="form-group row">
+          <%= form.label :vanity_url, class: "col-form-label col-12" %>
+          <%= form.text_field :vanity_url, id: :post_vanity_url, class: "form-control col-12" %>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-xl-12">
+        <div class="form-group row">
           <%= form.label :content, "Content", class: "col-form-label col-12" %>
           <%= form.text_area :content, id: :post_content, class: "form-control textArea" %>
         </div>
