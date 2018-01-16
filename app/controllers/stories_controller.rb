@@ -11,7 +11,6 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @story = Story.find params[:id]
     @careers = @story.careers
   end
 
@@ -22,7 +21,6 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
-    @story = Story.find params[:id]
     @story.ini_industry = @story.ini_industry.split(",")
   end
 
@@ -68,14 +66,14 @@ class StoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_story
-      @story = Story.find(params[:id])
+      @story = Story.find_by slug: params[:slug].gsub("-", " ")
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
       params[:story][:ini_industry] = params[:story][:ini_industry].reject { |c| c.empty? }
       params[:story][:ini_industry] = params[:story][:ini_industry].join(", ")
-      params.require(:story).permit(:name, :location, :linkedin_url, :vanity_url, :quote, :ini_age, :sub_age,
+      params.require(:story).permit(:name, :location, :linkedin_url, :slug, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
                                     :sumary, :education)
     end
