@@ -1,8 +1,9 @@
 class Post < ApplicationRecord
 
-  validates :title, :content, :topic, :author, :vanity_url, presence: true
+  validates :title, :content, :topic, :author, :slug, presence: true
+  validates_uniqueness_of :slug
 
   def to_param
-    [id, vanity_url.parameterize].join("-")
+    slug.parameterize
   end
 end

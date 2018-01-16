@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :posts
+  resources :posts, param: :slug
   resources :categories
   resources :pages
   resources :admin
-  resources :stories do
+  resources :stories, param: :slug do
     resources :careers do
       resources :story_questions
     end
@@ -18,10 +18,8 @@ Rails.application.routes.draw do
   get   "about",                    to: "home#about",           as: :about
   get   "contact",                  to: "home#contact",         as: :contact
   get   "submit-story",             to: "home#submit_story",    as: :submit_story
-  post  "filter_by",               to: "home#filter_by",       as: :filter_by
+  post  "filter_by",                to: "home#filter_by",       as: :filter_by
   get   "sort_by",                  to: "home#sort_by",         as: :sort_by
-
-  # Vanity urls
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"

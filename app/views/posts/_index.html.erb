@@ -14,9 +14,9 @@
       <tr>
         <td><%= post.title %></td>
         <td><%= post.topic %></td>
-        <td><%= link_to 'Preview', post_path(post), class: "btn btn-primary btn-sm", remote: true %></td>
-        <td><%= link_to 'Edit', edit_post_path(post), class: "btn btn-warning btn-sm" %></td>
-        <td><%= link_to 'Destroy', post, method: :delete,
+        <td><%= link_to 'Preview', post_path(slug: post), class: "btn btn-primary btn-sm", remote: true %></td>
+        <td><%= link_to 'Edit', edit_post_path(slug: post), class: "btn btn-warning btn-sm" %></td>
+        <td><%= link_to 'Destroy', post_path(slug: post), method: :delete,
                         data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
       </tr>
     <% end %>
