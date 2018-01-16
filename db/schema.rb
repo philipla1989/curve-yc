@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180116011034) do
+ActiveRecord::Schema.define(version: 20180116194426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20180116011034) do
     t.string "topic"
     t.string "author"
     t.string "slug"
+    t.string "meta_name"
+    t.string "meta_content"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
   end
 
@@ -69,6 +71,8 @@ ActiveRecord::Schema.define(version: 20180116011034) do
     t.string "slug"
     t.text "quote"
     t.string "education"
+    t.string "meta_name"
+    t.string "meta_content"
     t.index ["slug"], name: "index_stories_on_slug", unique: true
   end
 

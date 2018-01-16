@@ -75,6 +75,6 @@ class StoriesController < ApplicationController
       params[:story][:ini_industry] = params[:story][:ini_industry].join(", ")
       params.require(:story).permit(:name, :location, :linkedin_url, :slug, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
-                                    :sumary, :education)
+                                    :sumary, :education, :meta_name, :meta_content)
     end
 end
