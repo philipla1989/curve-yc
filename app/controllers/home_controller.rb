@@ -3,15 +3,23 @@ class HomeController < ApplicationController
   def index
     @stories = Story.all
     @ids = @stories.pluck(:id)
+    @title = "Curve Your Career"
+    @description = "Find fulfillment and happiness in your job. Hear about how people just like you were able to change careers."
   end
 
   def browse
+    @title = "Curve Your Career | Browse"
+    @description = "Browse stories based on what career changes are most relevant to you, ranging from people who started in Accounting to Software Development."
   end
 
   def about
+    @title = "Curve Your Career | About"
+    @description = "At Curve Your Career, you can browse stories from those who have been able to change their careers. You can learn about how they overcame barriers just like yours and what steps they took to make the transition."
   end
 
   def blog
+    @title = "Curve Your Career | Blog"
+    @description = "The best tips around how to overcome barriers and steps to changing your career"
     @content = {}
     @topics = Post.all.order(:topic).map(&:topic)
     @topics.each do |topic|
@@ -20,9 +28,13 @@ class HomeController < ApplicationController
   end
 
   def submit_story
+    @title = "Curve Your Career | Submit"
+    @description = "Share your own career change story so others gain the courage and guidance to change too."
   end
 
   def contact
+    @title = "Curve Your Career | Contact"
+    @description = "Interested in helping out with this project, sharing your insights, or just connecting with me? Email me at curveyourcareer@gmail.com"
   end
 
   def filter_by
@@ -82,6 +94,8 @@ class HomeController < ApplicationController
   end
 
   def browse_explore
+    @title = "Curve Your Career | Browse | Explore"
+    @description = "Browse career change stories based on your current career."
     @career_path = {}
     @sub_career = Hash.new{|hsh,key| hsh[key] = {} }
     ini_career = Story.all.order(:ini_career_path).map(&:ini_career_path).uniq
@@ -102,6 +116,8 @@ class HomeController < ApplicationController
   end
 
   def browse_pursue
+    @title = "Curve Your Career | Browse | Purse"
+    @description = "Browse career change stories based on the specific career you want to transition into."
     @career_pursue = {}
     @career_path = Hash.new{|hsh,key| hsh[key] = {} }
     sub_career = Career.all.map(&:name).uniq.sort

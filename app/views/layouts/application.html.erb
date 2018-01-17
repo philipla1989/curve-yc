@@ -1,8 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CurveYourCareer</title>
+    <% if (@title.present? && @description.present?) %>
+      <title><%= @title %></title>
+      <meta name="Description" content="<%= @description %>">
+    <% else %>
+      <title>CurveYourCareer</title>
+      <meta name="Description" content="Find fulfillment and happiness in your job. Hear about how people just like you were able to change careers.">
+    <% end %>
+    <% if @story.present? %>
+      <% if @story.meta_name.present? && @story.meta_content.present? %>
+        <meta name="<%= @story.meta_name %>" content="<%= @story.meta_content %>">
+      <% end %>
+    <% end %>
+    <% if @post.present? %>
+      <% if @post.meta_name.present? && @post.meta_content.present? %>
+        <meta name="<%= @post.meta_name %>" content="<%= @post.meta_content %>">
+      <% end %>
+    <% end %>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>

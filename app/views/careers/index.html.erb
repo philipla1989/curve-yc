@@ -20,9 +20,9 @@
         <td><%= career.story.name %></td>
         <td><%= career.precedent_career %></td>
         <td><%= link_to 'Manage Questions Content',
-                        story_career_story_questions_path(@story, career), class: "btn btn-sm btn-primary" %></td>
-        <td><%= link_to 'Edit', edit_story_career_path(@story, career), class: "btn btn-sm btn-warning" %></td>
-        <td><%= link_to 'Destroy', story_career_path(@story, career),
+                        story_career_story_questions_path(@story.id, career), class: "btn btn-sm btn-primary" %></td>
+        <td><%= link_to 'Edit', edit_story_career_path(@story.id, career), class: "btn btn-sm btn-warning" %></td>
+        <td><%= link_to 'Destroy', story_career_path(@story.id, career),
                         method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %></td>
       </tr>
     <% end %>
@@ -31,6 +31,6 @@
 
 <br>
 
-<%= link_to 'Add Career', new_story_career_path(@story), class: "btn btn-sm btn-primary" %>
+<%= link_to 'Add Career', new_story_career_path(@story.id), class: "btn btn-sm btn-primary" %>
 <%= link_to 'Back to Admin', admin_index_path, class: "btn btn-sm btn-info right" %>
 <br>

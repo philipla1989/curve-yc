@@ -39,13 +39,26 @@
       <div class="col-lg-12 col-xl-12">
         <div class="form-group row">
           <%= form.label :vanity_url, "Vanity Url", class: "col-form-label col-2" %>
-          <%= form.text_field :slug, id: :story_slug, class: "form-control col-9" %>
+          <%= form.text_field :slug, id: :story_slug, class: "form-control col-6" %>
+          <span class="col-4">e.g. "some vanity url"</span>
         </div>
       </div>
       <div class="col-lg-12 col-xl-12">
         <div class="form-group row">
           <%= form.label :quote, "Quote", class: "col-form-label col-2" %>
           <%= form.text_field :quote, id: :story_quote, class: "form-control col-9" %>
+        </div>
+      </div>
+      <div class="col-lg-12 col-xl-12">
+        <div class="form-group row">
+          <%= form.label :meta_name, "Meta Tag Name", class: "col-form-label col-2" %>
+          <%= form.text_field :meta_name, id: :story_meta_name, class: "form-control col-6" %>
+        </div>
+      </div>
+      <div class="col-lg-12 col-xl-12">
+        <div class="form-group row">
+          <%= form.label  :meta_content, "Meta Tag Content", class: "col-form-label col-2" %>
+          <%= form.text_field :meta_content, id: :story_meta_content, class: "form-control col-9" %>
         </div>
       </div>
       <div class="hrDivider col-lg-12 col-xl-12"></div>

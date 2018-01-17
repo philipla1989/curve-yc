@@ -41,10 +41,10 @@
       <b>
         <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">My current career is in</div>
         <%= form.select :ini_career_path, get_options("Career Path"),
-                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock" } %>
+                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect" } %>
         <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">and I am interested in</div>
         <%= form.select :sub_career_path, get_options("Career Path"),
-                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock" } %>
+                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect" } %>
       </b>
     </div>
   </div>
@@ -61,7 +61,7 @@
     <div class="col-12 h5">
       <b>
         <%= form.select :sort_by, ["Newest", "Oldest", "Longest", "Shortest"],
-                        { include_blank: "Sort By" }, { class: "form-control col-3 inlineBlock right", id: "sortBy" } %>
+                        { include_blank: "Sort By" }, { class: "form-control col-lg-3 col-md-12 col-sm-12 inlineBlock right mobileSelect", id: "sortBy" } %>
       </b>
     </div>
   </div>

@@ -24,6 +24,6 @@
 <br>
 <h5>Add Story Question</h5>
 <%= render "story_questions/form", story: @story, career: @career, story_question: @story_question %>
-<%= link_to "Back to Careers", story_careers_path(@story), class: "btn btn-sm btn-info right" %>
+<%= link_to "Back to Careers", story_careers_path(@story.id), class: "btn btn-sm btn-info right" %>
 <br><br>
 <div id="editQuestionFormContainer"></div>

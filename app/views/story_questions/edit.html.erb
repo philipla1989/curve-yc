@@ -3,7 +3,7 @@
 <%= render 'form', story: @story, career: @career, story_question: @story_question %>
 
 <div class="col-12">
-  <%= link_to 'Back to Story Questions', story_career_story_questions_path(@story, @career, @story_question),
+  <%= link_to 'Back to Story Questions', story_career_story_questions_path(@story.id, @career, @story_question),
               class: "btn btn-sm btn-info right" %>
   <p>&nbsp;</p>
   <%= link_to 'Back to Stories', admin_index_path, class: "btn btn-sm btn-info right" %>
