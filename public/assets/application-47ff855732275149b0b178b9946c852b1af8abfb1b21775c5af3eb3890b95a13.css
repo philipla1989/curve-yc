@@ -1,0 +1,610 @@
+/* Home page styles */
+/* line 3, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.mainContent {
+  margin: 0 auto;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  float: none;
+  display: flex;
+}
+
+/* line 11, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.mainMenu a {
+  color: #ffffff !important;
+}
+
+/* line 14, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.imgResponsive {
+  width: 20%;
+}
+
+/* line 17, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.card-header {
+  background-color: #1274d9 !important;
+  color: #ffffff;
+}
+
+/* line 21, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.imgArrow {
+  width: 2rem !important;
+}
+
+/* line 24, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.imgArrowStory {
+  width: 2rem !important;
+}
+
+/* line 27, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.col-sm-12 {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+/* line 31, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.card {
+  margin-bottom: 2rem;
+}
+
+/* line 34, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.storyLink {
+  word-break: break-all;
+}
+
+/* line 37, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+.browseBtn {
+  word-wrap: break-word;
+  white-space: normal !important;
+  padding: 20px 20px 20px 20px;
+}
+
+@media (min-width: 1200px) {
+  /* line 44, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  html {
+    font-size: 17px;
+  }
+
+  /* line 47, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .col-xl-4 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.333333%;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 30.333333% !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+  /* line 56, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .card {
+    margin-right: 15px;
+    margin-left: 15px;
+    margin-bottom: 30px !important;
+  }
+
+  /* line 61, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .cardContainer {
+    min-height: 380px;
+    max-height: 380px;
+  }
+
+  /* line 65, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrow {
+    width: 2rem;
+  }
+
+  /* line 68, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowStory {
+    width: 5%;
+  }
+
+  /* line 71, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowBrowse {
+    width: 3%;
+  }
+
+  /* line 74, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseBtn {
+    max-width: 25%;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+
+  /* line 80, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 {
+    font-size: 1.35rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 85, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 90, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 ul {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 95, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseLink {
+    font-size: larger;
+  }
+
+  /* line 98, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .blogLink {
+    font-size: x-large;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* line 104, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  html {
+    font-size: 17px;
+  }
+
+  /* line 107, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .col-xl-4 {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 33.333333%;
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 30.333333% !important;
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+  /* line 116, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .card {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px !important;
+  }
+
+  /* line 121, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .cardContainer {
+    min-height: 380px;
+    max-height: 380px;
+  }
+
+  /* line 125, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrow {
+    width: 2rem;
+  }
+
+  /* line 128, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowStory {
+    width: 5%;
+  }
+
+  /* line 131, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowBrowse {
+    width: 3%;
+  }
+
+  /* line 134, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseBtn {
+    max-width: 25%;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+
+  /* line 140, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 {
+    font-size: 1.35rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 145, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 150, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 ul {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 155, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseLink {
+    font-size: larger;
+  }
+
+  /* line 158, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .blogLink {
+    font-size: x-large;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  /* line 164, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .container {
+    width: 90% !important;
+  }
+
+  /* line 167, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .col-sm-12 {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+  /* line 171, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .card {
+    margin-bottom: 30px !important;
+  }
+
+  /* line 174, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .cardContainer {
+    min-height: 680px;
+    max-height: 680px;
+  }
+
+  /* line 178, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrow {
+    width: 10px !important;
+  }
+
+  /* line 181, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowStory {
+    width: 5%;
+  }
+
+  /* line 184, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowBrowse {
+    width: 3%;
+  }
+
+  /* line 187, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseBtn {
+    max-width: 40% !important;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+
+  /* line 193, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .text-center {
+    text-size-adjust: auto;
+  }
+
+  /* line 196, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 201, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .card-text {
+    font-size: larger !important;
+    line-height: 45px;
+  }
+
+  /* line 205, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseLink {
+    font-size: larger;
+  }
+
+  /* line 208, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .blogLink {
+    font-size: x-large;
+  }
+
+  /* line 211, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .mobileSelect {
+    font-size: 1em !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* line 216, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .mobileShow {
+    font-size: 1.7rem !important;
+  }
+
+  /* line 219, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .form-control {
+    height: auto !important;
+  }
+}
+@media (min-width: 576px) and (max-width: 767px) {
+  /* line 226, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .container {
+    width: 90% !important;
+  }
+
+  /* line 229, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .col-sm-12 {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+  /* line 233, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .card {
+    margin-bottom: 30px !important;
+  }
+
+  /* line 236, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .cardContainer {
+    min-height: 680px;
+    max-height: 680px;
+  }
+
+  /* line 240, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrow {
+    width: 10px !important;
+  }
+
+  /* line 243, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowStory {
+    width: 5%;
+  }
+
+  /* line 246, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .imgArrowBrowse {
+    width: 3%;
+  }
+
+  /* line 249, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseBtn {
+    max-width: 40% !important;
+    word-wrap: break-word;
+    white-space: normal !important;
+    padding: 20px 20px 20px 20px;
+  }
+
+  /* line 255, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .text-center {
+    text-size-adjust: auto;
+  }
+
+  /* line 258, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .h5 p {
+    font-size: 1.2rem !important;
+    font-weight: 300 !important;
+    line-height: 1.5 !important;
+  }
+
+  /* line 263, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .card-text {
+    font-size: larger !important;
+    line-height: 45px;
+  }
+
+  /* line 267, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .browseLink {
+    font-size: larger;
+  }
+
+  /* line 270, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .blogLink {
+    font-size: x-large;
+  }
+
+  /* line 273, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .mobileSelect {
+    font-size: 1em !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* line 278, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .mobileShow {
+    font-size: 1.7rem !important;
+  }
+
+  /* line 281, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/home.scss */
+  .form-control {
+    height: auto !important;
+  }
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-weight: normal;
+  font-style: normal;
+  src: url(/assets/Quicksand-Medium-e81f62ce1264450b3bb215d4e3fddb981cfe4f304cdeff9179f8ee25bf4545e7.ttf) format("truetype");
+  src: url(/assets/Quicksand-Bold-8f144a2fe7cf8f34a35d290376fd1892ea5e91722514a9e83af52b3dd2d98d75.ttf) format("truetype");
+  src: url(/assets/Quicksand-Regular-485393d6f99eaed0e2122ca867ab0bd6d8c24648d3087ef4733740f14b252737.ttf) format("truetype");
+}
+/* line 10, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  margin: 33px;
+  font-family: "Quicksand";
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 19, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 25, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 31, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #000;
+}
+/* line 34, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+a:visited {
+  color: #666;
+}
+/* line 38, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 44, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+th {
+  padding-bottom: 5px;
+}
+
+/* line 48, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+td {
+  padding: 0 5px 7px;
+}
+
+/* line 53, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 58, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+#notice {
+  color: green;
+}
+
+/* line 62, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 68, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px 7px 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 75, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px -7px 0;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 85, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+/* line 91, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/scaffolds.scss */
+label {
+  display: block;
+}
+/* line 4, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/stories.scss */
+.table td, .table th {
+  font-size: 1.0rem;
+  text-align: center;
+  width: 20%;
+}
+
+/* line 9, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/stories.scss */
+.grayTable {
+  background-color: gainsboro;
+}
+
+/* line 13, /Users/Sago/Documents/Proyectos/curve-yc/app/assets/stylesheets/stories.scss */
+.center {
+  text-align: center;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+.bodyFont {
+  font-family: 'Quicksand';
+}
+.navbar-nav > li > a {
+ font-size:      1.5em;
+}
+.sStoryIcon {
+  font-size: 1em !important;
+  text-align: center;
+}
+.titleMobile {
+  font-size: 2.5em;
+  text-align: center;
+  color: #ffffff !important;
+  padding-top: 10%;
+}
+
+a:hover {
+  background: none !important;
+  font-weight: 600 !important;
+}
+input[type=submit]:hover {
+  background: none !important;
+}
+.btn-primary:hover {
+  color: #222222 !important;
+}
+.btn-info:hover {
+  color: #222222 !important;
+}
+.btn-warning:hover {
+  color: #222222 !important;
+}
+.btn-danger:hover {
+  color: #222222 !important;
+}
+.btn-primary:visited {
+  color: #ffffff;
+}
+.btn-info:visited {
+  color: #ffffff;
+}
+.btn-warning:visited {
+  color: #ffffff;
+}
+.btn-danger:visited {
+  color: #ffffff;
+}
+.hrDivider {
+  border-bottom: 1px solid #ccc;
+}
+.textArea {
+  height: 150px;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.centerText {
+  text-align: center;
+}
+.inlineBlock {
+  display: inline-block !important;
+}
