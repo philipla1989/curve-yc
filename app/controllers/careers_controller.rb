@@ -5,8 +5,9 @@ class CareersController < ApplicationController
   # GET /careers
   # GET /careers.json
   def index
-    @careers = Career.where(story_id: params[:story_id])
-    @story = Story.find params[:story_id]
+    @story = Story.find params[:story_slug]
+    @careers = @story.careers
+
   end
 
   # GET /careers/1
@@ -18,22 +19,23 @@ class CareersController < ApplicationController
   # GET /careers/new
   def new
     @career = Career.new
-    @story = Story.find params[:story_id]
+    @story = Story.find params[:story_slug]
   end
 
   # GET /careers/1/edit
   def edit
-    @story = Story.find params[:story_id]
+    @story = Story.find params[:story_slug]
   end
 
   # POST /careers
   # POST /careers.json
   def create
+    params[:story_id] = Story.where(slug: params[:story_slug].gsub("-", " ")).first.id
     @career = Career.new(career_params)
     respond_to do |format|
       if @career.save
         @story = @career.story
-        format.html { redirect_to story_careers_path(@story), notice: 'Career was successfully created.' }
+        format.html { redirect_to story_careers_path(@story.id), notice: 'Career was successfully created.' }
         format.json { render :show, status: :created, location: @career }
       else
         format.html { render :new }
@@ -45,10 +47,11 @@ class CareersController < ApplicationController
   # PATCH/PUT /careers/1
   # PATCH/PUT /careers/1.json
   def update
+    params[:story_id] = Story.where(slug: params[:story_slug].gsub("-", " ")).first.id
     respond_to do |format|
       if @career.update(career_params)
         @story = @career.story
-        format.html { redirect_to story_careers_path(@story), notice: 'Career was successfully updated.' }
+        format.html { redirect_to story_careers_path(@story.id), notice: 'Career was successfully updated.' }
         format.json { render :show, status: :ok, location: @career }
       else
         format.html { render :edit }
@@ -63,7 +66,7 @@ class CareersController < ApplicationController
     @story = @career.story
     @career.destroy
     respond_to do |format|
-      format.html { redirect_to story_careers_path(@story), notice: 'Career was successfully destroyed.' }
+      format.html { redirect_to story_careers_path(@story.id), notice: 'Career was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

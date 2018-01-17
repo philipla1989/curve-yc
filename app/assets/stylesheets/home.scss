@@ -17,6 +17,22 @@
   background-color: #1274d9 !important;
   color: #ffffff;
 }
+.imgArrow {
+  width: 2rem !important;
+}
+.imgArrowStory {
+  width: 2rem !important;
+}
+.col-sm-12 {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+.card {
+  margin-bottom: 2rem;
+}
+.storyLink {
+  word-break: break-all;
+}
 
 @media (min-width: 1200px) {
   html {
@@ -41,7 +57,7 @@
     max-height: 380px;
   }
   .imgArrow {
-    width: 10%;
+    width: 2rem;
   }
   .imgArrowStory {
     width: 5%;
@@ -101,7 +117,7 @@
     max-height: 380px;
   }
   .imgArrow {
-    width: 10%;
+    width: 2rem;
   }
   .imgArrowStory {
     width: 5%;
@@ -137,10 +153,8 @@
     font-size: x-large;
   }
 }
+
 @media (min-width: 768px) and (max-width: 991px) {
-  html {
-    font-size: 23px;
-  }
   .container {
     width: 90% !important;
   }
@@ -156,7 +170,7 @@
     max-height: 680px;
   }
   .imgArrow {
-    width: 10%;
+    width: 10px !important;
   }
   .imgArrowStory {
     width: 5%;
@@ -173,9 +187,6 @@
   .text-center {
     text-size-adjust: auto;
   }
-  .h5 {
-    font-size: 2.1rem !important;
-  }
   .h5 p {
     font-size: 1.2rem !important;
     font-weight: 300 !important;
@@ -190,12 +201,22 @@
   }
   .blogLink {
     font-size: x-large;
+  }
+  .mobileSelect {
+    font-size: 1em !important;
+    max-width: 100% !important;
+    width:  100% !important;
+  }
+  .mobileShow {
+    font-size: 1.7rem !important;
+  }
+  .form-control {
+    height: auto !important;
   }
 }
+
+
 @media (min-width: 576px) and (max-width: 767px) {
-  html {
-    font-size: 22px;
-  }
   .container {
     width: 90% !important;
   }
@@ -211,7 +232,7 @@
     max-height: 680px;
   }
   .imgArrow {
-    width: 10%;
+    width: 10px !important;
   }
   .imgArrowStory {
     width: 5%;
@@ -228,9 +249,6 @@
   .text-center {
     text-size-adjust: auto;
   }
-  .h5 {
-    font-size: 2.1rem !important;
-  }
   .h5 p {
     font-size: 1.2rem !important;
     font-weight: 300 !important;
@@ -245,5 +263,16 @@
   }
   .blogLink {
     font-size: x-large;
+  }
+  .mobileSelect {
+    font-size: 1em !important;
+    max-width: 100% !important;
+    width:  100% !important;
+  }
+  .mobileShow {
+    font-size: 1.7rem !important;
+  }
+  .form-control {
+    height: auto !important;
   }
 }
