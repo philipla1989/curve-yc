@@ -65,7 +65,7 @@
           </p>
           <div class="container h5" style="background-color: rgba(18, 116, 217, 0.02);">
             <% @careers.first.story_questions.order(:created_at).each do |sq| %>
-              <a href="/stories/<%= @careers.first.story_id %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
+              <a href="/stories/<%= @careers.first.story.slug %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
               <br>
             <% end %>
           </div>
@@ -84,7 +84,7 @@
               <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
                 <p class="h5">
                   <% career.story_questions.order(:created_at).each do |sq| %>
-                    <a href="/stories/<%= career.story_id %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
+                    <a href="/stories/<%= career.story.slug %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
                     <br>
                   <% end %>
                 </p>
