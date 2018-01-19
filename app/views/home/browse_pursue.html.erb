@@ -11,11 +11,11 @@
     <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12">
     <% @career_pursue.each do |career_path, value| %>
       <h3><b><%= career_path %></b></h3>
-        &nbsp;&nbsp;<%= link_to "Anything #{image_tag("/right-arrow.png", class: "imgArrowBrowse")} #{career_path}".html_safe,
+        &nbsp;&nbsp;<%= link_to "Anything #{image_tag("/assets/right-arrow.png", class: "imgArrowBrowse imgArrow")} #{career_path}".html_safe,
                                   browse_stories_path(ini_career: "Anything", sub_career: career_path), class: "browseLink" %>
         <br>
         <% value.sort.each do |val| %>
-          &nbsp;&nbsp;<%= link_to "#{val} #{image_tag("/right-arrow.png", class: "imgArrowBrowse")} #{career_path}".html_safe,
+          &nbsp;&nbsp;<%= link_to "#{val} #{image_tag("/assets/right-arrow.png", class: "imgArrowBrowse imgArrow")} #{career_path}".html_safe,
                                   browse_stories_path(ini_career: val, sub_career: career_path), class: "browseLink" %>
           <br>
         <% end %>
