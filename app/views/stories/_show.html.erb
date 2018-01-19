@@ -32,11 +32,11 @@
           <strong>Path</strong>
           <br>
           <% if check_single_career(@careers) %>
-            <%= @story.ini_title %>, <%= @story.ini_company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %> <%= @story.careers.first.title %>, <%= @story.careers.first.company %>
+            <%= @story.ini_title %>, <%= @story.ini_company %> <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= @story.careers.first.title %>, <%= @story.careers.first.company %>
           <% else %>
             <%= @story.ini_title %>, <%= @story.ini_company %>
             <% @careers.each do |career| %>
-              &nbsp; <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %> <%= career.title %>, <%= career.company %>
+              &nbsp; <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= career.title %>, <%= career.company %>
             <% end %>
           <% end %>
 
@@ -59,7 +59,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12">
               <div class="h5">
                 <b>Career Change: </b>
-                <%= get_precedent_career_title(@careers.order(:created_at).first) %>, <%= @story.ini_company %>  <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %>  <%= @careers.first.title %> / <%= @careers.first.title %>, <%= @careers.first.company %>
+                <%= get_precedent_career_title(@careers.order(:created_at).first) %>, <%= @story.ini_company %>  <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>  <%= @careers.first.title %> / <%= @careers.first.title %>, <%= @careers.first.company %>
               </div>
             </div>
           </p>
@@ -78,7 +78,7 @@
               <p class="h5">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                   <b>Career Change #<%= i %>:</b>
-                  <%= get_precedent_career_title(career) %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>  <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>
+                  <%= get_precedent_career_title(career) %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>  <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>
                 </div>
               </p>
               <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
@@ -100,7 +100,7 @@
             <% i+= 1%>
             <p class="h5">
                 <b>Career Change #<%= i %>:</b>
-                <%= get_precedent_career_title(career) %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>  <%= image_tag("/assets/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>
+                <%= get_precedent_career_title(career) %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>  <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>
               </p>
             <div class="h5">
               <%= render "questions_list", career: career %>
