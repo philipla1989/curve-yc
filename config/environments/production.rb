@@ -94,5 +94,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => 'curve-your-career.heroku.com' }
 
   # Secret Key
-  config.secret_key_base = ENV['SECRET_KEY_BASE']
+  config.secret_key_base = "1c9e7a4caae14e7fd373d2a35ef852ba918273d5754597c6e3dc06e9b672482392dcb31a7d118dafcf8d6857e2824756772aaacaa4d6c0725932bba9a2914fe0"
 end
