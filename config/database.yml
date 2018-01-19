@@ -19,7 +19,7 @@ stage:
 production:
   database: curve_yc_production
   adapter:  postgresql
-  host:     159.65.44.196
+  host:     127.0.0.1
   username: deploy
   password: curv3y0urcar33r
   pool:     20
