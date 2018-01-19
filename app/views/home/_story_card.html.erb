@@ -8,8 +8,8 @@
         </div>
         <div class="card-block">
           <% if check_single_career(story.careers) %>
-            <p class="card-text"><b><%= story.ini_career_path %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>  <%= story.careers.order(:created_at).first.name %></b></p>
-            <p class="card-text"><b><%= story.ini_company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %> <%= story.careers.order(:created_at).first.company %></b></p>
+            <p class="card-text"><b><%= story.ini_career_path %> <%= image_tag("/right-arrow.png", class: "imgArrow") %>  <%= story.careers.order(:created_at).first.name %></b></p>
+            <p class="card-text"><b><%= story.ini_company %> <%= image_tag("/right-arrow.png", class: "imgArrow") %> <%= story.careers.order(:created_at).first.company %></b></p>
           <% else %>
             <% get_precedent_career_path(story) %>
             <% get_precedent_company_name(story) %>
@@ -17,7 +17,7 @@
               <b>
               <% @careers_array.each do |career| %>
                 <% if career != @careers_array.last %>
-                  <%= career %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>
+                  <%= career %> <%= image_tag("/right-arrow.png", class: "imgArrow") %>
                 <% else %>
                   <%= career %>
                 <% end %>
@@ -25,7 +25,7 @@
               <br><br>
               <% @companies_array.each do |company| %>
                 <% if company != @companies_array.last %>
-                  <%= company %> <%= image_tag("/assets/right-arrow.png", class: "imgArrow") %>
+                  <%= company %> <%= image_tag("/right-arrow.png", class: "imgArrow") %>
                 <% else %>
                   <%= company %>
                 <% end %>
