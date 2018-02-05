@@ -9,6 +9,12 @@ module ApplicationHelper
     end
   end
 
+  def get_multiselect_value(params)
+    if params.present?
+      params = params.gsub("\"", '').gsub!(/[\[\]]/,'').split(/\s*,\s*/)
+    end
+  end
+
   def markdown(text)
     options = {
       hard_wrap:       true,

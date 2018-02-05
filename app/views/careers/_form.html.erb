@@ -28,7 +28,7 @@
       <div class="col-lg-5 col-xl-5">
         <div class="form-group row">
           <%= form.label :industry, class: "col-form-label col-4" %>
-          <%= form.select :industry, get_options("Industry"), {}, { class: "form-control col-6",  multiple: true }   %>
+          <%= form.select :industry, options_for_select(get_options("Industry"), params[:industry]), {}, { class: "form-control col-6",  multiple: true }   %>
         </div>
       </div>
       <div class="col-lg-6 col-xl-6">
