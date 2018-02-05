@@ -1,3 +1,8 @@
 cards = "<%= escape_javascript(render partial: "home/story_card", stories: @stories )  %>";
 $("#cardsContainer").html(cards);
-
+<% if @current %>
+  $("select[name='sub_career_path']").val($("#target option:first").val());
+<% end %>
+<% if @interested %>
+  $("select[name='ini_career_path']").val($("#target option:first").val());
+<% end %>
