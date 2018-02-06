@@ -1,0 +1,13 @@
+var values = <%= raw @values %>;
+var option = '<option value="Anything">' + "Anything" + '</option>';
+for (var i=0;i<values.length;i++){
+   option += '<option value="'+ values[i] + '">' + values[i] + '</option>';
+}
+
+<% if (@type == :ini_career) %>
+  $("select[name='sub_career_path']").html("");
+  $("select[name='sub_career_path']").append(option);
+<% else %>
+  $("select[name='ini_career_path']").html("");
+  $("select[name='ini_career_path']").append(option);
+<% end %>

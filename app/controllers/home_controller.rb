@@ -165,4 +165,32 @@ class HomeController < ApplicationController
     end
   end
 
+  def dynamic_filter
+    @values = []
+
+    case params[:type]
+      when "ini_career"
+        search_ini = params[:career] == "Anything" ? "" : params[:career]
+        @stories = Story.where("ini_career_path ilike :search", search: "%#{search_ini}%")
+        @stories.sub_career.all.uniq.each do |story|
+          story.careers.map(&:name).each{|i| @values << i}
+        end
+        @type = :ini_career
+      when "sub_career"
+        search_ini = ""
+        search_sub = params[:career] == "Anything" ? "" : params[:career]
+        @stories = Story.where("ini_career_path ilike :search", search: "%#{search_ini}%")
+        @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{search_sub}%").uniq
+        @stories.each do |story|
+          @values << story.ini_career_path
+        end
+        @type = :sub_career
+      else
+        search_ini = ""
+        search_sub = ""
+    end
+
+    @values = @values.uniq
+  end
+
 end

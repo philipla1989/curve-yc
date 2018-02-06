@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get   "submit-story",             to: "home#submit_story",    as: :submit_story
   post  "filter_by",                to: "home#filter_by",       as: :filter_by
   get   "sort_by",                  to: "home#sort_by",         as: :sort_by
+  get   "dynamic_filter",           to: "home#dynamic_filter",  as: :dynamic_filter
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"

@@ -40,11 +40,11 @@
     <div class="col-lg-12 col.md-12 col-sm-12 col-xs-12 centerText h5">
       <b>
         <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">My current career is in</div>
-        <%= form.select :ini_career_path, get_options("Career Path"),
-                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect" } %>
+        <%= form.select :ini_career_path, get_options("Career Path"), { include_blank: "Anything" },
+                                          { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect", id: "iniCareerSelect" } %>
         <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">and I am interested in</div>
-        <%= form.select :sub_career_path, get_options("Career Path"),
-                        { include_blank: "Anything" }, { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect" } %>
+        <%= form.select :sub_career_path, get_options("Career Path"), { include_blank: "Anything" },
+                                          { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect", id: "subCareerSelect" } %>
       </b>
     </div>
   </div>
@@ -101,4 +101,24 @@
     ga('send', 'event', 'sortByClick', 'click', 'Clicked Sort By');
   });
 
+  // Dynamic career options for select
+  $("#iniCareerSelect").on("change", function(){
+    var career = this.value;
+    var request = $.ajax({
+      type: 'GET',
+      url:  '/dynamic_filter',
+      data: { career: career, type: "ini_career" },
+      dataType: 'script'
+    });
+  });
+
+  $("#subCareerSelect").on("change", function(){
+    var career = this.value;
+    var request = $.ajax({
+      type: 'GET',
+      url:  '/dynamic_filter',
+      data: { career: career, type: "sub_career" },
+      dataType: 'script'
+    });
+  });
 </script>
