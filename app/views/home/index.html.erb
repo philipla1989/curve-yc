@@ -34,26 +34,9 @@
   </div>
 </div>
 <br><br><br><br>
-<%= form_with url: filter_by_path do |form| %>
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-lg-12 col.md-12 col-sm-12 col-xs-12 centerText h5">
-      <b>
-        <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">My current career is in</div>
-        <%= form.select :ini_career_path, get_options("Career Path"), { include_blank: "Anything" },
-                                          { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect", id: "iniCareerSelect" } %>
-        <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">and I am interested in</div>
-        <%= form.select :sub_career_path, get_options("Career Path"), { include_blank: "Anything" },
-                                          { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect", id: "subCareerSelect" } %>
-      </b>
-    </div>
-  </div>
+<div id="dynamicFilter">
+  <%= render "filter" %>
 </div>
-<br>
-<div class="centerText">
-  <%= form.submit "Filter Stories", class: "btn btn-primary" %>
-</div>
-<% end %>
 <br>
 <%= form_with url: sort_by_path do |form| %>
 <div class="container-fluid">
@@ -102,44 +85,6 @@
   });
 
   // Dynamic career options for select
-  $("#iniCareerSelect").on("change", function(){
-    var career = this.value;
-    var type = "ini_career"
-    if($("#subCareerSelect option:selected").text() == "Anything"){
-      makeCall(career, type)
-    }
-  });
+  dynamicFilter();
 
-  $("#subCareerSelect").on("change", function(){
-    var career = this.value;
-    var type = "sub_career"
-    if($("#iniCareerSelect option:selected").text() == "Anything"){
-      makeCall(career, type)
-    }
-  });
-
-  function makeCall(career, type){
-     var request = $.ajax({
-      type: 'GET',
-      url:  '/dynamic_filter',
-      data: { career: career, type: type },
-      dataType: 'JSON'
-    });
-    request.done((response) => {
-      var values = response[0];
-      var type = response[1];
-      var option = '<option value="Anything">' + "Anything" + '</option>';
-      for (var i=0;i<values.length;i++){
-        option += '<option value="'+ values[i] + '">' + values[i] + '</option>';
-      }
-      if(type == "ini_career"){
-        $("select[name='sub_career_path']").html("");
-        $("select[name='sub_career_path']").append(option);
-      }
-      else{
-        $("select[name='ini_career_path']").html("");
-        $("select[name='ini_career_path']").append(option);
-      }
-    });
-  }
 </script>

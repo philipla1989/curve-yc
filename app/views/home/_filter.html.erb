@@ -1,0 +1,20 @@
+<%= form_with url: filter_by_path do |form| %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12 col.md-12 col-sm-12 col-xs-12 centerText h5">
+      <b>
+        <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">My current career is in</div>
+        <%= form.select :ini_career_path, get_options("Career Path"), { include_blank: "Anything" },
+                                          { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect", id: "iniCareerSelect" } %>
+        <div class="col-lg-3 col.md-12 col-sm-12 col-xs-12 inlineBlock">and I am interested in</div>
+        <%= form.select :sub_career_path, get_options("Career Path"), { include_blank: "Anything" },
+                                          { class: "form-control col-lg-2 col.md-12 col-sm-12 col-xs-12 inlineBlock mobileSelect", id: "subCareerSelect" } %>
+      </b>
+    </div>
+  </div>
+</div>
+<br>
+<div class="centerText">
+  <%= form.submit "Filter Stories", class: "btn btn-primary" %>
+</div>
+<% end %>
