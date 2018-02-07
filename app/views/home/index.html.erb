@@ -105,7 +105,9 @@
   $("#iniCareerSelect").on("change", function(){
     var career = this.value;
     var type = "ini_career"
-    makeCall(career, type)
+    if($("#subCareerSelect option:selected").text() == "Anything"){
+      makeCall(career, type)
+    }
   });
 
   $("#subCareerSelect").on("change", function(){
