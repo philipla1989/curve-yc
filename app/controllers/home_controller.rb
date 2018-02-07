@@ -167,7 +167,6 @@ class HomeController < ApplicationController
 
   def dynamic_filter
     @values = []
-
     case params[:type]
       when "ini_career"
         search_ini = params[:career] == "Anything" ? "" : params[:career]
@@ -189,8 +188,10 @@ class HomeController < ApplicationController
         search_ini = ""
         search_sub = ""
     end
-
     @values = @values.uniq
+    respond_to do |format|
+      format.json  { render json: [@values, @type] }
+    end
   end
 
 end
