@@ -22,7 +22,7 @@ function dynamicFilter(){
       data: { career: career, type: type },
       dataType: 'JSON'
     });
-    request.done((response) => {
+    request.done(function (response) {
       var values = response[0];
       var type = response[1];
       var option = '<option value="Anything">' + "Anything" + '</option>';
