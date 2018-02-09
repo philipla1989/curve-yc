@@ -42,13 +42,6 @@ class HomeController < ApplicationController
     @search_sub = params[:sub_career_path] == "Anything" ? "" : params[:sub_career_path]
     @stories = Story.where("ini_career_path ilike :search", search: "%#{@search_ini}%")
     @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{@search_sub}%").uniq
-    if @stories.empty?
-      @stories = Story.where("ini_career_path ilike :search", search: "%#{@search_ini}%").uniq
-      @current = true if @stories.present?
-    elsif @stories.empty?
-      @stories = Story.sub_career.where("careers.name ilike :search", search: "%#{@search_sub}%").uniq
-      @interested = true if @stories.present?
-    end
     @ids = @stories.pluck(:id)
     @search_ini = "Anything" if @search_ini.empty?
     @search_sub = "Anything" if @search_sub.empty?
