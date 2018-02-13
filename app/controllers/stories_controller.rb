@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
-    @story.ini_industry = @story.ini_industry.split(",")
+    #@story.ini_industry = @story.ini_industry.split(",")
   end
 
   # POST /stories
@@ -71,10 +71,14 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params[:story][:ini_industry] = params[:story][:ini_industry].reject { |c| c.empty? }
-      params[:story][:ini_industry] = params[:story][:ini_industry].join(", ")
+      #params[:story][:ini_industry] = params[:story][:ini_industry].reject { |c| c.empty? }
+      #params[:story][:ini_industry] = params[:story][:ini_industry].join(", ")
       params.require(:story).permit(:name, :location, :linkedin_url, :slug, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
-                                    :sumary, :education, :meta_name, :meta_content)
+                                    :sumary, :education, :meta_name, :meta_content,
+                                    {careers_attributes: [:id, :ini_career_path, :sub_career_path, :_destroy,
+                                                        {jobs_attributes: [:id, :title, :company, :industry, :age, :company_type, :_destroy ]}
+                                                     ]}
+                                    )
     end
 end

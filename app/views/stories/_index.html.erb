@@ -19,7 +19,7 @@
         <td><%= link_to 'Manage Careers', story_careers_path(story.id),
                         class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Show', story_path(slug: story), class: "btn btn-info btn-sm", remote: true %></td>
-        <td><%= link_to 'Edit', edit_story_path(slug: story), class: "btn btn-warning btn-sm", remote: true %></td>
+        <td><%= link_to 'Edit', edit_story_path(slug: story), class: "btn btn-warning btn-sm" %></td>
         <td><%= link_to 'Delete', story_path(slug: story), method: :delete, data: { confirm: 'Are you sure?' },
                         class: "btn btn-danger btn-sm" %></td>
       </tr>
@@ -29,10 +29,12 @@
 
 <br>
 
-<%= link_to 'New Story', "#", class: "btn btn-primary btn-sm", data: { toggle: "modal", target: "#storyModal" } %>
+<%= link_to 'New Story', new_story_path, class: "btn btn-primary btn-sm" %>
+
+<%# link_to 'New Story', "#", class: "btn btn-primary btn-sm", data: { toggle: "modal", target: "#storyModal" } %>
 
 <div id="editFormContainer"></div>
 <div id="showFormContainer"></div>
 <div id="storyQuestionsModalContainer"></div>
 
-<%= render "shared/modals/story_modal" %>
+<%# render "shared/modals/story_modal" %>
