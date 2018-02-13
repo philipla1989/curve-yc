@@ -1,0 +1,39 @@
+<fieldset>
+  <div class="col-lg-12 col-xl-12">
+    <h4>Career Path info</h4>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-2"></div>
+      <%= form.hidden_field :_destroy %>
+      <%= link_to "Remove Career Path", '#', class: "remove_fields btn btn-danger btn-sm col-2" %>
+    </div>
+    <div class="col-lg-4 col-xl-5">
+      <div class="form-group row">
+        <%= form.label :ini_career_path, "Initial Career Path", class: "col-form-label"  %>
+        <%= form.select :ini_career_path, get_options("Career Path"), { include_blank: "Select..." }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-xl-5">
+      <div class="form-group row">
+        <%= form.label :sub_career_path, "Subsequent Career Path", class: "col-form-label"  %>
+        <%= form.select :sub_career_path, get_options("Career Path"), { include_blank: "Select..." }, { class: "form-control" } %>
+      </div>
+    </div>
+  </div>
+
+  <br>
+
+  <div id="jobContainer">
+    <%= form.fields_for :jobs do |form_job| %>
+      <%= render "job_fields", form: form_job %>
+    <% end %>
+    <%= link_to_add_fields "Add Job", form, :jobs %>
+  </div>
+  <br>
+  <div class="hrDivider col-lg-12 col-xl-12"></div>
+  <div class="col-lg-12 col-xl-12"><br></div>
+
+</fieldset>

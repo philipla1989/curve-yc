@@ -12,16 +12,22 @@
   <% end %>
   <div class="container">
     <div class="row">
-      <div class="col-lg-5 col-xl-5">
+      <div class="col-lg-12 col-xl-12">
+        <h4>Personal Story info</h4>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-lg-12 col-xl-12">
         <div class="form-group row">
-          <%= form.label :name, class: "col-form-label col-5" %>
-          <%= form.text_field :name, id: :story_name, class: "form-control col-6" %>
+          <%= form.label :name, class: "col-form-label col-2" %>
+          <%= form.text_field :name, id: :story_name, class: "form-control col-9" %>
         </div>
       </div>
-      <div class="col-lg-6 col-xl-6">
+      <div class="col-lg-12 col-xl-12">
         <div class="form-group row">
-          <%= form.label :location, class: "col-form-label col-3" %>
-          <%= form.text_field :location, id: :story_location, class: "form-control col-6" %>
+          <%= form.label :location, class: "col-form-label col-2" %>
+          <%= form.text_field :location, id: :story_location, class: "form-control col-9" %>
         </div>
       </div>
       <div class="col-lg-12 col-xl-12">
@@ -61,49 +67,6 @@
           <%= form.text_field :meta_content, id: :story_meta_content, class: "form-control col-9" %>
         </div>
       </div>
-      <div class="hrDivider col-lg-12 col-xl-12"></div>
-      <div class="col-lg-12 col-xl-12"><br></div>
-
-      <div class="col-lg-5 col-xl-5">
-        <div class="form-group row">
-          <%= form.label :ini_age, "Initial Age", class: "col-form-label col-5"  %>
-          <%= form.number_field :ini_age, id: :story_ini_age, class: "form-control col-2" %>
-        </div>
-        <div class="form-group">
-          <%= form.label :ini_title, "Initial Title", class: "col-form-label"  %>
-          <%= form.text_field :ini_title, id: :story_ini_title, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= form.label :ini_company_type, "Initial Company Type", class: "col-form-label"  %>
-          <%= form.text_field :ini_company_type, id: :story_ini_company_type, class: "form-control" %>
-        </div>
-      </div>
-      <div class="col-lg-6 col-xl-6">
-        <div class="form-group row">
-          <%= form.label :sub_age, "Subsequent Age", class: "col-form-label col-5"  %>
-          <%= form.number_field :sub_age, id: :story_sub_age, class: "form-control col-2" %>
-        </div>
-        <div class="form-group">
-          <%= form.label :ini_career_path, "Initial Career Path", class: "col-form-label"  %>
-          <%= form.select :ini_career_path, get_options("Career Path"), { include_blank: "Select..." }, { class: "form-control" } %>
-        </div>
-        <div class="form-group">
-          <%= form.label :ini_company, "Initial Company", class: "col-form-label"  %>
-          <%= form.text_field :ini_company, id: :story_ini_company, class: "form-control" %>
-        </div>
-      </div>
-
-      <div class="col-xl-12 col-lg-12">
-        <div class="form-group">
-          <%= form.label :ini_industry, "Initial Industry", class: "col-form-label col-xl-12 col-lg-12"  %>
-          <%= form.select :ini_industry, options_for_select(get_options("Industry"), get_multiselect_value(story.ini_industry)), {}, { class: "form-control",  multiple: true }   %>
-        </div>
-      </div>
-
-
-      <div class="hrDivider col-lg-12 col-xl-12"></div>
-      <div class="col-lg-12 col-xl-12"><br></div>
-
       <div class="col-lg-12 col-xl-12">
         <div class="form-group">
             <%= form.label :sumary, class: "col-form-label" %>
@@ -111,6 +74,21 @@
         </div>
       </div>
     </div>
+
+    <div class="hrDivider col-lg-12 col-xl-12"></div>
+    <div class="col-lg-12 col-xl-12"><br></div>
+
+    <div class="row">
+      <br>
+      <div id="careerPathContainer">
+        <%= form.fields_for :careers do |form_career| %>
+          <%= render 'career_fields', form: form_career %>
+        <% end %>
+      </div>
+
+      <%= link_to_add_fields "Add Career Path", form, :careers %>
+    </div>
+    <br>
   </div>
   <br>
   <div class="col-lg-12 col-xl-12">
@@ -120,4 +98,9 @@
       </div>
     </div>
   </div>
+  <br>
 <% end %>
+
+<script>
+  bindMultiForms();
+</script>

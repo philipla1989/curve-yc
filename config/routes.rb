@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :admin
   resources :stories, param: :slug do
     resources :careers do
+      resources :jobs
       resources :story_questions
     end
   end
