@@ -69,7 +69,7 @@
       </div>
       <div class="col-lg-12 col-xl-12">
         <div class="form-group">
-            <%= form.label :sumary, class: "col-form-label" %>
+            <%= form.label :sumary, "Summary", class: "col-form-label" %>
             <%= form.text_area :sumary, id: :story_sumary, class: "form-control textArea" %>
         </div>
       </div>
@@ -82,7 +82,7 @@
       <br>
       <div id="careerPathContainer">
         <%= form.fields_for :careers do |form_career| %>
-          <%= render 'career_fields', form: form_career %>
+          <%= render 'career_fields', form: form_career, story: form %>
         <% end %>
       </div>
 

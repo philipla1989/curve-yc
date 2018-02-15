@@ -6,7 +6,7 @@ class CareersController < ApplicationController
   # GET /careers.json
   def index
     @story = Story.find params[:story_slug]
-    @careers = @story.careers
+    @careers = @story.careers.order(:created_at)
 
   end
 

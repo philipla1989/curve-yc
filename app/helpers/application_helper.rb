@@ -3,7 +3,7 @@ module ApplicationHelper
   def get_options(field)
     options = Category.where(name: field).first
     if options.present?
-      options.description.split("|")
+      options.description.split("|").sort!
     else
       ["Pleas add #{field} in category"]
     end

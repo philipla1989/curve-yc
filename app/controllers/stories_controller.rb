@@ -76,7 +76,7 @@ class StoriesController < ApplicationController
       params.require(:story).permit(:name, :location, :linkedin_url, :slug, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
                                     :sumary, :education, :meta_name, :meta_content,
-                                    {careers_attributes: [:id, :ini_career_path, :sub_career_path, :_destroy,
+                                    {careers_attributes: [:id, :ini_career_path, :precedent_career, :_destroy,
                                                         {jobs_attributes: [:id, :title, :company, :industry, :age, :company_type, :_destroy ]}
                                                      ]}
                                     )
