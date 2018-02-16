@@ -37,20 +37,12 @@ module StoriesHelper
     @values = @values.uniq.to_s.gsub("\"", '').gsub!(/[\[\]]/,'')
   end
 
-  def get_precedent_career_path(story)
-    @careers_array = []
-    @careers_array << story.ini_career_path
-    story.careers.order(:created_at).map(&:name).each{ |c| @careers_array << c}
-  end
-
   def get_precedent_career(story, career)
     story.careers.where(ini_career_path: career.precedent_career).first.ini_career_path
   end
 
-  def get_precedent_company_name(story)
-    @companies_array = []
-    @companies_array << story.ini_company
-    story.careers.order(:created_at).map(&:company).uniq.each{ |c| @companies_array << c}
+  def get_current_job(story)
+    job = "#{story.careers.order(:created_at).last.jobs.order(:created_at).last.title}, #{story.careers.order(:created_at).last.jobs.order(:created_at).last.company}"
   end
 
   def get_precedent_job(story, career)

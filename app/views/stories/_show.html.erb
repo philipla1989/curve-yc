@@ -29,17 +29,27 @@
       <br>
       <div class="container h5" style="background-color: rgba(18, 116, 217, 0.02);">
         <p class="h5">
-          <strong>Path</strong>
+          <strong>Career Path</strong>
           <br>
-          <% if check_single_career(@careers) %>
-            <%= @story.ini_title %>, <%= @story.ini_company %> <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= @story.careers.first.title %>, <%= @story.careers.first.company %>
-          <% else %>
-            <%= @story.ini_title %>, <%= @story.ini_company %>
-            <% @careers.each do |career| %>
-              &nbsp; <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= career.title %>, <%= career.company %>
+          <% @story.careers.order(:created_at).each do |career| %>
+            <% if @story.careers.order(:created_at).last == career %>
+              <%= career.ini_career_path %>
+            <% else %>
+              <%= career.ini_career_path %> <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>
             <% end %>
           <% end %>
-
+          <br><br>
+          <strong>Jobs</strong>
+          <br>
+          <% @story.careers.order(:created_at).each do |career| %>
+            <% career.jobs.each do |job| %>
+              <% if (career.jobs.order(:created_at).last == job) && (@story.careers.order(:created_at).last == career) %>
+                <%= job.title %>, <%= job.company %>
+              <% else %>
+                <%= job.title %>, <%= job.company %> <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>
+              <% end %>
+            <% end %>
+          <% end %>
         </p>
       </div>
       <br>
@@ -54,31 +64,14 @@
       <p class="h5">
         <strong>Table of Contents</strong>
         <br>
-        <% if check_single_career(@careers) %>
-          <p class="h5">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-              <div class="h5">
-                <b>Career Change: </b>
-                <%= get_precedent_career_title(@careers.order(:created_at).first) %>, <%= @story.ini_company %>  <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>  <%= @careers.first.title %> / <%= @careers.first.title %>, <%= @careers.first.company %>
-              </div>
-            </div>
-          </p>
-          <div class="container h5" style="background-color: rgba(18, 116, 217, 0.02);">
-            <% @careers.first.story_questions.order(:created_at).each do |sq| %>
-              <a href="/stories/<%= @careers.first.story.slug %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
-              <br>
-            <% end %>
-          </div>
-          <%= render "questions_list", career: @careers.first %>
-        <% else %>
-          <% i = 0 %>
-          <% @careers.each do |career| %>
-            <% i+= 1 %>
+        <% i = 0 %>
+        <% @story.careers.order(:created_at).each do |career| %>
+          <% unless career.precedent_career.include?("Initial") %>
             <div class="h5">
               <p class="h5">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                   <b>Career Change #<%= i %>:</b>
-                  <%= get_precedent_career_title(career) %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>  <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>
+                  <%= get_precedent_career(@story, career) %> <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= career.ini_career_path %>
                 </div>
               </p>
               <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
@@ -91,27 +84,42 @@
               </div>
             </div>
           <% end %>
-          <br>
-          <p class="h5">
-            <strong>The Story</strong>
-          </p>
-          <% i = 0 %>
-          <% @careers.each do |career| %>
-            <% i+= 1%>
-            <p class="h5">
-                <b>Career Change #<%= i %>:</b>
-                <%= get_precedent_career_title(career) %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>  <%= image_tag("/right-arrow.png", class: "imgArrowStory") %>  <%= career.name %> / <%= career.title %>, <%= career.precedent_career.include?("Initial") ? @story.ini_company : career.company %>
-              </p>
-            <div class="h5">
-              <%= render "questions_list", career: career %>
-            </div>
-          <% end %>
+          <% i+= 1 %>
         <% end %>
       </p>
-      <%= link_to 'Back to home', root_path, class: "btn btn-primary" %>
       <br>
-      <br>
-      <span></span>
+      <p class="h5">
+        <strong>The Story</strong>
+      </p>
+      <% i = 0 %>
+      <% @story.careers.order(:created_at).each do |career| %>
+        <% unless career.precedent_career.include?("Initial") %>
+          <div class="h5">
+            <p class="h5">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <b>Job Change #<%= i %>:</b>
+                <% if check_single_job(career.jobs) %>
+                  <%= get_precedent_job(@story, career) %> <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= career.jobs.order(:created_at).first.title %>, <%= career.jobs.order(:created_at).first.company %>
+                <% else %>
+                  <% career.jobs.order(:created_at).each do |job| %>
+                    <% if career.jobs.first == job %>
+                      <%= get_precedent_job(@story, career) %> <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= job.title %>, <%= job.company %>
+                    <% else %>
+                      <%= image_tag("/right-arrow.png", class: "imgArrowStory") %> <%= job.title %>, <%= job.company %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </p>
+            <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
+                <div class="h5">
+                  <%= render "questions_list", career: career %>
+                </div>
+            </div>
+          </div>
+        <% end %>
+        <% i+= 1%>
+      <% end %>
     </div>
   </div>
 </div>
