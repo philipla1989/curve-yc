@@ -5,7 +5,7 @@
   <thead>
     <tr>
       <th>Initial</th>
-      <th>Subsequent</th>
+      <th>Precedent</th>
       <th></th>
     </tr>
   </thead>
@@ -14,9 +14,11 @@
     <% @careers.each do |career| %>
       <tr>
         <td><%= career.ini_career_path %></td>
-        <td><%= career.sub_career_path %></td>
+        <td><%= career.precedent_career %></td>
+        <% unless career.precedent_career == "Initial" %>
         <td><%= link_to 'Manage Questions Content',
                         story_career_story_questions_path(@story.id, career), class: "btn btn-sm btn-primary" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

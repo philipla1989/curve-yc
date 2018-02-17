@@ -11,15 +11,15 @@
     </div>
     <div class="col-lg-4 col-xl-5">
       <div class="form-group row">
-        <%= form.label :ini_career_path, "Initial Career Path", class: "col-form-label"  %>
+        <%= form.label :ini_career_path, "Career Path", class: "col-form-label"  %>
         <%= form.select :ini_career_path, get_options("Career Path"), { include_blank: "Select..." }, { class: "form-control" } %>
       </div>
     </div>
 
     <div class="col-lg-4 col-xl-5">
       <div class="form-group row">
-        <%= form.label :sub_career_path, "Subsequent Career Path", class: "col-form-label"  %>
-        <%= form.select :sub_career_path, get_options("Career Path"), { include_blank: "Select..." }, { class: "form-control" } %>
+        <%= form.label :precedent_career, "Precedent Career Path", class: "col-form-label"  %>
+        <%= form.select :precedent_career, get_precedent_options(@story), { include_blank: "Select..." }, { class: "form-control" } %>
       </div>
     </div>
   </div>

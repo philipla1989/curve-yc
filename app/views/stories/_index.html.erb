@@ -5,7 +5,6 @@
     <tr>
       <th>Name</th>
       <th>Location</th>
-      <th>Ini title</th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -15,7 +14,6 @@
       <tr>
         <td><%= story.name %></td>
         <td><%= story.location %></td>
-        <td><%= story.ini_title %></td>
         <td><%= link_to 'Manage Careers', story_careers_path(story.id),
                         class: "btn btn-primary btn-sm" %></td>
         <td><%= link_to 'Show', story_path(slug: story), class: "btn btn-info btn-sm", remote: true %></td>

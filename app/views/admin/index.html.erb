@@ -1,34 +1,37 @@
 <div class="container-fluid">
-  <br>
-  <h4>Management</h4>
-  <br>
-  <ul class="nav nav-tabs" id="contentTab">
-    <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="#stories" role="tab">Stories</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#categories" role="tab">Categories</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#blog" role="tab">Blog</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#pages" role="tab">Pages</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
-    </li>
-  </ul>
+  <div class="col-lg-12 bd-content">
+    <br>
+    <h4>Management</h4>
+    <br>
+    <ul class="nav nav-tabs" id="contentTab">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#stories" role="tab">Stories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#categories" role="tab">Categories</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#blog" role="tab">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#pages" role="tab">Pages</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#settings" role="tab">Settings</a>
+      </li>
+    </ul>
 
-  <%= render "nav_content"%>
-  <div class="container">
-    <div class="row">
-      <div class="col-xl-12 col-lg-12">
-        <%= link_to "Log out admin", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger right" %>
+    <%= render "nav_content"%>
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12">
+          <%= link_to "Log out admin", destroy_user_session_path, method: :delete, class: "btn btn-sm btn-danger right" %>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <%= render "shared/modals/show_post_modal" %>
 <script>
 $('#contentTab a').click(function (e) {

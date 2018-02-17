@@ -7,27 +7,33 @@
   <tbody class="h5">
     <tr>
       <td class="grayTable"><strong>Age</strong></td>
-      <td><%= @story.ini_age %></td><td><%= @story.sub_age %></td>
+      <td><%= @story.careers.order(:created_at).first.jobs.order(:created_at).first.age %></td>
+      <td><%= @story.careers.order(:created_at).last.jobs.order(:created_at).last.age %></td>
     </tr>
     <tr>
       <td class="grayTable"><strong>Job Title</strong></td>
-      <td><%= @story.ini_title %></td><td><%= get_sub_title(@careers) %></td>
+      <td><%= @story.careers.order(:created_at).first.jobs.order(:created_at).first.title %></td>
+      <td><%= get_sub_title(@story) %></td>
     </tr>
     <tr>
       <td class="grayTable"><strong>Career Path</strong></td>
-      <td><%= @story.ini_career_path %></td><td><%= get_sub_career_path(@careers) %></td>
+      <td><%= @story.careers.order(:created_at).first.ini_career_path %></td>
+      <td><%= get_sub_career_path(@story) %></td>
     </tr>
     <tr>
       <td class="grayTable"><strong>Idustry</strong></td>
-      <td><%= @story.ini_industry %></td><td><%= get_sub_industry(@careers) %></td>
+      <td><%= @story.careers.order(:created_at).first.jobs.order(:created_at).first.industry %></td>
+      <td><%= get_sub_industry(@story) %></td>
     </tr>
     <tr>
       <td class="grayTable"><strong>Company</strong></td>
-      <td><%= @story.ini_company %></td><td><%= get_sub_company(@careers) %></td>
+      <td><%= @story.careers.order(:created_at).first.jobs.order(:created_at).first.company %></td>
+      <td><%= get_sub_company(@story) %></td>
     </tr>
     <tr>
       <td class="grayTable"><strong>Company Type</strong></td>
-      <td><%= @story.ini_company_type %></td><td><%= get_sub_company_type(@careers) %></td>
+      <td><%= @story.careers.order(:created_at).first.jobs.order(:created_at).first.company_type %></td>
+      <td><%= get_sub_company_type(@story) %></td>
     </tr>
   </tbody>
 </table>

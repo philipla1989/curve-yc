@@ -40,8 +40,19 @@ class HomeController < ApplicationController
   def filter_by
     @search_ini = params[:ini_career_path] == "Anything" ? "" : params[:ini_career_path]
     @search_sub = params[:sub_career_path] == "Anything" ? "" : params[:sub_career_path]
-    @stories = Story.where("ini_career_path ilike :search", search: "%#{@search_ini}%")
-    @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{@search_sub}%").uniq
+    @stories = []
+    stories_sub = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career != :search_i",
+                                        search: "%#{@search_sub}%", search_i: "Initial")
+    stories_ini = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career ilike :search_i",
+                                        search: "%#{@search_ini}%", search_i: "Initial")
+    stories_ini.each do |story|
+      @stories << story if (story.careers.where("ini_career_path ilike :search AND precedent_career != :search_s",
+                                                search: "%#{@search_sub}%", search_s: "Initial").count == 1)
+    end
+    stories_sub.each do |story|
+      @stories << story if (story.careers.where(precedent_career: @search_ini).count == 1)
+    end
+    @stories = @stories.uniq
     @ids = @stories.pluck(:id)
     @search_ini = "Anything" if @search_ini.empty?
     @search_sub = "Anything" if @search_sub.empty?
@@ -165,19 +176,28 @@ class HomeController < ApplicationController
     case params[:type]
       when "ini_career"
         search_ini = params[:career] == "Anything" ? "" : params[:career]
-        @stories = Story.where("ini_career_path ilike :search", search: "%#{search_ini}%")
-        @stories.sub_career.all.uniq.each do |story|
-          story.careers.map(&:name).each{|i| @values << i}
+        stories_i = Story.sub_career.where("careers.ini_career_path ilike :search AND precedent_career ilike :search_i",
+                                          search: "%#{search_ini}%", search_i: "Initial")
+        stories_p = Story.sub_career.where("careers.precedent_career ilike :search", search: "%#{search_ini}%")
+        @stories = stories_i + stories_p
+        @stories.uniq.each do |story|
+          story.careers.each do |career|
+            @values << career.ini_career_path if (career.precedent_career != "Initial" && career.ini_career_path != search_ini)
+          end
         end
+        @values = @values.sort!
         @type = :ini_career
       when "sub_career"
         search_ini = ""
         search_sub = params[:career] == "Anything" ? "" : params[:career]
-        @stories = Story.where("ini_career_path ilike :search", search: "%#{search_ini}%")
-        @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{search_sub}%").uniq
-        @stories.each do |story|
-          @values << story.ini_career_path
+        stories = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career != :search_s",
+                                            search: "%#{search_sub}%", search_s: "Initial")
+        stories.uniq.each do |story|
+          story.careers.each do |career|
+            @values << career.ini_career_path if ( career.precedent_career != search_sub && career.ini_career_path != search_sub)
+          end
         end
+        @values = @values.sort!
         @type = :sub_career
       else
         search_ini = ""

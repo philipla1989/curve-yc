@@ -10,12 +10,16 @@ module CareersHelper
   end
 
   def get_precedent_options(story)
-    if story.careers.count < 1
-      ["Initial - #{story.ini_career_path}"]
+    if story.id.present?
+      values = story.careers.order(:created_at).map(&:ini_career_path).uniq
     else
-      values = story.careers.map(&:name)
-      values.push("Initial - #{story.ini_career_path}") if params[:id].present?
-      values
+      values = Category.where(name: "Career Path").first
+      if values.present?
+        values = values.description.split("|").sort!
+        values.unshift("Initial")
+      else
+        ["Pleas add #{field} in category"]
+      end
     end
   end
 end
