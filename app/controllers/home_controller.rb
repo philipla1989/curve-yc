@@ -111,17 +111,23 @@ class HomeController < ApplicationController
     @description = "Browse career change stories based on your current career."
     @career_path = {}
     @sub_career = Hash.new{|hsh,key| hsh[key] = {} }
-    ini_career = Story.all.order(:ini_career_path).map(&:ini_career_path).uniq
-    ini_career.each do |career_path|
-      stories = Story.where(ini_career_path: career_path)
+    careers =  Career.where(precedent_career: "Initial").map(&:ini_career_path).uniq
+    careers.each do |career|
+      stories = Story.sub_career.where("careers.ini_career_path = ? AND careers.precedent_career = ?", career, "Initial")
       stories.each do |story|
-        if story.careers.count > 1
-          @sub_career[career_path] = @sub_career[career_path].present? ?
-                                     @sub_career[career_path] << story.careers.where.not(name: career_path).map(&:name) :
-                                     story.careers.where.not(name: career_path).map(&:name)
-        else
-          @sub_career[career_path] = @sub_career[career_path].present? ? @sub_career[career_path] << story.careers.first.name :
-                                     story.careers.map(&:name)
+        careers_array = story.careers.where.not(ini_career_path: career, precedent_career: "Initial")
+        @precedent_career = ""
+        careers_array.each do |career_item|
+          if career_item.precedent_career == @precedent_career
+            @sub_career[career_item.precedent_career] = @sub_career[career_item.precedent_career].present? ?
+                                    @sub_career[career_item.precedent_career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+            @sub_career[career] = @sub_career[career].present? ?
+                                    @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+          else
+            @sub_career[career] = @sub_career[career].present? ?
+                                @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+          end
+          @precedent_career = career_item.ini_career_path
         end
         @career_path = @career_path.deep_merge(@sub_career)
       end
@@ -133,37 +139,55 @@ class HomeController < ApplicationController
     @description = "Browse career change stories based on the specific career you want to transition into."
     @career_pursue = {}
     @career_path = Hash.new{|hsh,key| hsh[key] = {} }
-    sub_career = Career.all.map(&:name).uniq.sort
-    sub_career.each do |career_path|
-      careers = Career.where(name: career_path)
-      careers.each do |career|
-        if career.precedent_career.include?("Initial")
-          @career_path[career_path] = (@career_path[career_path].present? ?
-                                      @career_path[career_path] << career.story.ini_career_path :
-                                      [ career.story.ini_career_path ]) if @career_path[career_path] != [ career.story.ini_career_path ]
-        else
-          last_career = career.story.careers.order(:created_at).last.name
-          career_array = [ career_path ] << last_career
-          if  career.name == last_career
-            @career_path[career_path] = (@career_path[career_path].present? ?
-                                        @career_path[career_path] << career.story.ini_career_path :
-                                        [ career.story.ini_career_path ])
-          else
-            @career_path[career_path] = (@career_path[career_path].present? ?
-                                        @career_path[career_path] << career.name :
-                                        career.story.careers.order(:created_at).where.not(name: career_array).map(&:name)) if @career_path[career_path] != [ career.name ]
+    @story_ids = []
+    careers =  Career.where.not(precedent_career: "Initial")
+    careers.each do |career|
+      stories = Story.sub_career.where("careers.ini_career_path = ?", career.ini_career_path)
+      stories.each do |story|
+        if story.careers.count > 2
+          @careers_added = []
+          unless @story_ids.include?(story.id)
+            story.careers.where.not(precedent_career: "Initial").order(created_at: :desc).each do |career_item|
+              @careers_added << career_item.ini_career_path
+              @career_path[career_item.ini_career_path] = @career_path[career_item.ini_career_path].present? ?
+                                                        @career_path[career_item.ini_career_path] << story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path) :
+                                                        story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path)
+            end
+            @story_ids << story.id
           end
+        else
+          @career_path[career.ini_career_path] = @career_path[career.ini_career_path].present? ?
+                                            @career_path[career.ini_career_path] << career.precedent_career :
+                                            [career.precedent_career]
+          @career_path[career.ini_career_path] = @career_path[career.ini_career_path].uniq
         end
-        @career_pursue = @career_pursue.deep_merge(@career_path)
       end
+      @career_pursue = @career_pursue.deep_merge(@career_path)
     end
   end
 
   def browse_stories
-    search_ini = params[:ini_career] == "Anything" ? "" : params[:ini_career]
-    search_sub = params[:sub_career] == "Anything" ? "" : params[:sub_career]
-    @stories = Story.where("ini_career_path ilike :search", search: "%#{search_ini}%")
-    @stories = @stories.sub_career.where("careers.name ilike :search", search: "%#{search_sub}%").uniq
+    @search_ini = params[:ini_career] == "Anything" ? "" : params[:ini_career]
+    @search_sub = params[:sub_career] == "Anything" ? "" : params[:sub_career]
+    @stories = []
+    stories_sub = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career != :search_i",
+                                        search: "%#{@search_sub}%", search_i: "Initial")
+    stories_ini = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career ilike :search_i",
+                                        search: "%#{@search_ini}%", search_i: "Initial")
+    stories_ini.each do |story|
+      @stories << story if (story.careers.where("ini_career_path ilike :search AND precedent_career != :search_s",
+                                                search: "%#{@search_sub}%", search_s: "Initial").count == 1)
+    end
+    stories_sub.each do |story|
+      @stories << story if (story.careers.where(precedent_career: @search_ini).count == 1)
+    end
+    @stories = @stories.uniq
+    #
+    #@stories_ini = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career ilike :search_i",
+    #                                  search: "%#{search_ini}%", search_i: "%Initial%")
+    #@stories_sub = Story.sub_career.where("careers.ini_career_path ilike :search", search: "%#{search_sub}%")
+    #@stories = @stories_ini + @stories_sub
+    #@stories = @stories.uniq
     @ids = @stories.pluck(:id)
     @title = [params[:ini_career], params[:sub_career]]
     respond_to do |format|
