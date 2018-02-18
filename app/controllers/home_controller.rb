@@ -166,9 +166,25 @@ class HomeController < ApplicationController
     end
   end
 
-  def browse_stories
-    @search_ini = params[:ini_career] == "Anything" ? "" : params[:ini_career]
-    @search_sub = params[:sub_career] == "Anything" ? "" : params[:sub_career]
+  def browse_stories_explore
+    params[:sub_career] = params[:sub_career].gsub("-", " ")
+    params[:ini_career] = params[:ini_career].gsub("-", " ")
+    search_ini = params[:ini_career] == "Anything" ? "" : params[:ini_career]
+    search_sub = params[:sub_career] == "Anything" ? "" : params[:sub_career]
+    browse_stories(search_ini, search_sub)
+  end
+
+  def browse_stories_pursue
+    params[:sub_career] = params[:sub_career].gsub("-", " ")
+    params[:ini_career] = params[:ini_career].gsub("-", " ")
+    search_ini = params[:ini_career] == "Anything" ? "" : params[:ini_career]
+    search_sub = params[:sub_career] == "Anything" ? "" : params[:sub_career]
+    browse_stories(search_ini, search_sub)
+  end
+
+  def browse_stories(search_ini, search_sub)
+    @search_ini = search_ini
+    @search_sub = search_sub
     @stories = []
     stories_sub = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career != :search_i",
                                         search: "%#{@search_sub}%", search_i: "Initial")
@@ -182,12 +198,6 @@ class HomeController < ApplicationController
       @stories << story if (story.careers.where(precedent_career: @search_ini).count == 1)
     end
     @stories = @stories.uniq
-    #
-    #@stories_ini = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career ilike :search_i",
-    #                                  search: "%#{search_ini}%", search_i: "%Initial%")
-    #@stories_sub = Story.sub_career.where("careers.ini_career_path ilike :search", search: "%#{search_sub}%")
-    #@stories = @stories_ini + @stories_sub
-    #@stories = @stories.uniq
     @ids = @stories.pluck(:id)
     @title = [params[:ini_career], params[:sub_career]]
     respond_to do |format|
