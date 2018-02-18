@@ -12,6 +12,7 @@ module CareersHelper
   def get_precedent_options(story)
     if story.id.present?
       values = story.careers.order(:created_at).map(&:ini_career_path).uniq
+      values.unshift("Initial")
     else
       values = Category.where(name: "Career Path").first
       if values.present?
@@ -22,4 +23,5 @@ module CareersHelper
       end
     end
   end
+
 end
