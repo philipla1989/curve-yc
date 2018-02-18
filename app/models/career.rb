@@ -4,5 +4,5 @@ class Career < ApplicationRecord
   has_many    :jobs, dependent: :destroy
   accepts_nested_attributes_for :story_questions
   accepts_nested_attributes_for :jobs, allow_destroy: true
-
+  default_scope { order(:created_at) }
 end
