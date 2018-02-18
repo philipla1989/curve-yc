@@ -147,7 +147,7 @@ class HomeController < ApplicationController
         if story.careers.count > 2
           @careers_added = []
           unless @story_ids.include?(story.id)
-            story.careers.where.not(precedent_career: "Initial").order(created_at: :desc).each do |career_item|
+            Career.where("story_id = ? AND precedent_career != ?", story.id, "Initial").reorder('created_at DESC').each do |career_item|
               @careers_added << career_item.ini_career_path
               @career_path[career_item.ini_career_path] = @career_path[career_item.ini_career_path].present? ?
                                                         @career_path[career_item.ini_career_path] << story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path) :
