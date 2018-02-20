@@ -65,11 +65,11 @@ class PostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find_by slug: params[:slug].gsub("-", " ")
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
+      params[:post][:slug] = params[:post][:slug].downcase
       params.require(:post).permit(:title, :content, :topic, :author, :slug, :meta_name, :meta_content)
     end
 end
