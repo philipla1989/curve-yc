@@ -1,10 +1,8 @@
 <div class="h5">
-  <br>
   <% career.story_questions.order(:created_at).each do |sq| %>
     <section>
-      <div id="question-<%= sq.id %>" class="h5"><b><%= sq.question %></b></div>
-      <br>
-      <div class="h5"><%= markdown(sq.response) %></div>
+      <div id="question-<%= sq.id %>" class="h5"><p><%= sq.question %></p></div>
+      <div class="h4"><%= markdown(sq.response) %></div>
       <br>
     </section>
   <% end %>

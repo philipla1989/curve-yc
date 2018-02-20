@@ -1,26 +1,8 @@
 <p id="notice"><%= notice %></p>
 <br>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
-        <%= link_to "Back to Blog", blog_path, class: "btn btn-sm btn-primary right" %>
-      </div>
-      <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
-        <h2 class="text-center"><%= @post.title %></h2>
-      </div>
-    </div>
-  </div>
-  <div class="container" style="background-color: rgba(18, 116, 217, 0.02);">
-    <div class="row">
-      <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 text-center">
-        <div class="form-group">
-          <%= markdown(@post.content) %>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="row">
+<div id="postContainer">
+<div class="container">
+  <div class="row">
       <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 text-center">
         <div class="form-group right">
           Published: <%= @post.created_at.strftime("%d/%m/%Y") %><br>
@@ -32,7 +14,26 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+        <h2 style="font-weight: 600;"><%= @post.title %></h2>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
+        <div class="form-group">
+          <%= markdown(@post.content) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12">
         <%= link_to "Back to Blog", blog_path, class: "btn btn-sm btn-primary right" %>
       </div>
     </div>
   </div>
+</div>
