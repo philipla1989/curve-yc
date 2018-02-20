@@ -21,7 +21,7 @@
       <td><%= get_sub_career_path(@story) %></td>
     </tr>
     <tr>
-      <td class="grayTable"><strong>Idustry</strong></td>
+      <td class="grayTable"><strong>Industry</strong></td>
       <td><%= @story.careers.order(:created_at).first.jobs.order(:created_at).first.industry %></td>
       <td><%= get_sub_industry(@story) %></td>
     </tr>
