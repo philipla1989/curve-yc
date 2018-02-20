@@ -71,8 +71,7 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      #params[:story][:ini_industry] = params[:story][:ini_industry].reject { |c| c.empty? }
-      #params[:story][:ini_industry] = params[:story][:ini_industry].join(", ")
+      params[:story][:slug] = params[:story][:slug].downcase
       params.require(:story).permit(:name, :location, :linkedin_url, :slug, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
                                     :sumary, :education, :meta_name, :meta_content,
