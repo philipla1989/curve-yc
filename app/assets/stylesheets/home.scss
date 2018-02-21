@@ -42,6 +42,9 @@
 @media (min-width: 1200px) {
   html {
     font-size: 17px;
+    b {
+      font-weight: 600;
+    }
   }
   .col-xl-4 {
     -webkit-box-flex: 0;
@@ -81,6 +84,9 @@
     font-size: 1.2rem !important;
     font-weight: 200 !important;
     line-height: 1.8 !important;
+    b {
+      font-weight: 600;
+    }
   }
   .h5 p {
     font-family: serif;
@@ -102,6 +108,9 @@
   }
   .lg-width {
     width: 75% !important;
+  }
+  b {
+    font-weight: 600;
   }
 }
 
@@ -147,6 +156,9 @@
     font-size: 1.2rem !important;
     font-weight: 200 !important;
     line-height: 1.8 !important;
+    b {
+      font-weight: 600;
+    }
   }
   .h5 p {
     font-family: serif;
@@ -169,6 +181,7 @@
   .lg-width {
     width: 75% !important;
   }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -229,6 +242,9 @@
   }
   .form-control {
     height: auto !important;
+  }
+  b {
+    font-weight: 600;
   }
 }
 
@@ -291,5 +307,8 @@
   }
   .form-control {
     height: auto !important;
+  }
+  b {
+    font-weight: 600;
   }
 }
