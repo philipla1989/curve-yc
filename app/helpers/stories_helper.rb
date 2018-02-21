@@ -46,7 +46,7 @@ module StoriesHelper
   end
 
   def get_precedent_job(story, career)
-    job = story.careers.where(ini_career_path: career.precedent_career).first.jobs.order(:created_at).first
+    job = story.careers.where(ini_career_path: career.precedent_career).first.jobs.order(:created_at).last
     job = "#{job.title}, #{job.company}"
   end
 
