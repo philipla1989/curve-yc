@@ -16,7 +16,7 @@
           <strong>Education:</strong> <%= @story.education %>
         </p>
         <p class="h5">
-          <strong>Linkedin url:</strong>
+          <strong>Linkedin:</strong>
           <a href="<%= @story.linkedin_url %>" target="_blank" class="storyLink"><%= @story.linkedin_url %></a>
         </p>
       </div>
@@ -29,7 +29,7 @@
       <br>
       <div class="container h5">
         <p class="h5">
-          <strong>Career Path</strong>
+          <strong><b>Career Path</b></strong>
           <br>
           <% @story.careers.order(:created_at).each do |career| %>
             <% if @story.careers.order(:created_at).last == career %>
@@ -39,7 +39,7 @@
             <% end %>
           <% end %>
           <br><br>
-          <strong>Jobs</strong>
+          <strong><b>Jobs</b></strong>
           <br>
           <% @story.careers.order(:created_at).each do |career| %>
             <% career.jobs.each do |job| %>
@@ -55,7 +55,7 @@
       <br>
       <div class="container h5">
         <p class="h5">
-          <strong>Summary</strong>
+          <strong><b>Summary</b></strong>
           <br>
           <div class="h5"><%= markdown(@story.sumary) %></div>
         </p>
