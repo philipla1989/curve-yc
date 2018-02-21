@@ -5,8 +5,8 @@
       <title><%= @title %></title>
       <meta name="description" content="<%= @description %>">
     <% else %>
-      <title>CurveYourCareer</title>
       <% if @story.present? %>
+        <title><%= @title %></title>
         <% if @story.meta_name.present? && @story.meta_content.present? %>
           <meta name="<%= @story.meta_name %>" content="<%= @story.meta_content %>">
         <% end %>

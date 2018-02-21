@@ -12,6 +12,7 @@ class StoriesController < ApplicationController
   # GET /stories/1.json
   def show
     @careers = @story.careers
+    @title = @story.slug
   end
 
   # GET /stories/new
