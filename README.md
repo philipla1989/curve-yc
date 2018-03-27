@@ -6,4 +6,4 @@
 - Learn how to overcome financial, mental, and social barriers holding you back
 - Gain tactical guidance on what steps you could take to get to your dream career
 
-#### [place the url here](www.someurl.com)
+#### [http://www.curveyourcareer.com/](www.curveyourcareer.com)
