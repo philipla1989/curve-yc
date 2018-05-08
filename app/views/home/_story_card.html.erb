@@ -2,50 +2,39 @@
   <% @stories.each do |story| %>
 
   <div class="col-lg-4 col-xl-4 col-sm-12 col-md-12 card">
-      <div class="cardContainer" data-id="<%= story.id %>">
-        <div class="card-header">
-          <h4 class="card-title"><%= story.name %></h4>
-        </div>
-        <div class="card-block">
+      <div class="cardContainer" data-id="<%= story.id %>">        
 
-          <%# get_precedent_career_path(story) %>
-          <%# get_precedent_company_name(story) %>
-          <p class="card-text">
-            <b>
+        <div class="row padding-20">
+          <div class="col-lg-4">
+            <%= image_tag("/assets/profile-photo.png", class: "profile-photo") %>
+          </div>
+          <div class="col-lg-8 padding-top-10">
+            <h4 class="h4-card"><%= story.name %></h4>
+            <span class="job-card"><%= get_current_job(story) %></span>
+          </div>
+        </div>
+          
+        <div class="font-roboto padding-30">                    
             <% story.careers.order(:created_at).each do |career| %>
               <% if career != story.careers.order(:created_at).last %>
-                <%= career.ini_career_path %> <%= image_tag("/right-arrow.png", class: "imgArrow") %>
+                
+                <%= career.ini_career_path %> <div class="arrow-right"></div>
               <% else %>
                 <%= career.ini_career_path %>
               <% end %>
-            <% end %>
-            <br><br>
-            Current Job: <%= get_current_job(story) %>
-            <%# @companies_array.each do |company| %>
-              <%# if company != @companies_array.last %>
-                <%#= company %> <%#= image_tag("/right-arrow.png", class: "imgArrow") %>
-              <%# else %>
-                <%#= company %>
-              <%# end %>
-            <%# end %>
-            </b>
-          </p>
+            <% end %>            
 
-          <p class="card-text"><em><%= story.quote.truncate_words(20, omission: '...') %></em></p>
+          <p class="card-text padding-10"><em><%= story.quote.truncate_words(20, omission: '...') %></em></p>
         </div>
-      </div>
-      <div class="card-footer">
-        <div class="row">
-          <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12">
-            <div class="row">
-              <div class="col-lg-5 col-xl-5 col-sm-5 col-md-5">
-                <small class="text-muted">Submitted: <%= story.created_at.strftime("%d/%m/%Y") %></small>
-              </div>
-              <div class="col-lg-5 col-xl-5 col-sm-5 col-md-5">
-                <%= link_to "View the Story", story_path(slug: story), class: "btn btn-primary", 'data-no-turbolink' => true %>
-              </div>
-            </div>
+      </div>      
+      <div class="row center padding-bottom-15">
+        <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12">            
+          <div class="job-card">
+            Submitted: <%= story.created_at.strftime("%d/%m/%Y") %>
           </div>
+          <div>
+            <%= link_to "View the Story", story_path(slug: story), class: "btn btn-black", 'data-no-turbolink' => true %>
+          </div>          
         </div>
       </div>
     </div>
@@ -53,7 +42,7 @@
   <% end %>
 <% else %>
   <div class="col-lg-12 col-md-12 col-sm-12 centerText">
-    <h4>Can't find Stories</h4>
+    <h4 class="h4-custom">Can't find Stories</h4>
   </div>
   <br><br>
 <% end %>

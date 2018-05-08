@@ -1,4 +1,8 @@
 /* Home page styles */
+.font-roboto {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 200;
+}
 .mainContent{
   margin: 0 auto;
   width: 100%;
@@ -27,15 +31,68 @@
   background: none;
   background-color: transparent !important;
 }
+.color-purple {
+  color: #953BFF;
+}
 .select-bottom {
   border: none !important;
   border-bottom: solid #953BFF !important;
   border-radius: 0px !important;
   box-shadow: none !important;
   font-size: 1.3rem !important;
+  font-weight: 200;
   line-height: 25px !important;
   padding: 0px 0px 0px 0px !important;  
   -webkit-appearance: none;
+}
+.select-styless {
+  border: none !important;  
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  font-size: 0.8rem !important; 
+  line-height: 25px !important;
+  padding: 0px 0px 0px 0px !important;  
+  width: 10% !important;
+  -webkit-appearance: none;
+}
+.select-div1:after {
+  color: #953BFF;
+  content: '';
+  position: absolute;
+  left: 311px;
+  top: 44px;
+  width: 13px;
+  height: 13px;
+  border-top: solid 2px currentColor;
+  border-right: solid 2px currentColor;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.select-div2:after {
+  color: #953BFF;
+  content: '';
+  position: absolute;
+  left: 311px;
+  top: 156px;
+  width: 13px;
+  height: 13px;
+  border-top: solid 2px currentColor;
+  border-right: solid 2px currentColor;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.select-div3:after {
+  color: #953BFF;
+  content: '';
+  position: absolute;
+  left: 1050px;
+  width: 8px;
+  height: 8px;
+  border-bottom: solid 1px currentColor;
+  border-right: solid 1px currentColor;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(45deg);
+  top: 15px;
 }
 .btn-purple {
   background-color: #953BFF !important;
@@ -49,6 +106,23 @@
   line-height: 0.8 !important;
   width: 55% !important;
   box-shadow: 1px 5px 7px 0px #888888;
+}
+.btn-black {
+  background-color: #222222 !important;
+  border-color: #222222 !important;
+  border-radius: 0px !important;
+  color: #ffffff;
+  font-family: Roboto !important;
+  font-size: 0.8rem !important;
+  font-weight: 100 !important;
+  line-height: 0.8 !important;
+  text-align: center;
+  width: 45% !important;  
+}
+.btn-black:hover {
+  background-color: #953BFF !important;
+  border-color: #953BFF !important;
+  color: #ffffff;
 }
 .imgResponsive {
   width: 20%;
@@ -78,7 +152,9 @@
   white-space: normal !important;
   word-wrap: break-word;
 }
+
 //Carousel
+
 .img-background {
   background: url("carousel.jpg") no-repeat;    
   background-size: 100% 100%;
@@ -124,6 +200,61 @@
 .align-bottom { 
   padding: 210px 0px 0px 40px;
 }
+.carousel-indicators {
+  bottom: 65px !important;
+  left: 420px !important;
+  margin-right: 0 !important;
+}
+.carousel-indicators li {
+  margin-top: 2px;
+  max-width: 20px !important;
+  width: 15px;
+  height: 20px !important;
+  border-radius: 50%;
+}
+
+// Card
+.padding-7 {
+  padding: 7%;
+}
+.padding-10 {
+  padding: 10px;
+}
+.padding-20 {
+  padding: 20px;
+}
+.padding-30 {
+  padding: 30px;
+}
+.profile-photo {
+  border-radius: 50%;
+  width: 100%;
+}
+.padding-top-10 {
+  padding-top: 10px;
+}
+.padding-bottom-15 {
+  padding-bottom: 15px;
+}
+.h4-card {
+  font-weight: 200;
+  margin-bottom: 0px;
+}
+.job-card {
+  color: #b9b7b7;
+  font-weight: 200;
+  font-size: 0.8rem;
+}
+.arrow-right {  
+  border-left: solid 11px #953BFF;
+  border-top: solid 7px transparent;
+  border-bottom: solid 7px transparent;
+  display: inline-block;
+  height: 0;
+  margin-left: 5px;
+  margin-top: 3px;
+  width: 0;
+}
 // Media Queries 
 
 @media (min-width: 1200px) {
@@ -146,10 +277,11 @@
     margin-right: 15px;
     margin-left: 15px;
     margin-bottom: 30px !important;
+    box-shadow: 1px 5px 7px 0px #888888;
   }
   .cardContainer {
-    min-height: 380px;
-    max-height: 380px;
+    min-height: 340px;
+    max-height: 340px;
   }
   .imgArrow {
     width: 2rem;
@@ -218,10 +350,11 @@
     margin-right: 10px;
     margin-left: 10px;
     margin-bottom: 30px !important;
+    box-shadow: 1px 5px 7px 0px #888888;
   }
   .cardContainer {
-    min-height: 380px;
-    max-height: 380px;
+    min-height: 340px;
+    max-height: 340px;
   }
   .imgArrow {
     width: 2rem;

@@ -75,3 +75,15 @@ input[type=submit]:hover {
 .inlineBlock {
   display: inline-block !important;
 }
+.padding-footer {
+  color: #ffffff;
+  padding: 90px 0px 90px 20px;
+}
+.footer-link a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.footer-link a:hover {
+  color: #ffffff;
+  background-color: transparent;
+}
