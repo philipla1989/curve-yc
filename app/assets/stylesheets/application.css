@@ -15,7 +15,7 @@
  */
 
 .bodyFont {
-  font-family: 'Quicksand';
+  font-family: 'Roboto' !important;
 }
 .navbar-nav > li > a {
  font-size:      1.5em;
@@ -29,11 +29,6 @@
   text-align: center;
   color: #ffffff !important;
   padding-top: 10%;
-}
-
-a:hover {
-  background: none !important;
-  font-weight: 600 !important;
 }
 input[type=submit]:hover {
   background: none !important;
