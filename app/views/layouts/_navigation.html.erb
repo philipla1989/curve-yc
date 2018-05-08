@@ -1,6 +1,10 @@
 <header>
 
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded py-3" style="background-color: #1274d9;">
+  <div class="container">
+    <nav class="navbar navbar-toggleable-md bg-faded py-3 no-background">
+      <a class="navbar-brand logo" href="/">
+        <%= image_tag("/assets/cyc_logo.png") %>
+      </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -10,27 +14,28 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto mainMenu">
             <li class="nav-item">
-              <a class="nav-link active" href="/">HOME<span class="sr-only">(current)</span></a>
+              <a class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/browse">BROWSE</a>
+              <a class="nav-link" href="/browse">Browse</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">ABOUT</a>
+              <a class="nav-link" href="/about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blog">BLOG</a>
+              <a class="nav-link" href="/blog">Blog</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/submit-story">SUBMIT</a>
+              <a class="nav-link" href="/submit-story">Submit</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/contact">CONTACT</a>
+              <a class="nav-link" href="/contact">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+  </div>
 
 </header>
 

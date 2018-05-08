@@ -4,7 +4,7 @@
     <%= render 'layouts/meta_tags' %>
     <%= csrf_meta_tags %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+    <%= render 'shared/utilities/fonts' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render "shared/utilities/bootstrap" %>
@@ -22,7 +22,7 @@
 
   </head>
 
-  <body class="bodyFont" style="background-color:#1274d926;" data-turbolinks="false">
+  <body class="bodyFont" data-turbolinks="false">
 
     <%= render 'layouts/navigation' %>
 

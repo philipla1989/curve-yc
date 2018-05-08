@@ -1,51 +1,35 @@
 <% content_for(:body_attributes) do %>
   data-turbolinks="false"
 <% end %>
-<div class="container container-fluid"><br>
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-      <h2>Curate Your Career</h2>
-    </div><br><br>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-      <h4>Find fulfillment and happiness in your job</h4>
-    </div><br><br><br><br>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-      <div class="row">
-        <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
-        <div>
-          <%= image_tag("/arrows-512b.png", class: "imgResponsive") %><br>
-          Hear about how people just like you were able to change careers
+<div class="container container-fluid">
+  
+  <div class="row main-top-row">
+    <div class="col-lg-4">
+      <div  class="center-vertical left-panel">
+        <h1 class="h1-custom">Curve Your Career</h1>
+        <h4 class="h4-custom">Find fulfillment and happiness in your job</h4>
+        </br>
+        <div id="dynamicFilter">
+          <%= render "filter" %>
         </div>
-      </div>
-      <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
-        <div>
-          <%= image_tag("/bareers-200b.png", class: "imgResponsive") %><br>
-          Learn how to overcome financial, mental, and social barriers holding you back
-        </div>
-      </div>
-      <div class="col-lg-4 col.md-12 col-sm-12 col-xs-12">
-        <div>
-          <%= image_tag("/messaging-200b.png", class: "imgResponsive") %><br>
-          Gain tactical guidance on what steps you could take to get to your dream career
-        </div>
-      </div>
-      </div>
+      </div>      
     </div>
-  </div>
+    <div class="col-lg-8">
+      <%= render "carousel" %>
+    </div>
+  </div>  
 </div>
-<br><br><br><br>
-<div id="dynamicFilter">
-  <%= render "filter" %>
-</div>
-<br>
+</br>
 <%= form_with url: sort_by_path do |form| %>
 <div class="container-fluid">
   <div class="row">
-    <div class="col-12 h5">
-      <b>
+    <div class="col-12 h5">      
+      <div class="select-div3">
+        <span class="color-purple"><%= @stories.count %></span>
+        &nbsp;Success Stories
         <%= form.select :sort_by, ["Newest", "Oldest", "Longest", "Shortest"],
-                        { include_blank: "Sort By" }, { class: "form-control col-lg-3 col-md-12 col-sm-12 inlineBlock right mobileSelect", id: "sortBy" } %>
-      </b>
+                        { include_blank: "Sort By" }, { class: "form-control col-lg-3 col-md-12 col-sm-12 inlineBlock right mobileSelect select-styless", id: "sortBy" } %>
+      </div>
     </div>
   </div>
 </div>
