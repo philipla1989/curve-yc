@@ -27,8 +27,12 @@
       <div class="select-div3">
         <span class="color-purple"><%= @stories.count %></span>
         &nbsp;Success Stories
-        <%= form.select :sort_by, ["Newest", "Oldest", "Longest", "Shortest"],
+        <div class="row result-div">
+          <%= form.select :sort_by, ["Newest", "Oldest", "Longest", "Shortest"],
                         { include_blank: "Sort By" }, { class: "form-control col-lg-3 col-md-12 col-sm-12 inlineBlock right mobileSelect select-styless", id: "sortBy" } %>
+          <div id="resultsContainer" class="">
+          </div>
+        </div>        
       </div>
     </div>
   </div>
