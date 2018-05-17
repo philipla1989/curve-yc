@@ -30,6 +30,9 @@
   color: #ffffff !important;
   padding-top: 10%;
 }
+.font-color-white {
+  color: #ffffff;
+}
 .btn-primary:hover {
   color: #222222 !important;
 }
