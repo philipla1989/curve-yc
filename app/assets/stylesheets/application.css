@@ -30,8 +30,8 @@
   color: #ffffff !important;
   padding-top: 10%;
 }
-input[type=submit]:hover {
-  background: none !important;
+.font-color-white {
+  color: #ffffff;
 }
 .btn-primary:hover {
   color: #222222 !important;

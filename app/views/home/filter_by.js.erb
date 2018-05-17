@@ -1,9 +1,10 @@
 <% if @stories.present? %>
-  cards = '<br><br><div class="col-lg-12 col-md-12 col-sm-12" style="display:inline-block;text-align:center;font-size: 1.5rem;font-weight: bolder;">';
-  cards += 'Results filtered by current career ' + '<span style="color: #1274d9 !important;"><%= @search_ini %></span>' + ' and interested in ';
-  cards += '<span style="color: #1274d9 !important;"><%= @search_sub %></span>' + '</div><br><br>';
-  cards += "<%= escape_javascript(render partial: "home/story_card", stories: @stories )  %>";
+  results = '<div style="display: inline-block;font-size: 0.8rem;border-left: solid 1px #953BFF;padding-left: 10px;">';
+  results += 'Results filtered by current career ' + '</br>' + '<span style="color: #953BFF !important;"><%= @search_ini %></span>' + ' and interested in ';
+  results += '<span style="color: #953BFF !important;"><%= @search_sub %></span>' + '</div><br><br>';
+  cards = "<%= escape_javascript(render partial: "home/story_card", stories: @stories )  %>";
   filter = "<%= escape_javascript(render partial: "home/filter" )  %>";
+  $("#resultsContainer").html(results);
   $("#cardsContainer").html(cards);
   $("#dynamicFilter").html(filter);
 <% else %>

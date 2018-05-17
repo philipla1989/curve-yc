@@ -1,14 +1,57 @@
 <header>
-
-  <div class="container">
-    <nav class="navbar navbar-toggleable-md bg-faded py-3 no-background">
+  <%# Smallest devices %>
+  <div class="container d-block d-sm-none background-sm" style="background: url(<%= asset_path "carousel-background.jpg" %>) no-repeat;">
+    <nav class="navbar navbar-toggleable-sm bg-faded py-3 no-background">
+      <a class="navbar-brand logo_2" href="/">
+        <%= image_tag("cyc_logo_2.png") %>
+      </a>
+      <br>
+      <div>
+        <h4 class="h4-custom font-color-white" style="font-size: 1rem;">Find fulfillment and <br>happiness in your job</h4>
+      </div>
+      <br>
+      <div class="col-sm-12">
+        <%= render "carousel_sm" %>
+      </div>
+      <button class="navbar-toggler navbar-toggler-right" style="background-color: #fbfbfb87;" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>      
+      <div class="container container-fluid">
+        <span class="navbar-text">&nbsp;</span>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto mainMenu">
+            <li class="nav-item">
+              <a class="nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/browse">Browse</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/submit-story">Submit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>  
+  <%# Other devices devices %>
+  <div class="container d-none d-sm-block">
+    <nav class="navbar navbar-toggleable-sm bg-faded py-3 no-background">
       <a class="navbar-brand logo" href="/">
         <%= image_tag("cyc_logo.png") %>
       </a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>
-      <a class="brand d-lg-none titleMobile">Curve Your Career</a>
+      </button>      
       <div class="container container-fluid">
         <span class="navbar-text">&nbsp;</span>
         <div class="collapse navbar-collapse" id="navbarNav">
