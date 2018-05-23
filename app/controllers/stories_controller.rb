@@ -13,6 +13,14 @@ class StoriesController < ApplicationController
   def show
     @careers = @story.careers
     @title = @story.slug
+    initial_career = @story.careers.where(precedent_career: "Initial").first.ini_career_path
+    sub_career =  @story.careers.where(precedent_career: initial_career).first.ini_career_path
+    @stories = Story.sub_career.where("careers.ini_career_path ilike :search OR careers.precedent_career ilike :search_i", 
+      search: "%#{initial_career}%", search_i: "%#{sub_career}%" ).limit(3).uniq
+    if @stories.count <=2
+      @stories = Story.order(created_at: :desc).limit(3).uniq
+    end                      
+    render(:layout => "layouts/story-layout")
   end
 
   # GET /stories/new
