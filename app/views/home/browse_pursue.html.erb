@@ -8,21 +8,23 @@
       <h4 class="h4-custom">Learn about the career you want to pursue</h4>
     </div>    
   </div>
-  <br><br>
-  <div  class="row">    
-    <% @career_pursue.each do |career_path, value| %>
-    <div class="col-lg-6 col-xl-6 col-sm-12 col-md-12">
-      <h4 class="h4-custom"><b><%= career_path %></b></h4>
-        &nbsp;&nbsp;<%= link_to "Anything <div class='arrow-right'></div> #{career_path}".html_safe,
-                                  browse_stories_pursue_path(ini_career: "Anything", sub_career: career_path.gsub(" ", "-")), class: "browseLink" %>
-        <br>
-        <% value.sort.each do |val| %>
-          &nbsp;&nbsp;<%= link_to "#{val} <div class='arrow-right'></div> #{career_path}".html_safe,
-                                  browse_stories_pursue_path(ini_career: val.gsub(" ", "-"), sub_career: career_path.gsub(" ", "-")), class: "browseLink" %>
-          <br>
-        <% end %>
-        <br>
-    </div>
-    <% end %>    
+  <br>
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 centerText h5">
+      <b>        
+        <%= form_with url: browse_by_path do |form| %>
+          <h4 class="h4-custom">The career I want is in...</h4>
+          <div class="select-div1">
+            <%= form.select :sub_career_path, get_options("Career Path"), { include_blank: "Anything" },
+                                          { class: "form-control mobileSelect select-bottom width-30", id: "browsePursueSelect" } %>
+          </div>
+        <% end %>         
+      </b>
   </div>
+  <br>
+  <div id="careerPathContainer">
+    <%= render "pursue_container" %>
+  </div>  
 </div>
+<script>
+  browseFilter();
+</script>

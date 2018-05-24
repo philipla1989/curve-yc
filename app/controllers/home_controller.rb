@@ -81,6 +81,64 @@ class HomeController < ApplicationController
     @stories = Story.where(id: @ids)
   end
 
+  def browse_by    
+    @type = params[:type]
+    @career_path = {}
+    @sub_career = Hash.new{|hsh,key| hsh[key] = {} }
+    @story_ids = []    
+    case @type
+      when "explore"        
+        careers =  Career.where(precedent_career: "Initial", ini_career_path: params[:career]).map(&:ini_career_path).uniq        
+        careers.each do |career|
+          stories = Story.sub_career.where("careers.ini_career_path = ? AND careers.precedent_career = ?", career, "Initial")
+          stories.each do |story|
+            careers_array = story.careers.where.not(ini_career_path: career, precedent_career: "Initial")
+            @precedent_career = ""
+            careers_array.each do |career_item|
+              if career_item.precedent_career == @precedent_career
+                @sub_career[career_item.precedent_career] = @sub_career[career_item.precedent_career].present? ?
+                                        @sub_career[career_item.precedent_career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+                @sub_career[career] = @sub_career[career].present? ?
+                                        @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+              else
+                @sub_career[career] = @sub_career[career].present? ?
+                                    @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+              end
+              @precedent_career = career_item.ini_career_path
+            end
+            @career_path = @career_path.deep_merge(@sub_career)
+          end
+        end
+      when "pursue"        
+        careers =  Career.where("precedent_career !=  ? AND ini_career_path = ?", "Initial", params[:career])
+        careers.each do |career|
+          stories = Story.sub_career.where("careers.ini_career_path = ?", career.ini_career_path)
+          stories.each do |story|
+            if story.careers.count > 2
+              @careers_added = []
+              unless @story_ids.include?(story.id)
+                Career.where("story_id = ? AND precedent_career != ?", story.id, "Initial").reorder('created_at DESC').each do |career_item|
+                  @careers_added << career_item.ini_career_path
+                  @sub_career[career_item.ini_career_path] = @sub_career[career_item.ini_career_path].present? ?
+                                                            @sub_career[career_item.ini_career_path] << story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path) :
+                                                            story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path)
+                end
+                @story_ids << story.id
+              end
+            else
+              @sub_career[career.ini_career_path] = @sub_career[career.ini_career_path].present? ?
+                                                @sub_career[career.ini_career_path] << career.precedent_career :
+                                                [career.precedent_career]
+              @sub_career[career.ini_career_path] = @sub_career[career.ini_career_path].uniq
+            end
+          end
+          @career_path = @career_path.deep_merge(@sub_career)
+        end
+      else
+        @career_path = nil
+    end    
+  end
+
   def order_shortest(stories)
     get_order_array(stories)
     @stories = Story.find(@ids).sort_by {|m| @ids.reverse.index(m.id)}

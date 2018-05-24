@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   post  "filter_by",                                  to: "home#filter_by",               as: :filter_by
   get   "sort_by",                                    to: "home#sort_by",                 as: :sort_by
   get   "dynamic_filter",                             to: "home#dynamic_filter",          as: :dynamic_filter
+  get   "browse_by",                                  to: "home#browse_by",               as: :browse_by
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "home#index"
