@@ -1,24 +1,29 @@
 <div class="container container-fluid"><br>
   <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <h2 class="centerText">Browse Stories</h2>
-      <br>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-top-5">
+      <h1 class="centerText h1-custom">Browse Stories</h1>      
       <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
-        <h4 class="centerText">How would you like to browse stories?</h4>
+        <h4 class="centerText h4-custom">How would you like to browse stories?</h4>
       </div>
     </div>
   </div>
 </div>
 <br><br>
-<div class="container">
+<div class="container padding-bottom-5">
   <div class="container">
     <div class="row centerText">
       <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
-        <%= link_to "I'd like to learn about different potential careers", browse_explore_path,
-        class: "btn btn-primary col-xl-3 col-lg-3 col-sm-12 col-md-12 centerText browseBtn", 'data-no-turbolink' => true %>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <%= link_to "I have a specifc new career in mind I'd like to pursue", browse_pursue_path,
-        class: "btn btn-primary col-xl-3 col-lg-3 col-sm-12 col-md-12 centerText browseBtn", 'data-no-turbolink' => true %>
+        <%= link_to(browse_explore_path, class: "btn btn-browse col-xl-3-b col-lg-3-b col-sm-12 col-md-12 centerText browseBtn", 'data-no-turbolink' => true) do %> 
+          <span class="inline-block btn-title">Learn how others switched out of your field</span>
+          </ br>
+          <span class="inline-block btn-p">Be inspired by people who have successfully transitioned from your field to another.</span>
+        <% end %>
+        &nbsp;&nbsp;&nbsp;&nbsp;        
+        <%= link_to(browse_pursue_path, class: "btn btn-browse col-xl-3-b col-lg-3-b col-sm-12 col-md-12 centerText browseBtn", 'data-no-turbolink' => true) do %> 
+          <span class="inline-block btn-title">Have a specific career in mind?</span>
+          </ br>
+          <span class="inline-block btn-p">If you're looking to switch careers and have a specific field in mid, find an inspiring story here.</span>
+        <% end %>
       </div>
     </div>
   </div>
@@ -32,6 +37,3 @@
   </div>
 </div>
 <br>
-<div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
-  <h4 class="centerText">*You can also just use the filters on the <a href="/">hompage!</a></h4>
-</div>
