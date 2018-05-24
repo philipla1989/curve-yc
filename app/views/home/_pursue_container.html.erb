@@ -1,0 +1,16 @@
+<div  class="row">    
+    <% @career_path.each do |career_path, value| %>
+    <div class="col-lg-6 col-xl-6 col-sm-12 col-md-12">
+      <h4 class="h4-custom"><b><%= career_path %></b></h4>
+        &nbsp;&nbsp;<%= link_to "Anything <div class='arrow-right'></div> #{career_path}".html_safe,
+                                  browse_stories_pursue_path(ini_career: "Anything", sub_career: career_path.gsub(" ", "-")), class: "browseLink" %>
+        <br>
+        <% value.sort.each do |val| %>
+          &nbsp;&nbsp;<%= link_to "#{val} <div class='arrow-right'></div> #{career_path}".html_safe,
+                                  browse_stories_pursue_path(ini_career: val.gsub(" ", "-"), sub_career: career_path.gsub(" ", "-")), class: "browseLink" %>
+          <br>
+        <% end %>
+        <br>
+    </div>
+    <% end %>    
+</div>

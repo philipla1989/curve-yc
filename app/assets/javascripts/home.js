@@ -40,3 +40,31 @@ function dynamicFilter(){
     });
   }
 }
+
+function browseFilter(){
+  $("#browseExploreSelect").on("change", function(){    
+    var career = this.value;
+    var type = "explore"    
+    makeCall(career, type)    
+  });
+
+  $("#browsePursueSelect").on("change", function(){
+    var career = this.value;
+    var type = "pursue"    
+    makeCall(career, type)
+  });
+
+  function makeCall(career, type){
+    if(career == ""){      
+      window.location.href = "/browse/" + type;
+    }else
+    {
+      var request = $.ajax({
+        type: 'GET',
+        url:  '/browse_by',
+        data: { career: career, type: type },
+        dataType: 'script'
+      });
+    }    
+  }
+}
