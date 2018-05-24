@@ -1,26 +1,28 @@
 <br>
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12 centerText">
-      <h2>BROWSE STORIES</h2>
-      <h4>Learn about the career you want to pursue</h4>
+  <div class="row">    
+    <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12">
+      <h1 class="h1-custom left">Browse Stories</h1>      
     </div>
+    <divclass="col-lg-12 col-xl-12 col-sm-12 col-md-12 centerText">
+      <h4 class="h4-custom">Learn about the career you want to pursue</h4>
+    </div>    
   </div>
   <br><br>
-  <div row>
-    <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12">
+  <div  class="row">    
     <% @career_pursue.each do |career_path, value| %>
-      <h3><b><%= career_path %></b></h3>
-        &nbsp;&nbsp;<%= link_to "Anything #{image_tag("/right-arrow.png", class: "imgArrowBrowse imgArrow")} #{career_path}".html_safe,
+    <div class="col-lg-6 col-xl-6 col-sm-12 col-md-12">
+      <h4 class="h4-custom"><b><%= career_path %></b></h4>
+        &nbsp;&nbsp;<%= link_to "Anything <div class='arrow-right'></div> #{career_path}".html_safe,
                                   browse_stories_pursue_path(ini_career: "Anything", sub_career: career_path.gsub(" ", "-")), class: "browseLink" %>
         <br>
         <% value.sort.each do |val| %>
-          &nbsp;&nbsp;<%= link_to "#{val} #{image_tag("/right-arrow.png", class: "imgArrowBrowse imgArrow")} #{career_path}".html_safe,
+          &nbsp;&nbsp;<%= link_to "#{val} <div class='arrow-right'></div> #{career_path}".html_safe,
                                   browse_stories_pursue_path(ini_career: val.gsub(" ", "-"), sub_career: career_path.gsub(" ", "-")), class: "browseLink" %>
           <br>
         <% end %>
         <br>
-    <% end %>
     </div>
+    <% end %>    
   </div>
 </div>

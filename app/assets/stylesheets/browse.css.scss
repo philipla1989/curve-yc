@@ -1,0 +1,49 @@
+// Browse Page
+
+.btn-browse {
+    background-color: #953BFF !important;
+    border-color: #953BFF !important;
+    border-radius: 0px !important;
+    color: #ffffff;
+    font-family: Roboto !important;
+    font-size: 0.8rem !important;
+    font-weight: 100 !important;
+    line-height: 0.8 !important;
+    width: 35% !important;
+}
+.btn-browse:visited {
+    color: #ffffff;
+}
+.btn-browse:hover {
+    color: #ffffff;
+}
+.col-xl-3-b {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 25%;
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 43%;
+}
+.inline-block {
+    display: inline-block;
+}
+.btn-title {
+    font-size: 1.14rem;
+    line-height: 2rem;
+    padding: 4px;
+}
+.btn-p {
+    padding: 5px;
+    line-height: 1rem;
+}
+.browseLink {
+    font-weight: 200;
+    line-height: 2rem;
+    color: #222222;
+    font-size: medium !important;    
+}
+.browseLink:hover {
+    border-bottom: solid 1px #953BFF;
+    text-decoration: none;
+    background-color: transparent;
+}

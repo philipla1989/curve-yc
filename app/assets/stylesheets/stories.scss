@@ -22,6 +22,12 @@
   background-color: #F8F8F8;
   padding: 45px;
 }
+.story-footer {
+  background-color: #F8F8F8;
+  padding: 45px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
 .right-panel {
   border-left: solid 1px #953BFF;
 }
@@ -78,8 +84,8 @@
   -webkit-transform: rotate(135deg);
   transform: rotate(45deg);
 }
-.hr-custom {  
-  border-bottom: solid 1px #9AA8B2;  
+.hr-custom {
+  border-bottom: solid 1px #9AA8B2;
   padding-top: 40px;
 }
 .container-story {
@@ -99,7 +105,10 @@
   line-height: 1.5rem;
   font-size: 0.9rem;
 }
-
+.similar-stories {
+  font-size: 1rem;
+  padding: 45px 0px 10px 70px !important;
+}
 
 //// Timeline
 

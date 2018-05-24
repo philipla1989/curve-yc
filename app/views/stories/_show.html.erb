@@ -1,179 +1,210 @@
-<div class="row story-header">
-  <div class="col-lg-6">
-    <div class="row">
-      <div class="col-lg-5">
-        <%= image_tag("profile-photo.png", class: "profile-photo") %>
+<div class="container container-fluid">
+  <div class="row story-header">
+    <div class="col-lg-6">
+      <div class="row">
+        <div class="col-lg-5">
+          <%= image_tag("profile-photo.png", class: "profile-photo") %>
+        </div>
+        <div class="col-lg-7">
+          <h2 class="h2-story"><%= @story.name %></h2>
+          <div class="job-card"><%= get_current_job(@story) %></div>
+          </br>
+          <div>
+            <a href="<%= @story.linkedin_url %>" class="no-background" target="_blank"><%= image_tag("/assets/linkedin.svg", class: "imgArrowStory") %></a>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-7">
+    </div>
+    <div class="col-lg-6 right-panel">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-12 label-title">
+              Location
+            </div>
+            <div class="col-lg-12 label-field">
+              <%= @story.location %>
+            </div>          
+          </div>
+          </br>
+          <div class="row">
+            <div class="col-lg-12 label-title">
+              Education
+            </div>          
+            <div class="col-lg-12 label-field">
+              <%= @story.education %>
+            </div>          
+          </div>
+        </div>      
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-lg-12 label-title">
+              Previous Job
+            </div>     
+            <div class="col-lg-12 label-field">
+              <% @story.careers.order(:created_at).each do |career| %>
+                <% career.jobs.each do |job| %>
+                  <% if (career.jobs.order(:created_at).last == job) && (@story.careers.order(:created_at).last == career) %>
+                    <%= job.title %>, <%= job.company %>
+                  <% else %>
+                    <%= job.title %>, <%= job.company %> </br></br>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>     
+          </div>
+        </div>
+      </div>
+      </br>
+      <div class="row">
+        <div class="col-lg-12 label-title">
+          Career Path
+        </div>
+        <div class="col-lg-12 label-field">
+          <% @story.careers.order(:created_at).each do |career| %>
+            <% if career != @story.careers.order(:created_at).last %>                
+              <%= career.ini_career_path %> <div class="arrow-right"></div>
+            <% else %>
+              <%= career.ini_career_path %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </br></br>
+  <div class="row">
+    <div class="col-lg-4">
+      <h2 class="h2-story">Summary</h2>
+    </div>
+    <div class="col-lg-8">
+      <div class="summary-font"><%= markdown(@story.sumary) %></div>
+    </div>
+  </div>
+  </br></br>
+  <div class="row">
+    <div class="col-lg-4">
+      <h4 class="h2-story">Table Of Contents</h4>
+    </div>
+    <div class="col-lg-8 right-panel">          
+      <% i = 0 %>
+      <% @story.careers.order(:created_at).each do |career| %>
+        <% unless career.precedent_career.include?("Initial") %>
+          <div id="heading-<%= i %>">
+            <div class="h5">                
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                  <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-<%= i %>" aria-expanded="true" aria-controls="collapse-<%= i %>">
+                      Career Change 0<%= i %>:
+                      <%= get_precedent_career(@story, career) %> <div class="arrow-right"></div>   <%= career.ini_career_path %>
+                    </button>
+                  </h5>          
+                </div>
+              <div class="container">
+                <div id="collapse-<%= i %>" class="collapse show" aria-labelledby="heading-<%= i %>" data-parent="#accordion">
+                  <div class="card-body">                      
+                      <% career.story_questions.order(:created_at).each do |sq| %>
+                        <a href="/stories/<%= career.story.slug %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
+                        <br>
+                      <% end %>
+                  </div>
+                </div>              
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% i+= 1 %>
+      <% end %>      
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 hr-custom"></div>
+  </div>
+  </br></br>
+
+  <div class="row container-story">
+    <div class="container">
+      <div class="col-lg-12">
+        <h2 class="h2-story"><%= @story.name %>'s Story</h2>
+      </div>
+      <% i = 0 %>
+      <% @story.careers.order(:created_at).each do |career| %>
+        <% unless career.precedent_career.include?("Initial") %>                  
+          <div class="col-lg-12">
+            Career Change 0<%= i %>:
+            <%= get_precedent_career(@story, career) %> <div class="arrow-right"></div>   <%= career.ini_career_path %>
+          </div> 
+          <div class="col-lg-12">
+            <div class="timeline">  
+              <% if check_single_job(career.jobs) %>
+                <div class="time-container time-container-white time-right">
+                  <div class="content">
+                    <%= get_precedent_job(@story, career) %>
+                  </div>
+                </div>
+                <div class="time-container time-container-purple time-right">
+                  <div class="content">
+                    <%= career.jobs.order(:created_at).first.title %>, <%= career.jobs.order(:created_at).first.company %>
+                  </div>
+                </div>              
+              <% else %>
+                <% career.jobs.order(:created_at).each do |job| %>
+                  <% if career.jobs.first == job %>
+                    <div class="time-container time-container-white time-right">
+                      <div class="content">
+                        <%= get_precedent_job(@story, career) %>
+                      </div>
+                    </div>
+                    <div class="time-container time-container-white time-right">
+                      <div class="content">
+                        <%= job.title %>, <%= job.company %>
+                      </div>
+                    </div>                                    
+                  <% else %>
+                    <div class="time-container time-container-purple time-right">
+                      <div class="content">
+                        <%= job.title %>, <%= job.company %>
+                      </div>
+                    </div>                  
+                  <% end %>
+                <% end %>
+              <% end %>            
+            </div>          
+          </div>  
+          <div class="col-lg-12">
+            <%= render "questions_list", career: career %>
+          </div>             
+        <% end %>
+        <% i+= 1%>
+      <% end %>    
+    </div>
+  </div>  
+</div>
+</br></br>
+<div class="story-footer">        
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
         <h2 class="h2-story"><%= @story.name %></h2>
         <div class="job-card"><%= get_current_job(@story) %></div>
         </br>
         <div>
-          <a href="<%= @story.linkedin_url %>" class="no-background" target="_blank"><%= image_tag("/linkedin.svg", class: "imgArrowStory") %></a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-6 right-panel">
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="row">
-          <div class="col-lg-12 label-title">
-            Location
-          </div>
-          <div class="col-lg-12 label-field">
-            <%= @story.location %>
-          </div>          
+          <a href="<%= @story.linkedin_url %>" class="no-background" target="_blank"><%= image_tag("/assets/linkedin.svg", class: "imgArrowStory") %></a>
         </div>
         </br>
-        <div class="row">
-          <div class="col-lg-12 label-title">
-            Education
-          </div>          
-          <div class="col-lg-12 label-field">
-            <%= @story.education %>
-          </div>          
+        <div class="job-card">
+          Interviewed By Phillip La | 2018
         </div>
-      </div>      
-      <div class="col-lg-6">
-        <div class="row">
-          <div class="col-lg-12 label-title">
-            Previous Job
-          </div>     
-          <div class="col-lg-12 label-field">
-            <% @story.careers.order(:created_at).each do |career| %>
-              <% career.jobs.each do |job| %>
-                <% if (career.jobs.order(:created_at).last == job) && (@story.careers.order(:created_at).last == career) %>
-                  <%= job.title %>, <%= job.company %>
-                <% else %>
-                  <%= job.title %>, <%= job.company %> </br></br>
-                <% end %>
-              <% end %>
-            <% end %>
-          </div>     
+      </div>       
+      <div class="col-lg-12 job-card similar-stories">
+        Read Similar Stories 
+      </div>
+      <div class="col-lg-12">
+        <div id="cardsContainer" class="row">
+        <%= render "/home/story_card.html.erb", stories: @stories %>
         </div>
-      </div>
-    </div>
-    </br>
-    <div class="row">
-      <div class="col-lg-12 label-title">
-        Career Path
-      </div>
-      <div class="col-lg-12 label-field">
-        <% @story.careers.order(:created_at).each do |career| %>
-          <% if career != @story.careers.order(:created_at).last %>                
-            <%= career.ini_career_path %> <div class="arrow-right"></div>
-          <% else %>
-            <%= career.ini_career_path %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+      </div> 
+    </div>      
+  </div>  
 </div>
-</br></br>
-<div class="row">
-  <div class="col-lg-4">
-    <h2 class="h2-story">Summary</h2>
-  </div>
-  <div class="col-lg-8">
-    <div class="summary-font"><%= markdown(@story.sumary) %></div>
-  </div>
-</div>
-</br></br>
-<div class="row">
-  <div class="col-lg-4">
-    <h4 class="h2-story">Table Of Contents</h4>
-  </div>
-  <div class="col-lg-8 right-panel">          
-    <% i = 0 %>
-    <% @story.careers.order(:created_at).each do |career| %>
-      <% unless career.precedent_career.include?("Initial") %>
-        <div id="heading-<%= i %>">
-          <div class="h5">                
-              <div class="col-lg-12 col-md-12 col-sm-12">
-                <h5 class="mb-0">
-                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-<%= i %>" aria-expanded="true" aria-controls="collapse-<%= i %>">
-                    Career Change 0<%= i %>:
-                    <%= get_precedent_career(@story, career) %> <div class="arrow-right"></div>   <%= career.ini_career_path %>
-                  </button>
-                </h5>          
-              </div>
-            <div class="container">
-              <div id="collapse-<%= i %>" class="collapse show" aria-labelledby="heading-<%= i %>" data-parent="#accordion">
-                <div class="card-body">                      
-                    <% career.story_questions.order(:created_at).each do |sq| %>
-                      <a href="/stories/<%= career.story.slug %>#question-<%= sq.id %>" data-turbolinks="false"><%= sq.question %></a>
-                      <br>
-                    <% end %>
-                </div>
-              </div>              
-            </div>
-          </div>
-        </div>
-      <% end %>
-      <% i+= 1 %>
-    <% end %>      
-  </div>
-</div>
-<div class="row">
-  <div class="col-lg-12 hr-custom"></div>
-</div>
-</br></br>
-<div class="row container-story">
-  <div class="container">
-    <div class="col-lg-12">
-      <h2 class="h2-story"><%= @story.name %>'s Story</h2>
-    </div>
-    <% i = 0 %>
-    <% @story.careers.order(:created_at).each do |career| %>
-      <% unless career.precedent_career.include?("Initial") %>                  
-        <div class="col-lg-12">
-          Career Change 0<%= i %>:
-          <%= get_precedent_career(@story, career) %> <div class="arrow-right"></div>   <%= career.ini_career_path %>
-        </div> 
-        <div class="col-lg-12">
-          <div class="timeline">  
-            <% if check_single_job(career.jobs) %>
-              <div class="time-container time-container-white time-right">
-                <div class="content">
-                  <%= get_precedent_job(@story, career) %>
-                </div>
-              </div>
-              <div class="time-container time-container-purple time-right">
-                <div class="content">
-                  <%= career.jobs.order(:created_at).first.title %>, <%= career.jobs.order(:created_at).first.company %>
-                </div>
-              </div>              
-            <% else %>
-              <% career.jobs.order(:created_at).each do |job| %>
-                <% if career.jobs.first == job %>
-                  <div class="time-container time-container-white time-right">
-                    <div class="content">
-                      <%= get_precedent_job(@story, career) %>
-                    </div>
-                  </div>
-                  <div class="time-container time-container-white time-right">
-                    <div class="content">
-                      <%= job.title %>, <%= job.company %>
-                    </div>
-                  </div>                                    
-                <% else %>
-                  <div class="time-container time-container-purple time-right">
-                    <div class="content">
-                      <%= job.title %>, <%= job.company %>
-                    </div>
-                  </div>                  
-                <% end %>
-              <% end %>
-            <% end %>            
-          </div>          
-        </div>  
-        <div class="col-lg-12">
-          <%= render "questions_list", career: career %>
-        </div>             
-      <% end %>
-      <% i+= 1%>
-    <% end %>    
-  </div>
-</div>  
