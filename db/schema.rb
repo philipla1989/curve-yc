@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180213072447) do
+ActiveRecord::Schema.define(version: 20180530180558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180213072447) do
     t.string "education"
     t.string "meta_name"
     t.string "meta_content"
+    t.string "story_meta_title"
     t.index ["slug"], name: "index_stories_on_slug", unique: true
   end
 
