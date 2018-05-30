@@ -7,7 +7,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
-              <h3><b><%= topic %></b></h3>
+              <h2><%= topic %></h2>
               <% value.sort.each do |val| %>
                 &nbsp;&nbsp;<%= link_to val.title, post_path(slug: val), class: "blogLink" %>
                 <br>

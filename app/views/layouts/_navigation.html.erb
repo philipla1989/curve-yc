@@ -1,7 +1,12 @@
 <header>
   <%# Smallest devices %>
-  <div class="container d-block d-sm-none background-sm" style="background: url(<%= asset_path "carousel-background.jpg" %>) no-repeat;">
-    <nav class="navbar navbar-toggleable-sm bg-faded py-3 no-background">
+  <div class="container d-sm-none background-sm d-xs-block" style="background: url(<%= asset_path "carousel-background.jpg" %>) no-repeat;">
+    <nav class="navbar navbar-expand-xs bg-faded py-3 no-background">
+      <div style="width: 100%;"> 
+        <button class="navbar-toggler" style="background-color: #fbfbfb87;float:right;" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>    
       <a class="navbar-brand logo_2" href="/">
         <%= image_tag("cyc_logo_2.png") %>
       </a>
@@ -12,10 +17,7 @@
       <br>
       <div class="col-sm-12">
         <%= render "/home/carousel_sm" %>
-      </div>
-      <button class="navbar-toggler navbar-toggler-right" style="background-color: #fbfbfb87;" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>      
+      </div>      
       <div class="container container-fluid">
         <span class="navbar-text">&nbsp;</span>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -45,13 +47,10 @@
   </div>  
   <%# Other devices devices %>
   <div class="container d-none d-sm-block">
-    <nav class="navbar navbar-toggleable-sm bg-faded py-3 no-background">
+    <nav class="navbar navbar-expand-sm bg-faded py-3 no-background">
       <a class="navbar-brand logo" href="/">
-        <%= image_tag("cyc_logo.png") %>
-      </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>      
+        <%= image_tag("cyc_logo.png", class: "d-none d-md-block") %>
+      </a>      
       <div class="container container-fluid">
         <span class="navbar-text">&nbsp;</span>
         <div class="collapse navbar-collapse" id="navbarNav">
