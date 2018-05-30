@@ -41,17 +41,21 @@ class HomeController < ApplicationController
     @search_ini = params[:ini_career_path] == "Anything" ? "" : params[:ini_career_path]
     @search_sub = params[:sub_career_path] == "Anything" ? "" : params[:sub_career_path]
     @stories = []
-    stories_sub = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career != :search_i",
+    if @search_ini == "" && @search_sub == ""
+      @stories = Story.all
+    else
+      stories_sub = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career != :search_i",
                                         search: "%#{@search_sub}%", search_i: "Initial")
-    stories_ini = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career ilike :search_i",
+      stories_ini = Story.sub_career.where("careers.ini_career_path ilike :search AND careers.precedent_career ilike :search_i",
                                         search: "%#{@search_ini}%", search_i: "Initial")
-    stories_ini.each do |story|
-      @stories << story if (story.careers.where("ini_career_path ilike :search AND precedent_career != :search_s",
+      stories_ini.each do |story|
+        @stories << story if (story.careers.where("ini_career_path ilike :search AND precedent_career != :search_s",
                                                 search: "%#{@search_sub}%", search_s: "Initial").count == 1)
-    end
-    stories_sub.each do |story|
-      @stories << story if (story.careers.where(precedent_career: @search_ini).count == 1)
-    end
+      end
+      stories_sub.each do |story|
+        @stories << story if (story.careers.where(precedent_career: @search_ini).count == 1)
+      end
+    end    
     @stories = @stories.uniq
     @ids = @stories.pluck(:id)
     @search_ini = "Anything" if @search_ini.empty?
@@ -294,7 +298,7 @@ class HomeController < ApplicationController
       else
         search_ini = ""
         search_sub = ""
-    end
+    end    
     @values = @values.uniq
     respond_to do |format|
       format.json  { render json: [@values, @type] }

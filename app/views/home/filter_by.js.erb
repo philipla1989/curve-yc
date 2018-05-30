@@ -1,4 +1,5 @@
 <% if @stories.present? %>
+  count = '<%= @stories.count %>';
   results = '<div style="display: inline-block;font-size: 0.8rem;border-left: solid 1px #953BFF;padding-left: 10px;">';
   results += 'Results filtered by current career ' + '</br>' + '<span style="color: #953BFF !important;"><%= @search_ini %></span>' + ' and interested in ';
   results += '<span style="color: #953BFF !important;"><%= @search_sub %></span>' + '</div><br><br>';
@@ -7,6 +8,7 @@
   $("#resultsContainer").html(results);
   $("#cardsContainer").html(cards);
   $("#dynamicFilter").html(filter);
+  $("#storiesCount").html(count);
 <% else %>
   filter = "<%= escape_javascript(render partial: "home/filter" )  %>";
   cards = "<%= escape_javascript(render partial: "home/empty_stories", ini_career: @search_ini, sub_career: @search_sub )  %>";
