@@ -11,8 +11,8 @@ class StoriesController < ApplicationController
   # GET /stories/1
   # GET /stories/1.json
   def show
-    @careers = @story.careers
-    @title = @story.slug
+    @careers = @story.careers    
+    @title = @story.story_meta_title.present? ? @story.story_meta_title : @story.slug    
     initial_career = @story.careers.where(precedent_career: "Initial").first.ini_career_path
     sub_career =  @story.careers.where(precedent_career: initial_career).first.ini_career_path
     @stories = Story.sub_career.where("careers.ini_career_path ilike :search OR careers.precedent_career ilike :search_i", 
@@ -50,7 +50,7 @@ class StoriesController < ApplicationController
 
   # PATCH/PUT /stories/1
   # PATCH/PUT /stories/1.json
-  def update
+  def update    
     respond_to do |format|
       if @story.update(story_params)
         format.html { redirect_to admin_index_path, notice: 'Story was successfully updated.' }
@@ -83,7 +83,7 @@ class StoriesController < ApplicationController
       params[:story][:slug] = params[:story][:slug].downcase
       params.require(:story).permit(:name, :location, :linkedin_url, :slug, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
-                                    :sumary, :education, :meta_name, :meta_content,
+                                    :sumary, :education, :meta_name, :meta_content, :story_meta_title,
                                     {careers_attributes: [:id, :ini_career_path, :precedent_career, :_destroy,
                                                         {jobs_attributes: [:id, :title, :company, :industry, :age, :company_type, :_destroy ]}
                                                      ]}
