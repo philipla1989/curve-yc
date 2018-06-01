@@ -6,7 +6,11 @@
 
         <div class="row padding-20">
           <div class="col-lg-4 col-md-3 col-4 col-sm-3 center">
-            <%= image_tag("profile-photo.png", class: "profile-photo") %>
+            <% if story.avatar.present? %>
+              <img src="<%= story.avatar %>" class="profile-photo" height="auto" width="100%">              
+            <% else %>
+              <%= image_tag("profile-photo.png", class: "profile-photo") %>
+            <% end %>
           </div>
           <div class="col-lg-8 col-md-4 col-6 col-sm-5 padding-top-10">
             <h4 class="h4-card"><%= story.name %></h4>
