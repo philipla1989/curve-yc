@@ -36,9 +36,13 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(story_params)
+    @story = Story.new(story_params)    
     respond_to do |format|
-      if @story.save
+      if @story.save        
+        if params[:story][:avatar].present?
+          avatar = Cloudinary::Uploader.upload(params[:story][:avatar])
+          @story.update_attribute(:avatar, avatar["url"])
+        end
         format.html { redirect_to admin_index_path, notice: 'Story was successfully created.' }
         format.json { render :show, status: :created, location: @story }
       else
@@ -50,9 +54,13 @@ class StoriesController < ApplicationController
 
   # PATCH/PUT /stories/1
   # PATCH/PUT /stories/1.json
-  def update    
+  def update       
     respond_to do |format|
-      if @story.update(story_params)
+      if @story.update(story_params)        
+        if params[:story][:avatar].present? && @story.avatar != params[:story][:avatar]
+          avatar = Cloudinary::Uploader.upload(params[:story][:avatar])
+          @story.update_attribute(:avatar, avatar["url"])          
+        end        
         format.html { redirect_to admin_index_path, notice: 'Story was successfully updated.' }
         format.json { render :show, status: :ok, location: @story }
       else
@@ -83,7 +91,7 @@ class StoriesController < ApplicationController
       params[:story][:slug] = params[:story][:slug].downcase
       params.require(:story).permit(:name, :location, :linkedin_url, :slug, :quote, :ini_age, :sub_age,
                                     :ini_title, :ini_career_path, :ini_industry, :ini_company, :ini_company_type,
-                                    :sumary, :education, :meta_name, :meta_content, :story_meta_title,
+                                    :sumary, :education, :meta_name, :meta_content, :story_meta_title, :avatar,
                                     {careers_attributes: [:id, :ini_career_path, :precedent_career, :_destroy,
                                                         {jobs_attributes: [:id, :title, :company, :industry, :age, :company_type, :_destroy ]}
                                                      ]}

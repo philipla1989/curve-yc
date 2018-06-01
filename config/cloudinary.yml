@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dysp5qg1e
+  api_key: '458482159128827'
+  api_secret: rGT9yCWYM5fCMAef6Faj6hem_ZQ
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dlusme0ex
+  api_key: 251417148723341
+  api_secret: KcaWtgk5gQUagh5OuHdYJ9KnqZw
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: dysp5qg1e
+  api_key: '458482159128827'
+  api_secret: rGT9yCWYM5fCMAef6Faj6hem_ZQ
+  enhance_image_tag: true
+  static_image_support: false
