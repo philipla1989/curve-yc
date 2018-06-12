@@ -105,7 +105,15 @@ h2 {
   white-space: normal !important;
   word-wrap: break-word;
 }
-
+.about p {
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 100;
+  font-family: Roboto;
+}
+.about h2 {
+  font-weight: 400 !important;
+}
 // Card
 .padding-7 {
   padding: 7%;

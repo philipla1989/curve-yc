@@ -68,16 +68,16 @@ class HomeController < ApplicationController
     @careers = Career.where(story_id: ids)
     case params[:value]
       when "Newest"
-        @stories = @stories.order(created_at: :desc)
+        @stories = @stories.newest_first
       when "Oldest"
-        @stories = @stories.order(created_at: :asc)
+        @stories = @stories.oldest_first
       when "Longest"
         order_longest(@stories)
       when "Shortest"
         order_shortest(@stories)
       else
         @stories = Story.where(id: ids)
-    end
+    end    
   end
 
   def order_longest(stories)
@@ -180,20 +180,20 @@ class HomeController < ApplicationController
         careers_array = story.careers.where.not(ini_career_path: career, precedent_career: "Initial")
         @precedent_career = ""
         careers_array.each do |career_item|
-          if career_item.precedent_career == @precedent_career
+          if career_item.precedent_career == @precedent_career            
             @sub_career[career_item.precedent_career] = @sub_career[career_item.precedent_career].present? ?
                                     @sub_career[career_item.precedent_career] << career_item.ini_career_path : [ career_item.ini_career_path ]
-            @sub_career[career] = @sub_career[career].present? ?
-                                    @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
-          else
-            @sub_career[career] = @sub_career[career].present? ?
-                                @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+            @sub_career[career] = @sub_career[career].present? ? @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+            @sub_career[career] = @sub_career[career].uniq
+          else            
+            @sub_career[career] = @sub_career[career].present? ? @sub_career[career] << career_item.ini_career_path : [ career_item.ini_career_path ]
+            @sub_career[career] = @sub_career[career].uniq
           end
           @precedent_career = career_item.ini_career_path
         end
-        @career_path = @career_path.deep_merge(@sub_career)
+        @career_path = @career_path.deep_merge(@sub_career)                
       end
-    end
+    end    
   end
 
   def browse_pursue
