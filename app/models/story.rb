@@ -6,8 +6,10 @@ class Story < ApplicationRecord
   validates_uniqueness_of :slug
   validate :valid_slug
   validates_with CareerValidator
-  default_scope { order(:created_at) }
+  #default_scope { order(:created_at) }
   scope :sub_career, -> { joins(:careers) }
+  scope :newest_first, -> { order(created_at: :desc) }
+  scope :oldest_first, -> { order(created_at: :asc) }
 
   def to_param
     slug.parameterize

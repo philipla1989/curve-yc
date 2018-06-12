@@ -14,7 +14,7 @@
           <div class="job-card"><%= get_current_job(@story) %></div>
           </br>
           <div>
-            <a href="<%= @story.linkedin_url %>" class="no-background" target="_blank"><%= image_tag("/assets/linkedin.svg", class: "imgArrowStory") %></a>
+            <a href="<%= @story.linkedin_url %>" class="no-background" target="_blank"><%= image_tag("linkedin.svg", class: "imgArrowStory") %></a>
           </div>
         </div>
       </div>
@@ -39,11 +39,12 @@
               <%= @story.education %>
             </div>          
           </div>
+          </br>
         </div>      
         <div class="col-lg-6">
           <div class="row">
             <div class="col-lg-12 label-title">
-              Previous Job
+              Previous Jobs
             </div>     
             <div class="col-lg-12 label-field">
               <% @story.careers.order(:created_at).each do |career| %>
