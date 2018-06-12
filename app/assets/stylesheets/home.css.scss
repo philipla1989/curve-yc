@@ -3,6 +3,9 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 200;
 }
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1.7);' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 h2 {
     margin-bottom: .5rem;
     font-family: inherit;
@@ -1240,8 +1243,7 @@ h2 {
     padding-left: 0px !important;
   }
   .logo_2 img {
-    width: 100%;
-    padding-top: 30px;
+    width: 100%;    
   }
   .logo_2 {
     &:hover {
@@ -1418,7 +1420,7 @@ h2 {
     box-shadow: 1px 5px 7px 0px #888888;
   }
   .imgResponsive {
-    width: 10%;
+    width: 15%;
   }
   // Card
   .padding-7 {
