@@ -1398,14 +1398,19 @@ h2 {
   }
   
   .carousel-indicators {
+    position: relative !important;
     bottom: -26px !important;
+    justify-content: normal !important;  
+    margin-right: 0% !important;
+    margin-left: 0% !important;
   }
   .carousel-indicators li {
     margin-top: 2px;
-    max-width: 10px !important;
+    max-width: 25px !important;
     width: 15px;
-    height: 10px !important;
+    height: 25px !important;
     border-radius: 50%;
+    margin-right: 30px !important;
   }
   .btn-purple {
     background-color: #953BFF !important;

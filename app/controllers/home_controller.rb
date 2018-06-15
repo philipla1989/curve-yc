@@ -210,14 +210,14 @@ class HomeController < ApplicationController
           @careers_added = []
           unless @story_ids.include?(story.id)
             Career.where("story_id = ? AND precedent_career != ?", story.id, "Initial").reorder('created_at DESC').each do |career_item|
-              @careers_added << career_item.ini_career_path
-              @career_path[career_item.ini_career_path] = @career_path[career_item.ini_career_path].present? ?
+              @careers_added << career_item.ini_career_path              
+              @career_path[career_item.ini_career_path] = (@career_path[career_item.ini_career_path].present? && @career_path[career_item.ini_career_path] != story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path))  ?
                                                         @career_path[career_item.ini_career_path] << story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path) :
                                                         story.careers.where.not(ini_career_path: @careers_added).map(&:ini_career_path)
             end
             @story_ids << story.id
           end
-        else
+        else          
           @career_path[career.ini_career_path] = @career_path[career.ini_career_path].present? ?
                                             @career_path[career.ini_career_path] << career.precedent_career :
                                             [career.precedent_career]
@@ -225,7 +225,7 @@ class HomeController < ApplicationController
         end
       end
       @career_pursue = @career_pursue.deep_merge(@career_path)
-    end
+    end    
   end
 
   def browse_stories_explore
